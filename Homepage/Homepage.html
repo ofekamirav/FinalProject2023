@@ -8,12 +8,13 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="Homepage.css">
     <title>Secret Coffee</title>
   </head>
   <body>
     <!--Navbar-->
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <img src="logo.png" width="50" height="50" alt="">
+        <img src="Gallery/logo.png" width="50" height="50" alt="">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -30,25 +31,26 @@
               <a class="nav-link" href="#">Contact us</a>
             </li>
           </ul>
-          <form class="form-inline my-2 my-lg-0" id="search-form">
+          <form class="form-inline my-2 my-lg-0 d-none d-lg-block" id="search-form">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button style="border-style: none;"><img src="search.png" style="width: 20px; height: 20px;"></button>
+            <button style="border-style: none;"><img src="Gallery/search.png" style="width: 20px; height: 20px;"></button>
           </form>
           <ul class="navbar-nav mr-right">
             <li class="nav-item">
-                <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Login
                 </a>
                 <div class="dropdown-menu" style="padding: 15px; padding-bottom: 10px;">
-                    <form class="form-horizontal" method="post" accept-charset="UTF-8">
+                    <form class="form-horizontal d-none d-lg-block" method="post" accept-charset="UTF-8">
                         <input class="form-control login" type="text" name="username" placeholder="Username.." /><br>
                         <input class="form-control login" type="password" name="password" placeholder="Password.."/><br>
                         <input class="btn btn-primary" type="submit" name="submit" value="Login" />
+                        <a href="forgotForm.html">forgot password?</a>
                     </form>
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link" href="Register.html" id="Register">
                 Register
                 </a>
             </li>
@@ -68,21 +70,21 @@
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img class="d-block w-100" src="wallpaper1.jpeg" alt="First slide">
+            <img class="d-block w-100" src="Gallery/wallpaper1.jpg" alt="First slide">
             <div class="carousel-caption d-none d-md-block">
-              <h5>MORE THAN JUST COFFEE</h5>
+              <h4>MORE THAN JUST COFFEE</h4>
               <p>Our beans come from different countries around the world</p>
             </div>
           </div>
           <div class="carousel-item">
-            <img  class="d-block w-100" src="wallpaper2.jpg" alt="Second slide">
+            <img  class="d-block w-100" src="Gallery/wallpaper2.jpg" alt="Second slide">
             <div class="carousel-caption d-none d-md-block">
               <h5></h5>
               <p>...</p>
             </div>
           </div>
           <div class="carousel-item">
-            <img src="..." alt="Third slide">
+            <img  class="d-block w-100" src="Gallery/wallpaper3.jpg" alt="Third slide">
             <div class="carousel-caption d-none d-md-block">
               <h5>...</h5>
               <p>...</p>
@@ -99,11 +101,9 @@
         </a>
       </div>
 
-
-
-
-
-
+      <footer id="footerRights">
+          All rights reserved to: Ofek Amirav, Nitzan Naveh, Aviv Portal, Hani Pardilov ®
+      </footer>
 
 
 
@@ -125,4 +125,3 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   </body>
 </html>
-jhkj
