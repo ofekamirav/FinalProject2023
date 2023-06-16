@@ -6,3 +6,15 @@ a-img{
 #footerRights{
     text-align: center;
 }
+
+.header{
+    text-align: center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.carousel-item h1{
+    margin: 0;
+    color: white;
+}
+.beansCountries{
+    background-color: rgba(147, 101, 55, 0.685);
+}
