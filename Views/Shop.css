@@ -1,0 +1,20 @@
+.carousel-container {
+    max-height: 450px; /* Set the desired maximum height */
+    overflow:hidden;
+  }
+  
+  .carousel-item img {
+    height: auto;
+    max-height: 100%;
+  }
+
+.test
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Or any specific height */
+}
+
+
+  
