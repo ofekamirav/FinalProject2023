@@ -113,15 +113,17 @@
                             <div class="col">
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control" id="Country" placeholder="Enter your country">
-                                    <label for="Country">Country</label>
+                                    <datalist id="citySuggestions"></datalist>
+                                <label for="Country">Country</label>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="City" placeholder="Enter your city" list="citySuggestions" oninput="CityComplete()">
-                                    <datalist id="citySuggestions"></datalist>
+                                    <input type="text" class="form-control" id="searchCity" placeholder="Enter your city" list="citySuggestions">
+                                    <div id="countryList"></div>
                                     <label for="City">City</label>
                                 </div>
+                                
                             </div>
                         </div>
                         <div class="row">

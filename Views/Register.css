@@ -3,6 +3,13 @@
     border-width: 2px;
 }
 
+#city_Suggestions {
+    position: absolute;
+    width: 100%;
+    max-height: 120px;
+    overflow-y: auto;
+    display: none;
+  }
 body {
     min-height: 100vh;
     background-image: url("Gallery/signup.jpg");
