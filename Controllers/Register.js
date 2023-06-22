@@ -1,145 +1,180 @@
-function handleSubmit(event) {
-  event.preventDefault();
-  
-  // Check form validity
-  if (!validateForm()) {
-    return;
-  }
-  
-  // Save all form data
-  const firstName = document.getElementById('floatingTextInput1').value;
-  const lastName = document.getElementById('TextInput2').value;
-  const email = document.getElementById('EmailInput').value;
-  const username = document.getElementById('userSet').value;
-  const birthdate = document.getElementById('DateSet').value;
-  const phonenum = document.getElementById('phoneSet').value;
-  const address = document.getElementById('addressInput').value;
-  const zip = document.getElementById('Zip').value;
-  
-  //server 
-   sendDataToServer({
-    firstName,
-    lastName,
-    email,
-    username,
-    birthdate,
-    phoneNum,
-    address,
-    zip,
-    city,
-    country,
-  });
-
-
-  
-  // Reset the form
-  resetForm();
-}
-
-// Validate the form
+// Function to validate the form inputs
 function validateForm() {
-  let isValid = true;
+  // Get form input elements
+  var firstNameInput = document.getElementById('firstName');
+  var lastNameInput = document.getElementById('LastName');
+  var emailInput = document.getElementById('EmailInput');
+  var usernameInput = document.getElementById('userSet');
+  var dateInput = document.getElementById('DateSet');
+  var phoneInput = document.getElementById('phoneSet');
+  var countryInput = document.getElementById('Country');
+  var cityInput = document.getElementById('City');
+  var addressInput = document.getElementById('addressInput');
+  var zipInput = document.getElementById('Zip');
+  var passwordInput = document.getElementById('pass');
+  var confirmInput = document.getElementById('confirm');
+  var termsCheckbox = document.getElementById('flexSwitchCheckChecked');
 
-  const firstNameInput = document.getElementById('floatingTextInput1');
-  const firstNameValue = firstNameInput.value.trim();
-  if (firstNameValue === '') {
-    alert('Please enter your first name');
-    isValid = false;
+  // Validate each input field
+  if (firstNameInput.value.trim() === '') {
+    alertAndFocus(firstNameInput, 'Please enter your first name.');
+    return false;
   }
 
-  const lastNameInput = document.getElementById('TextInput2');
-  const lastNameValue = lastNameInput.value.trim();
-  if (lastNameValue === '') {
-    alert('Please enter your last name');
-    isValid = false;
+  if (firstNameInput.value.trim().length < 2) {
+    alertAndFocus(firstNameInput, 'First name should be at least 2 characters long.');
+    return false;
   }
 
-  const emailInput = document.getElementById('EmailInput');
-  const emailValue = emailInput.value.trim();
-  if (emailValue === '') {
-    alert('Please enter your email address');
-    isValid = false;
-  } else if (!isValidEmail(emailValue)) {
-    alert('Please enter a valid email address');
-    isValid = false;
+  if (lastNameInput.value.trim() === '') {
+    alertAndFocus(lastNameInput, 'Please enter your last name.');
+    return false;
   }
 
-  const usernameInput = document.getElementById('userSet');
-  const usernameValue = usernameInput.value.trim();
-  if (usernameValue === '') {
-    alert('Please create a username');
-    isValid = false;
+  if (lastNameInput.value.trim().length < 2) {
+    alertAndFocus(lastNameInput, 'Last name should be at least 2 characters long.');
+    return false;
   }
 
-  const birthdateInput = document.getElementById('DateSet');
-  const birthdateValue = birthdateInput.value.trim();
-  if (birthdateValue === '') {
-    alert('Please enter your birthdate');
-    isValid = false;
+  if (emailInput.value.trim() === '') {
+    alertAndFocus(emailInput, 'Please enter your email address.');
+    return false;
   }
 
-  const phoneInput = document.getElementById('phoneSet');
-  const phoneValue = phoneInput.value.trim();
-  if (phoneValue === '') {
-    alert('Please enter your phone number');
-    isValid = false;
+  if (!emailInput.value.includes('@')) {
+    alertAndFocus(emailInput, 'Please enter a valid email address.');
+    return false;
   }
 
-  const addressInput = document.getElementById('addressInput');
-  const addressValue = addressInput.value.trim();
-  if (addressValue === '') {
-    alert('Please enter your address');
-    isValid = false;
+  if (usernameInput.value.trim() === '') {
+    alertAndFocus(usernameInput, 'Please create a username.');
+    return false;
   }
 
-  const zipInput = document.getElementById('Zip');
-  const zipValue = zipInput.value.trim();
-  if (zipValue === '') {
-    alert('Please enter your zip code');
-    isValid = false;
+  if (dateInput.value.trim() === '') {
+    alertAndFocus(dateInput, 'Please enter your birthdate.');
+    return false;
   }
 
-  return isValid;
+  if (phoneInput.value.trim() === '') {
+    alertAndFocus(phoneInput, 'Please enter your phone number.');
+    return false;
+  }
+
+  if (countryInput.value.trim() === '') {
+    alertAndFocus(countryInput, 'Please enter your country.');
+    return false;
+  }
+
+  if (cityInput.value.trim() === '') {
+    alertAndFocus(cityInput, 'Please enter your city.');
+    return false;
+  }
+
+  if (addressInput.value.trim() === '') {
+    alertAndFocus(addressInput, 'Please enter your address.');
+    return false;
+  }
+
+  if (zipInput.value.trim() === '') {
+    alertAndFocus(zipInput, 'Please enter your zip code.');
+    return false;
+  }
+
+  if (passwordInput.value.trim() === '') {
+    alertAndFocus(passwordInput, 'Please enter a password.');
+    return false;
+  }
+
+  if (passwordInput.value.trim().length < 6) {
+    alertAndFocus(passwordInput, 'Password should be at least 6 characters long.');
+    return false;
+  }
+
+  if (confirmInput.value.trim() === '') {
+    alertAndFocus(confirmInput, 'Please confirm your password.');
+    return false;
+  }
+
+  if (passwordInput.value !== confirmInput.value) {
+    alertAndFocus(confirmInput, 'Passwords do not match.');
+    return false;
+  }
+
+  if (!termsCheckbox.checked) {
+    alert('Please agree to the Terms and Conditions.');
+    return false;
+  }
+
+  // All inputs are valid, allow form submission
+  return true;
 }
 
-// Reset the form after submission
-function resetForm() {
-  document.getElementById('registration-form').reset();
+// Function to display an alert box, focus the input field, and prevent the default form submission
+function alertAndFocus(element, message) {
+  alert(message);
+  element.focus();
+  event.preventDefault();
 }
 
-// Check if the email address is valid
-function isValidEmail(email) {
-  // Use a regular expression or any other validation method to check the email format
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
+// Attach the form submission event listener
+document.querySelector('form').addEventListener('submit', function(event) {
+  // Prevent form submission if inputs are not valid
+  if (!validateForm()) {
+    event.preventDefault();
+  }
+});
+
+
+function loadCityData(callback) {
+  var xhr = new XMLHttpRequest();
+  xhr.overrideMimeType("application/json");
+  xhr.open("GET", "cityData.json", true);
+  xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+          callback(JSON.parse(xhr.responseText));
+      }
+  };
+  xhr.send(null);
 }
 
-//function to send the values to server
-// Send form data to the server (you need to implement this function)
-function sendDataToServer(formData) {
-  // Perform additional actions like sending the data to the server or saving it to a database
-  // You can use AJAX, Fetch API, or any other method to send the data asynchronously
-  // Example using Fetch API:
-  fetch('https://example.com/register', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(formData),
-  })
-    .then(response => response.json())
-    .then(data => {
-      // Handle the server response if needed
-      console.log(data);
-    })
-    .catch(error => {
-      // Handle any errors that occur during the request
-      console.error(error);
-    });
+function autocompleteCities() {
+  var countryInput = document.getElementById('Country');
+  var cityInput = document.getElementById('City');
+  var citySuggestions = document.getElementById('citySuggestions');
+
+  countryInput.addEventListener('input', function () {
+      var selectedCountry = countryInput.value.trim().toLowerCase();
+      cityInput.value = '';
+      citySuggestions.innerHTML = '';
+
+      if (selectedCountry === '') {
+          citySuggestions.innerHTML = '';
+          return;
+      }
+
+      loadCityData(function (data) {
+          var filteredCities = data.filter(function (city) {
+              return city.country.toLowerCase() === selectedCountry;
+          });
+
+          if (filteredCities.length > 0) {
+              filteredCities.forEach(function (city) {
+                  var option = document.createElement('option');
+                  option.value = city.name;
+                  citySuggestions.appendChild(option);
+              });
+          } else {
+              citySuggestions.innerHTML = '';
+          }
+      });
+  });
 }
 
+document.addEventListener('DOMContentLoaded', function () {
+  autocompleteCities();
+});
 
 
 
-// Map the form submission handler
-document.getElementById('registration-form').addEventListener('submit', handleSubmit);
+
