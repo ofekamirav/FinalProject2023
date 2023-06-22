@@ -25,6 +25,8 @@ const capsulaSchema = new mongoose.Schema({
     },
     });
 
+    
+
   const capsulaModel = mongoose.model('capsula', capsulaSchema);
 module.exports = capsulaModel;
 
