@@ -8,5 +8,6 @@ document.addEventListener("DOMContentLoaded", function() {
         } else {
             filters.style.display = "none";
         }
+       
     });
 });
