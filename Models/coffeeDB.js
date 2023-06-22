@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const capsuleSchema = require('./path/to/Schema'); // change path
 const PersonModel = require('./path/to/Model'); // change path
+//const PersonModel = require('./path/to/Model'); // change path
+
 
 const Schema = mongoose.Schema;
 
