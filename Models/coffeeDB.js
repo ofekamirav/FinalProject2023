@@ -28,6 +28,8 @@ const capsuleSchema = new  mongoose.Schema({
           require:true,
       },
       });
-  
+
+
+
 module.exports = mongoose.model('Capsule', capsuleSchema);
 
