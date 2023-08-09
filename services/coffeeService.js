@@ -7,11 +7,11 @@ const createCapsule = async (Country, Name, Type,Intensity, Flavor,Price ) =>
     return await Newcapsule.save();
     };
 
-const getCapsuleById = async (id) => {
-    return await Capsule.findById(id);
-};
+// const getCapsuleById = async (id) => {
+//     return await Capsule.findById(id);
+// };
 
-const getCapsulesBycountry = async (country) => {
+const getCapsulesByCountry = async (country) => {
     return await Capsule.find({Country: country});
 };
 
@@ -19,22 +19,22 @@ const getCapsuleByName = async (name) => {
     return await Capsule.find({Name: name});
  };
 
- const updateOne= async (country) => {
-    return await Capsule ({Price: price})
- }
+//  const updateOne= async (Name) => {
+//     return await Capsule ({Price: price})
+//  }
    
-const updateCapsule = async (id, Name) => {
-    const capsule = await getCapsuleById(id);
+const updateCapsule = async (Name, Country) => {
+    const capsule = await getCapsuleByName(Name);
     if (!capsule)
         return null;
 
-        capsule.Name = Name;
+        capsule.Name =Name;
         await capsule.save();
         return capsule;
     };
 
-const deleteCapsule = async (id) => {
-    const capsule = await getCapsuleById(id);
+const deleteCapsule = async (Name) => {
+    const capsule =  await getCapsuleByName(Name);
     if (!capsule)
         return null;
 
@@ -44,8 +44,8 @@ const deleteCapsule = async (id) => {
 
 module.exports = {
     createCapsule,
-    getCapsuleById,
-    getCapsulesBycountry,
+   // getCapsuleById,
+    getCapsulesByCountry,
     getCapsuleByName,
     updateCapsule,
     deleteCapsule };
