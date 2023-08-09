@@ -21,10 +21,10 @@ const User = mongoose.model('User', userSchema);
 app.use(express.json());
 
 app.post('/register', async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, agreeToTerms } = req.body;
 
   // Validate input
-  if (!name || !email || !password) {
+  if (!name || !email || !password ||!agreeToTerms) {
     return res.status(400).json({ error: 'All fields are required' });
   }
 
