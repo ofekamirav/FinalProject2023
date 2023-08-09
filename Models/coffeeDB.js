@@ -29,5 +29,5 @@ const capsuleSchema = new  mongoose.Schema({
       },
       });
   
-module.exports = mongoose.model('capsule', capsuleSchema);
+module.exports = mongoose.model('Capsule', capsuleSchema);
 
