@@ -1,5 +1,10 @@
 const mongoose = require('mongoose');
 
+mongoose.connect('mongodb://localhost/secretCoffee_project', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
+
 const Schema = mongoose.Schema;
 
 const capsuleSchema = new  mongoose.Schema({
@@ -29,7 +34,6 @@ const capsuleSchema = new  mongoose.Schema({
       },
       });
 
-
-
+      
 module.exports = mongoose.model('Capsule', capsuleSchema);
 
