@@ -1,51 +1,52 @@
 const coffeeData = require('../Models/coffeeDB');
 
-const createCapsule = async (Country, Name, Type,Intensity, Flavor,Price ) =>      
+async function addCapsule (Origin, Name, Type,Intensity, Flavor,Price ){      
 // Save  new capsule to the collection
-{
-    const Newcapsule = new Capsule({ Country, Name, Type, Intensity, Flavor, Price });  
+try{
+    const Newcapsule = new Capsule({ Origin: Origin, Name: Name, Type: Type, Intensity: Intensity, Flavor: Flavor, Price: Price });
     return await Newcapsule.save();
-    };
-
-// const getCapsuleById = async (id) => {
-//     return await Capsule.findById(id);
-// };
-
-const getCapsulesByCountry = async (country) => {
-    return await Capsule.find({Country: country});
+    console.log('Item saved successfully.');
+    return true;
+}
+catch (error) {
+    console.error('Error occurred while adding item:', error);
+    return false;
+}
 };
 
-const getCapsuleByName = async (name) => {
-    return await Capsule.find({Name: name});
- };
+async function capsuleList()
+{
+  const capsule= 
+  await Capsule.find();
+  return capsule;
+}
 
-//  const updateOne= async (Name) => {
-//     return await Capsule ({Price: price})
-//  }
+ async function findByName(name){
+    let data = await Capsule.findByName(name); 
+    if(!data){
+      return false;
+    }
+    else{
+      return(data);
+      }
+  }
+  async function findByNameAndDelete(name)
+  {
+    let result = await Capsule.findByNameAndDelete(name);
+    if(!result)
+    {
+      return false;
+    }
+    else{
+        await capsule.remove();
+        return true;
+    }
+}
    
-const updateCapsule = async (Name, Country) => {
-    const capsule = await getCapsuleByName(Name);
-    if (!capsule)
-        return null;
-
-        capsule.Name =Name;
-        await capsule.save();
-        return capsule;
-    };
-
-const deleteCapsule = async (Name) => {
-    const capsule =  await getCapsuleByName(Name);
-    if (!capsule)
-        return null;
-
-    await capsule.remove();
-    return capsule;
-};
 
 module.exports = {
-    createCapsule,
-   // getCapsuleById,
-    getCapsulesByCountry,
-    getCapsuleByName,
-    updateCapsule,
-    deleteCapsule };
+    addCapsule,
+   capsuleList,
+   findByName,
+   findByNameAndDelete
+ };
