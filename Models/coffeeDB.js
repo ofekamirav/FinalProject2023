@@ -1,14 +1,11 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/secretCoffee_project', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
+mongoose.connect('mongodb+srv://seceret_coffee:secer_coffee@cluster0.333dgax.mongodb.net/shop?retryWrites=true&w=majority');
 
 const Schema = mongoose.Schema;
 
-const capsuleSchema = new  mongoose.Schema({
-    Country: {
+const capsuleSchema = new mongoose.Schema({
+    Origin: {
       type: String,
       required: true,
     },
@@ -34,6 +31,4 @@ const capsuleSchema = new  mongoose.Schema({
       },
       });
 
-      
 module.exports = mongoose.model('Capsule', capsuleSchema);
-

@@ -4,9 +4,9 @@ const capsuleController = require('../Controllers/coffeeController');
 
 router.route('/')
     //.get(coffeeController.getCapsule)
-    //.post(coffeeController.newCapsula);
+    .post(coffeeController.newCapsula);
 
-router.route('/:id')
+// router.route('/:id')
     //.get(coffeeController.getCapsule)
    // .patch(coffeeController.updatePrice)
    // .delete(coffeeController.deletedCapsule);

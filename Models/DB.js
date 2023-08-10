@@ -1,9 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/secretCoffee_project', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
+mongoose.connect('mongodb+srv:seceret_coffee:secer_coffee@cluster0.333dgax.mongodb.net');
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Connection error:'));
