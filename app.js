@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser');
 
 require("dotenv").config();
 
@@ -12,7 +13,7 @@ mongoose.connect(process.env.DB_CONNECTION_STRING, {
     useUnifiedTopology: true
   })
   .then(() => {
-    console.log("Mongoose connected");
+    console.log("Mongoose connected");  
   })
   .catch((error) => {
     console.log("Failed to connect to MongoDB:", error);
@@ -22,18 +23,19 @@ mongoose.connect(process.env.DB_CONNECTION_STRING, {
 app.use(cors());
 app.use(express.json());
 app.use(express.static('public'))
-app.use(bodyParser.urlencoded({extended : true}));
+app.use(bodyParser.urlencoded({extended : false}));
+app.use(cookieParser());
 
 
 const session = require('express-session');
 app.use(session({
-    secret: 'foo',    
-    saveUninitialized: false,
+    secret: 'home',    
+    saveUninitialized: true,
     resave: false
 }))
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));  
-//app.use("/", require("./routes/login"));
+app.use("/", require("./routes/login"));
 
 
 //---------------Routings:---------------//
@@ -41,7 +43,7 @@ app.use(express.urlencoded({ extended: false }));
 //Creating Route for login page
 const LoginRouter = require('./routes/login');
 //Activate Route for log in page
-app.use('/',LoginRouter);
+app.use('/login',LoginRouter);
 
 
 // //Creating Route for Sign Up page
@@ -49,6 +51,19 @@ app.use('/',LoginRouter);
 // //Activate Route for sign up page
 // app.use('/signup',SignUpRouter);
 
+
+
+// app.get('/', (req, res) => {
+//   const username = req.cookies.username;
+//   const permission = req.cookies.Permission;
+//   console.log(username);
+//   if (username) {
+//       console.log(username);
+//     res.render('home', { naming: username,permission:permission });
+//   } else {
+//     res.render('home', { naming: 'Guest' ,permission:0 });
+//   }
+// });
 
 
 app.listen(process.env.PORT, ()=>{

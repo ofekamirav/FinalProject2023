@@ -54,11 +54,11 @@ function isLoggedIn(req, res, next) {
   if (req.session.username != null)
     return next()
   else
-    res.redirect('/login')
+    res.render("home",{})
 }
 
-function foo(req, res) {  
-  res.render("foo", {username: req.session.username})
+function logedIn(req, res) {  
+  res.render("home", {username: req.session.username})
 }
 
 function loginForm(req, res) { res.render("login", {}) }
@@ -103,6 +103,6 @@ module.exports = {
   register,
   registerForm,
   logout,
-  foo,
+  logedIn,
   isLoggedIn
 }
