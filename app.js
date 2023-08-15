@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const items=require('./routes/items')
+
 require("dotenv").config();
 
 
@@ -33,12 +33,24 @@ app.use(session({
 }))
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));  
-app.use("/", require("./routes/login"));
+//app.use("/", require("./routes/login"));
 
+
+//---------------Routings:---------------//
+
+//Creating Route for login page
+const LoginRouter = require('./routes/login');
+//Activate Route for log in page
+app.use('/',LoginRouter);
+
+
+// //Creating Route for Sign Up page
+// const SignUpRouter = require('./routes/signup');
+// //Activate Route for sign up page
+// app.use('/signup',SignUpRouter);
 
 
 
 app.listen(process.env.PORT, ()=>{
-
     console.log('Server Running')
 })
