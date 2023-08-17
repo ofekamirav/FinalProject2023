@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    
+  <%for(var i=0;i<capsules.length;i++){%>
+    <div>
+        Capsule Name is <%=capsules[i]._id%> 
+        <br>
+        Capsule Origin is :  <%=capsules[i].origin%>
+        <br>
+        Capsule Type is :  <%=capsules[i].type%>
+        <br>
+        Capsule Intensity is :  <%=capsules[i].intensity%>
+        <br>
+        Capsule Flavor is :  <%=capsules[i].flavor%>
+        <br>
+        Capsule Price is :  <%=capsules[i].price%>
+    </div>
+    <br>
+    
+<%}%>
+
+
+</body>
+</html>

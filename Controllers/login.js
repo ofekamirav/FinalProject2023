@@ -97,6 +97,11 @@ async function register(req, res) {
   }    
 }
 
+const getUsers = async (req , res) =>{
+  const Users = await loginService.getUsers()
+  res.render('allUsers',{users:Users})
+}
+
 module.exports = {
   login,
   loginForm,
@@ -104,5 +109,6 @@ module.exports = {
   registerForm,
   logout,
   logedIn,
-  isLoggedIn
+  isLoggedIn,
+  getUsers
 }

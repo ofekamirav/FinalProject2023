@@ -15,4 +15,12 @@ async function register(username, password) {
     await user.save()        
 }
 
-module.exports = { login, register }
+async function getUsers(){
+    return await User.find({})
+}
+
+module.exports = {
+     login, 
+     register,
+     getUsers
+     }

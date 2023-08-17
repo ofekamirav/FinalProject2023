@@ -7,6 +7,16 @@ const cookieParser = require('cookie-parser');
 require("dotenv").config();
 
 
+//Defining Middleware functions:
+var app = express();
+app.use(cors());
+app.use(express.json());
+app.use(express.static('public'))
+app.use(bodyParser.urlencoded({extended : false}));
+app.use(cookieParser());
+
+
+
 //Connecting to the DB 
 mongoose.connect(process.env.DB_CONNECTION_STRING, {
     useNewUrlParser: true,
@@ -19,12 +29,7 @@ mongoose.connect(process.env.DB_CONNECTION_STRING, {
     console.log("Failed to connect to MongoDB:", error);
   });
 
-  var app = express();
-app.use(cors());
-app.use(express.json());
-app.use(express.static('public'))
-app.use(bodyParser.urlencoded({extended : false}));
-app.use(cookieParser());
+
 
 
 const session = require('express-session');
@@ -50,6 +55,16 @@ app.use('/login',LoginRouter);
 // const SignUpRouter = require('./routes/signup');
 // //Activate Route for sign up page
 // app.use('/signup',SignUpRouter);
+
+
+// //Creating Route for all capsules page
+//const AllCapsulesR = require('./routes/coffeeR');
+//Activate Route for sign up page
+app.use('/allproducts',require('./routes/coffeeR'));
+
+
+//Creating Route to show all users:
+app.use('/allusers',require('./routes/login'))
 
 
 

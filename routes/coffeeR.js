@@ -1,14 +1,16 @@
 const express = require('express');
 var router = express.Router();
-const capsuleController = require('../Controllers/coffeeController');
+const capsuleController = require('../controllers/coffeeC');
 
 router.route('/')
-    //.get(coffeeController.getCapsule)
-    .post(coffeeController.newCapsula);
+    .get(capsuleController.getCapsules)
+    //.post(coffeeController.newCapsula);
 
 // router.route('/:id')
     //.get(coffeeController.getCapsule)
    // .patch(coffeeController.updatePrice)
    // .delete(coffeeController.deletedCapsule);
+   
+
 
 module.exports = router;
