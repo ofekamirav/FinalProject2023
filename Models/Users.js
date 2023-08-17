@@ -23,6 +23,10 @@ const User = new mongoose.Schema({
   password: {
     type: String,
     required: true,
+  },
+  permission:{
+    type:Number,
+    default: 0,
   }
 });
 

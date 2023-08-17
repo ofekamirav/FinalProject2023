@@ -8,8 +8,8 @@ router.post("/register", loginController.register);
 router.get("/login",loginController.loginForm);
 router.post("/login", loginController.login);
 router.get('/logout',loginController.logout);
-//router.get('/', loginController.isLoggedIn, loginController.logedIn);
-router.get('/',loginController.getUsers)
+router.get('/', loginController.isLoggedIn, loginController.logedIn);
+
 
 
 

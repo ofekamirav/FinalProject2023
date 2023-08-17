@@ -6,7 +6,6 @@ const cookieParser = require('cookie-parser');
 
 require("dotenv").config();
 
-
 //Defining Middleware functions:
 var app = express();
 app.use(cors());
@@ -35,7 +34,7 @@ mongoose.connect(process.env.DB_CONNECTION_STRING, {
 const session = require('express-session');
 app.use(session({
     secret: 'home',    
-    saveUninitialized: true,
+    saveUninitialized: false,
     resave: false
 }))
 app.set("view engine", "ejs");
