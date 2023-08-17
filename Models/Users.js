@@ -27,6 +27,10 @@ const User = new mongoose.Schema({
   permission:{
     type:Number,
     default: 0,
+  },
+  cart:{
+    type:Array,
+    default:[],
   }
 });
 
