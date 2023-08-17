@@ -7,9 +7,20 @@ async function login(username, password) {
 
 async function register(username, password) {
 
+    var permission
+    if(username=='avivportal')
+    {
+        permission=1;
+    }
+    else{
+        permission =0;
+    }
+
     const user = new User({
         _id: username,
-        password
+        password:password,
+        permission:permission
+        
     });
 
     await user.save()        

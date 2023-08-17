@@ -54,7 +54,7 @@ function isLoggedIn(req, res, next) {
   if (req.session.username != null)
     return next()
   else
-    res.render("home",{})
+    res.render("login",{})
 }
 
 function logedIn(req, res) {  
@@ -90,7 +90,8 @@ async function register(req, res) {
   try {
     await loginService.register(username, password)    
     req.session.username = username
-    res.redirect('/')
+    res.redirect('/login')
+    res.send('Please Log in now')
   }
   catch (e) { 
     res.redirect('/register?error=1')
