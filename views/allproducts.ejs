@@ -14,8 +14,9 @@
 
 </head>
 <body>
+    <%- include('./header.ejs');%>
        <!-- Navbar -->
-   <header class="header">
+   <!-- <header class="header">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <img src="Gallery/logo.png" width="50" height="50" alt="">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,6 +34,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contact us</a>
                 </li>
+                <%if(username!=null){%>
+                <li  class="userwelcome">
+                    Hello <%=username%>
+                   </li>
+                   <%}%>
             </ul>
             <ul class="navbar-nav mr-right">
                 <li class="nav-item">
@@ -51,7 +57,7 @@
             </ul>
         </div>
     </nav>
-</header>
+</header> -->
 <!-- Navbar -->
 
 <!--Image Carousel-->
