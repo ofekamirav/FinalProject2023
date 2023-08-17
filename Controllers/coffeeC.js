@@ -7,7 +7,8 @@ const addCapsule = async (req,res) =>
 
 const getCapsules = async (req , res) =>{
     const Capsules = await coffeeService.getAllCoffee()
-    res.render('allproducts',{capsules:Capsules})
+    let username=req.session.username;
+    res.render('allproducts',{capsules:Capsules,username:username})
   }
 
 

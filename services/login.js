@@ -2,7 +2,7 @@ const User = require('../models/Users')
 
 async function login(username, password) {
     const user = await User.findOne({ _id: username, password });
-    return user != null
+    return user
 }
 
 async function register(username, password) {
