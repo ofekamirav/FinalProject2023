@@ -53,12 +53,14 @@ const loginService = require("../services/login")
 function isLoggedIn(req, res, next) {
   if (req.session.username != null)
     return next()
-  else
-    res.render("login",{})
+  else{
+    req.session.username=null
+    res.render("home",{username:req.session.username})
+  }
 }
 
 function logedIn(req, res) {  
-  res.render("home", {username: req.session.username})
+  res.render("home", {username: req.session.username,permission:req.session.permission})
 }
 
 function loginForm(req, res) { res.render("login", {}) }
@@ -67,7 +69,7 @@ function registerForm(req, res) { res.render("register", {}) }
 
 function logout(req, res) {
   req.session.destroy(() => {
-    res.redirect('/login');
+    res.redirect('/');
   });
 }
 
@@ -91,9 +93,8 @@ async function register(req, res) {
 
   try {
     await loginService.register(username, password)    
-    req.session.username = username
     res.redirect('/login')
-    res.send('Please Log in now')
+    
   }
   catch (e) { 
     res.redirect('/register?error=1')

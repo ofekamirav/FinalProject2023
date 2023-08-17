@@ -17,10 +17,11 @@
                       <a class="nav-link" href="#">Contact us</a>
                   </li>
 
-
+                    <%if(username!=null){%>
                   <li  class="userwelcome">
                     Hello <%=username%>
                    </li>
+                   <%}%>
               </ul>
               <%if(username==null){%>
               <ul class="navbar-nav mr-right">
@@ -46,11 +47,18 @@
                           Manager Page
                       </a>
                   </li>
-                  <li>
-                      <button type="button" class="btn btn-link"><span class="bi bi-cart black-color"></span></button>
-                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link"  href="/logout" id="logout">
+                        Logout
+                    </a>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-link"><span class="bi bi-cart black-color"></span></button>
+                </li>
+                  <%}%>
+
               </ul>
-              <%}%>
+              
           </div>
       </nav>
   </header>
