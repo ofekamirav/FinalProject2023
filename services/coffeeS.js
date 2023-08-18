@@ -20,14 +20,15 @@ async function getAllCoffee()
   return await coffeeData.find({});
 }
 
- async function getSpecCoffee(Name){
-    let data = await coffeeData.findOne({Name:Name})
-    if(!data){
-      return false;
-    }
-    else{
-      return(data);
-      }
+ async function getCapsule(Name){
+  try {
+    const data = await coffeeData.findOne({ _id: Name });
+    return data; // Return the document found (or null if not found)
+  } catch (error) {
+    // Handle any errors that might occur during the database operation
+    console.error("Error fetching capsule:", error);
+    throw error;
+  }
   }
   async function findByNameAndDelete(name)
   {
@@ -55,6 +56,6 @@ const deleteCoffee = async (Name) => {
 module.exports = {
     addCapsule,
     getAllCoffee,
-   getSpecCoffee,
+    getCapsule,
    deleteCoffee
  };

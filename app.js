@@ -65,6 +65,9 @@ app.use('/allproducts',require('./routes/coffeeR'));
 //Creating Route to show all users:
 app.use('/allusers',require('./routes/login'))
 
+//Creating a route to a specific Capsule page:
+app.use('/capsule',require('./routes/coffeeR'))
+
 
 
 // app.get('/', (req, res) => {
