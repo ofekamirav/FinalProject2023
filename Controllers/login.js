@@ -92,14 +92,29 @@ async function register(req, res) {
 
 
   try {
-    await loginService.register(username, password)    
-    res.redirect('/login')
+    await loginService.register(username, password)
+    res.send({message:'success'})  
+    return 
+    //res.redirect('/login')
     
   }
   catch (e) { 
     res.redirect('/register?error=1')
   }    
 }
+
+// async function register(req, res) {
+//   const { username, password } = req.body.postdata;
+
+//   try {
+//     await loginService.register(username, password);
+//     res.json({ success: true, message: 'Successfully Created Your Account' });
+//   } catch (e) {
+//     res.status(400).json({ success: false, message: 'Registration failed. Please try again.' });
+//   }
+// }
+
+
 
 const getUsers = async (req , res) =>{
   const Users = await loginService.getUsers()
