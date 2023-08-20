@@ -5,10 +5,10 @@ async function login(username, password) {
     return user
 }
 
-async function register(username, password) {
+async function register(username, password,firstName,lastName,Country,Adress,postalCode) {
 
     var permission
-    if(username=='avivportal')
+    if(username=='avivportal' ||'hanipardilov')
     {
         permission=1;
     }
@@ -19,6 +19,11 @@ async function register(username, password) {
     const user = new User({
         _id: username,
         password:password,
+        firstName:firstName,
+        lastName:lastName,
+        Country:Country,
+        Adress:Adress,
+        postalCode:postalCode,
         permission:permission
         
     });
