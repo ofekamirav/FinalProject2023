@@ -24,6 +24,26 @@ const User = new mongoose.Schema({
     type: String,
     required: true,
   },
+  firstName:{
+    type:String,
+    require:true
+  },
+  lastName:{
+    type:String,
+    require:true
+  },
+  Country:{
+    type:String,
+    require:true
+  },
+  Address:{
+    type:String,
+    require:true
+  },
+  postalCode:{
+    type:String,
+    require:true
+  },
   permission:{
     type:Number,
     default: 0,

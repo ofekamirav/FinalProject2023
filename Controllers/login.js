@@ -51,11 +51,11 @@ async function login(req, res) {
 }
 
 async function register(req, res) {
-  const { username, password } = req.body
+  const { username, password,firstName,lastName,country,adress,postalcode } = req.body
 
 
   try {
-    await loginService.register(username, password)
+    await loginService.register(username, password,firstName,lastName,country,adress,postalcode)
 
     req.flash("success","Account Created");
     res.redirect('/login');
