@@ -3,7 +3,8 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
-
+const flash = require('express-flash')
+const session = require('express-session');
 require("dotenv").config();
 
 //Defining Middleware functions:
@@ -12,7 +13,11 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({extended : false}));
+app.set("view engine", "ejs");
+app.use(express.urlencoded({ extended: false })); 
 app.use(cookieParser());
+app.use(flash());
+
 
 
 
@@ -30,19 +35,36 @@ mongoose.connect(process.env.DB_CONNECTION_STRING, {
 
 
 
-
-const session = require('express-session');
+//Setting the Session to handle the login sessions
+ 
+// app.use(session({
+//     secret: 'home',    
+//     saveUninitialized: true,
+//     resave: true
+// }))
 app.use(session({
-    secret: 'home',    
-    saveUninitialized: false,
-    resave: false
-}))
-app.set("view engine", "ejs");
-app.use(express.urlencoded({ extended: false }));  
-app.use("/", require("./routes/login"));
+  secret: 'your-secret-key',
+  resave: true,
+  saveUninitialized: true,
+  cookie: { secure: false } // Set secure to true if using HTTPS
+}));
+
+ 
+
+
+
+// app.get('*',function(res,req,next){
+//   res.locals.user=req.user || null;
+// })
 
 
 //---------------Routings:---------------//
+
+
+// Setting the route for the home page after server start
+app.use("/", require("./routes/login"));
+
+
 
 //Creating Route for login page
 const LoginRouter = require('./routes/login');
@@ -50,25 +72,16 @@ const LoginRouter = require('./routes/login');
 app.use('/login',LoginRouter);
 
 
-// //Creating Route for Sign Up page
-// const SignUpRouter = require('./routes/signup');
-// //Activate Route for sign up page
-// app.use('/signup',SignUpRouter);
-
-
-// //Creating Route for all capsules page
-//const AllCapsulesR = require('./routes/coffeeR');
-//Activate Route for sign up page
-app.use('/allproducts',require('./routes/coffeeR'));
-
-
-//Creating Route to show all users:
-app.use('/allusers',require('./routes/login'))
+//Creating a route for all products page  : shop page 
+app.use('/shop',require('./routes/coffeeR'));
 
 //Creating a route to a specific Capsule page:
 app.use('/capsule',require('./routes/coffeeR'))
 
 
+
+
+//Setting Cookies session - NEEDS TO DECIDE IF TO KEEP OR NOT 
 
 // app.get('/', (req, res) => {
 //   const username = req.cookies.username;
@@ -83,6 +96,8 @@ app.use('/capsule',require('./routes/coffeeR'))
 // });
 
 
+
+//Setting the Port using the env file ( in gitignore)
 app.listen(process.env.PORT, ()=>{
     console.log('Server Running')
 })
