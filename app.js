@@ -63,6 +63,10 @@ app.use(session({
 
 // Setting the route for the home page after server start
 app.use("/", require("./routes/login"));
+app.get('/test',(req,res)=>{
+  res.render('test',{})
+  
+})
 
 
 
@@ -77,6 +81,12 @@ app.use('/shop',require('./routes/coffeeR'));
 
 //Creating a route to a specific Capsule page:
 app.use('/capsule',require('./routes/coffeeR'))
+
+
+//Creating a route to the Admins page page:
+app.use('/admin',require('./routes/admin'))
+
+
 
 
 
