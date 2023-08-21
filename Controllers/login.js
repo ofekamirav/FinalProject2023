@@ -41,7 +41,7 @@ async function login(req, res) {
 
   const result = await loginService.login(username, password)
   if (result) {
-    req.session.username = username
+    req.session.username = result.firstName
     req.session.permission= result.permission
     
     res.redirect('/')
