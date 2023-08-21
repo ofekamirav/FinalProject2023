@@ -2,6 +2,22 @@ const express = require('express');
 const coffeeData = require('../Models/coffeeDB');
 const router = express.Router();
 
+// Get the filter button and filters div
+var filterBtn = document.getElementById("filterBtn");
+var filters = document.getElementById("filters");
+
+// Add a click event listener to the filter button
+filterBtn.addEventListener("click", function() {
+    // Toggle the display of the filters div
+    if (filters.style.display === "none" || filters.style.display === "") {
+        filters.style.display = "block";
+    } else {
+        filters.style.display = "none";
+    }
+});
+
+
+
 router.post('/', async (req, res) => {
   try {
     const sortBy = req.body.sorting; // Get the selected sorting option

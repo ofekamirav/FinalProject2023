@@ -53,6 +53,7 @@
        <% capsules.forEach(function(capsule) { %>
          <div class="card" style="width:400px;height: 620px;" id="capsules">
            <% if (capsule.image) { %>
+            <a href="/show1capsule/<%= capsule['_id'] %>">
              <img class="card-img-top" style="width:200px" height="200px" src="<%= capsule.image %>" alt="<%= capsule["_id"] %> Image" />
            <% } else { %>
              <p>No image available</p>
@@ -65,7 +66,7 @@
              <div class="button-container2">
                <button class="btn btn-primary" type="submit" name="action" value="cart:<%= capsule["_id"] %>">Add to Cart List</button>
                <button class="btn btn-primary" type="submit" name="action" value="wishlist:<%= capsule["_id"] %>">Add to Wish List</button>
-               <a class="btn btn-primary" href="/show1capsule/<%= capsule['_id'] %>">capsule page</a>
+               <!--<a class="btn btn-primary" href="/show1capsule/<%= capsule['_id'] %>">capsule page</a>-->
              </div>
            </div>
          </div>
