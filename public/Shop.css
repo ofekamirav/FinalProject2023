@@ -75,22 +75,44 @@ body {
   padding: 20px 0;
 }
 
-/* Add your custom styles for filters here */
-/* For example, you can style the filter container and its elements */
-
-.filter-container {
-  background-color: #f0f0f0;
-  padding: 10px;
-  border-radius: 0.3rem;
-  margin-top: 10px;
+/* Custom CSS for search bar and filters */
+.container-fluid.bg-light {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
 }
 
-.filter-label {
-  font-weight: bold;
-  margin-right: 10px;
+.form-control {
+  border: 2px solid #ccc;
+  border-radius: 5px;
 }
 
-/* Customize the styles further as needed for your specific filters */
+.btn-primary {
+  border: 2px solid #007bff;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.btn-secondary {
+  border-radius: 5px;
+}
+
+/* Add some margin to the filters section */
+#filters {
+  margin-top: 20px;
+}
+
+/* Style the search input placeholder text */
+.form-control::placeholder {
+  color: #999;
+}
 
 
 
