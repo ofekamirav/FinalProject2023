@@ -7,14 +7,7 @@ async function login(username, password) {
 
 async function register(username, password,firstName,lastName,Country,Adress,postalCode) {
 
-    var permission
-    if(username=='avivportal' ||'hanipardilov')
-    {
-        permission=1;
-    }
-    else{
-        permission =0;
-    }
+  
 
     const user = new User({
         _id: username,
@@ -24,7 +17,7 @@ async function register(username, password,firstName,lastName,Country,Adress,pos
         Country:Country,
         Adress:Adress,
         postalCode:postalCode,
-        permission:permission
+        permission:0
         
     });
 
