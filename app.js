@@ -111,3 +111,13 @@ app.use('/admin',require('./routes/admin'))
 app.listen(process.env.PORT, ()=>{
     console.log('Server Running')
 })
+
+// Route for handling search
+app.get('/search', async (req, res) => {
+  const { q } = req.query;
+  // ביצוע חיפוש במסד הנתונים על פי השאילתה ושליפת הפריטים התואמים
+  const items = await Item.find({ name: { $regex: q, $options: 'i' } }); // חיפוש לא תלוי הופעה
+
+  // עדכון התוצאות בדף allproducts.ejs
+  res.render('allproducts', { capsules: items });
+});

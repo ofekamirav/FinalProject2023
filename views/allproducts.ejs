@@ -16,13 +16,12 @@
 <body>
     <%- include('./header.ejs');%>
     
- 
     <div class="container-fluid bg-light p-4 mb-4">
         <div class="row justify-content-center">
             <!-- Search form -->
-            <form class="form-inline justify-content-center">
-                <input class="form-control mr-sm-2 col-xl-6" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+            <form class="form-inline d-flex align-items-center">
+                <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-primary" type="submit">Search</button>
             </form>
         </div>
     
@@ -55,6 +54,14 @@
                             <input class="form-check-input" type="checkbox" value="" id="country3">
                             <label class="form-check-label" for="country3">
                                 Ethiopia
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" value="" id="country4">
+                            <label class="form-check-label" for="country4">
+                                Brazil
                             </label>
                         </div>
                     </div>
@@ -99,6 +106,7 @@
     
 
     <div class="container-fluid">
+     <div id="searchResultsContainer">
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
             <% capsules.forEach(function(capsule) { %>
             <div class="col mb-4">
@@ -116,7 +124,6 @@
                         <p class="card-text">Origin: <%= capsule.origin %></p>
                         <p class="card-text" id="description"><%= capsule.flavor %></p>
                         <div class="button-container2">
-                            <button class="btn btn-primary" type="submit" name="action" value="cart:<%= capsule["_id"] %>">Add to Cart List</button>
                             <form method="POST" action="/cart/Addto">
                                 <input type="hidden" name="productId" value="<%= capsule['_id'] %>">
                                 <button class="btn btn-primary" type="submit" name="action" value="cart:<%= capsule["_id"] %>">Add to Cart</button>
@@ -128,7 +135,7 @@
             <% }); %>
         </div>
     </div>
-    
+</div>
 
     <footer id="footerRights" class="bg-light">
     All rights reserved to: Ofek Amirav, Nitzan Naveh, Aviv Portal, Hani Pardilov ®
