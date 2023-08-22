@@ -10,9 +10,7 @@ router.get("/login",loginController.loginForm);
 router.post("/login", loginController.login);
 router.get('/logout',loginController.logout);
 router.get('/', loginController.isLoggedIn, loginController.logedIn);
-// router.get('/',(req,res) =>{
-//     res.render('ajxtesting')
-// })
+
 
 
 

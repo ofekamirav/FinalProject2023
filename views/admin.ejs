@@ -16,10 +16,15 @@
     <%- include('./header.ejs');%>
 
 
+    <div class="toggle-buttons">
+      <button class="btn btn-primary" id="show-users">Users</button>
+      <button class="btn btn-secondary" id="show-products">Products</button>
+    </div>
+
     
-  <div class="table_container">
+  <div class="table-Users">
     <div id="table-name">Users Table</div>
-    <table id="usersTable" class="display">
+    <table id="users-table" class="display" >
         <thead> 
           <tr>
             <th>UserName</th>
@@ -27,7 +32,6 @@
             <th>Last Name</th>
             <th>Country</th>
             <th>Action</th>
-           
           </tr>
         </thead>
         </table>
@@ -36,17 +40,22 @@
 
 
 
-      <div >Products Table</div>
-      <table id="productsTable" class="display">
+      <div class="table-Product">
+        <div class="product-name">Products Table</div>
+        <table id="products-table" class="display">
           <thead> 
             <tr>
               <th>Name</th>
               <th>Origin</th>
               <th>Flavor</th>
               <th>Price</th>
+              <th>Action</th>
             </tr>
           </thead>
           </table>
+          </div>
+
+      
 
 
 
