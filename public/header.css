@@ -91,6 +91,10 @@
     text-decoration: none;
     display: block;
   }
+
+  #hello_user{
+    font-size:20px;
+  }
   
 /* point on the manu */
 

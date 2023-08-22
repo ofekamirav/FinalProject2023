@@ -34,11 +34,27 @@ const getCapsules = async (req , res) =>{
     if (req.headers.accept && req.headers.accept.includes('application/json')) {
       // If request expects JSON, return user data
       const Users = await usersService.getUsers();
-      res.json(Users);
+      const Products=await coffeeService.getAllCoffee();
+      res.json({users:Users,products:Products});
     } else {
       // Otherwise, render the EJS template
       let username=req.session.username;
-      res.render('admin',{username:username});
+      let permission = req.session.permission
+      res.render('admin',{username:username,permission:permission});
+    }
+  }
+
+  const deleteUser= async(req,res) =>{
+    try {
+      const result = await usersService.deleteU(req.params._id);
+      console.log(req.params._id)
+      if (result.success) {
+        res.json(result);
+      } else {
+        res.status(400).json(result);
+      }
+    } catch (err) {
+      res.status(500).json({ success: false, message: 'An error occurred while deleting the user' });
     }
   }
 
@@ -49,5 +65,6 @@ module.exports={
     addCapsule,
     isLoggedIn,
     handleAdminPage,
+    deleteUser,
 
 }
