@@ -38,7 +38,8 @@ const getCapsules = async (req , res) =>{
     } else {
       // Otherwise, render the EJS template
       let username=req.session.username;
-      res.render('admin',{username:username});
+      let permission = req.session.permission
+      res.render('admin',{username:username,permission:permission});
     }
   }
 
