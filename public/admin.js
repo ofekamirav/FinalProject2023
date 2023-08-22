@@ -1,8 +1,11 @@
+
+
+// Loading Both tables at page load using DataTable library
 $(document).ready(function() {
-  $('#usersTable').DataTable({
+  $('#users-table').DataTable({
     ajax: {
       url: '/admin', // Same URL as the page rendering
-      dataSrc: 'users'
+      dataSrc: "users"
       
     },
     columns: [
@@ -32,20 +35,51 @@ $(document).ready(function() {
     lengthMenu: [[1, 2, 10, 25, -1], [1, 2, 10, 15, "All"]], // Change this line
     
   });
+
+  $('#products-table').DataTable({
+    ajax: {
+      url: '/admin', // Same URL as the page rendering
+      dataSrc: "products"
+      
+    },
+    columns: [
+      { data: '_id' },
+      { data: 'origin' },
+      { data: 'flavor' },
+      {data:'price'},
+      {
+        data: null,
+        render: function(data, type, row) {
+          return '<button class="btn btn-danger delete-product" data-id="' + row._id + '">Delete</button>' +
+          '<button class="btn btn-primary update-product" style="margin-left: 10px;" data-id="' + row._id + '">Update</button>';
+        }
+      }
+      
+      
+      
+    ],
+    
+    lengthMenu: [[1, 2, 10, 25, -1], [1, 2, 10, 15, "All"]], // Change this line
+    
+  });
+
 });
 
+//Beginning of work on evenListeners i.e: delete update ...
+
+
+//Delete User Function
 $(document).on('click', '.delete-user', function() {
   var userId = $(this).data('id'); // Getting the user ID from the data attribute
   var row = $(this).closest('tr'); // Getting the row containing the button
-  console.log(userId)
 
   $.ajax({
     
-    url: 'admin/delete/' + userId, // Assuming you have a route setup to handle the deletion
+    url: 'admin/deleteUser/' + userId, // Assuming you have a route setup to handle the deletion
     method: 'DELETE',
     success: function(response) {
       if (response.success) {
-        $('#usersTable').DataTable().row(row).remove().draw(); // Removing the row from the table
+        $('#users-table').DataTable().row(row).remove().draw(); // Removing the row from the table
         alert('User deleted successfully');
       } else {
         alert('Error deleting user');
@@ -59,32 +93,29 @@ $(document).on('click', '.delete-user', function() {
 
 
 
-// $(document).ready(function() {
-//   $('#productsTable').DataTable({
-//     ajax: {
-//       url: '/admin', // Same URL as the page rendering
-//       dataSrc: 'products'
-      
-//     },
-//     columns: [
-//       { data: '_id' },
-//       { data: 'origin' },
-//       { data: 'flavor' },
-//       {data:'price'},
-//       {
-//         data: null,
-//         render: function(data, type, row) {
-//           return '<button class="btn btn-danger delete-product" data-id="' + row._id + '">Delete</button>' +
-//           '<button class="btn btn-primary update-product" style="margin-left: 10px;" data-id="' + row._id + '">Update</button>';
-//         }
-//       }
-      
-      
-      
-//     ],
+//Delete Product Function
+$(document).on('click', '.delete-product', function() {
+  var productId = $(this).data('id'); // Getting the user ID from the data attribute
+  var row = $(this).closest('tr'); // Getting the row containing the button
+
+  $.ajax({
     
-//     lengthMenu: [[1, 2, 10, 25, -1], [1, 2, 10, 15, "All"]], // Change this line
-    
-//   });
-// });
+    url: 'admin/deleteProduct/' + productId, // Assuming you have a route setup to handle the deletion
+    method: 'DELETE',
+    success: function(response) {
+      if (response.success) {
+        $('#products-table').DataTable().row(row).remove().draw(); // Removing the row from the table
+        alert('Product deleted successfully');
+      } else {
+        alert('Error deleting Product');
+      }
+    },
+    error: function(err) {
+      alert('An error occurred while deleting the products');
+    }
+  });
+});
+
+
+
 

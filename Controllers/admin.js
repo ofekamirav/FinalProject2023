@@ -47,7 +47,6 @@ const getCapsules = async (req , res) =>{
   const deleteUser= async(req,res) =>{
     try {
       const result = await usersService.deleteU(req.params._id);
-      console.log(req.params._id)
       if (result.success) {
         res.json(result);
       } else {
@@ -55,6 +54,19 @@ const getCapsules = async (req , res) =>{
       }
     } catch (err) {
       res.status(500).json({ success: false, message: 'An error occurred while deleting the user' });
+    }
+  }
+
+  const deleteProduct= async(req,res) =>{
+    try {
+      const result = await coffeeService.deleteP(req.params._id);
+      if (result.success) {
+        res.json(result);
+      } else {
+        res.status(400).json(result);
+      }
+    } catch (err) {
+      res.status(500).json({ success: false, message: 'An error occurred while deleting the product' });
     }
   }
 
@@ -66,5 +78,6 @@ module.exports={
     isLoggedIn,
     handleAdminPage,
     deleteUser,
+    deleteProduct,
 
 }

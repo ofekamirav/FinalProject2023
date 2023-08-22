@@ -1,4 +1,4 @@
-.table_container {
+.table-Users {
     max-width: 80%; /* Control the width of the table */
     margin: 0 auto; /* Center the table on the page */
     border: 2px solid #dcdcdc; /* Thin border */
@@ -9,3 +9,18 @@
     font-size: 25px;
     color:blue;
 }
+
+.table-Product {
+    max-width: 80%; /* Control the width of the table */
+    margin: 0 auto; /* Center the table on the page */
+    margin-top: 50px;
+    border: 2px solid #dcdcdc; /* Thin border */
+    border-radius: 5px; /* Rounded borders */
+}
+.product-name{
+    text-align: center;
+    font-size: 25px;
+    color:blue;
+}
+  
+

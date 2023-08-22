@@ -30,26 +30,21 @@ async function getAllCoffee()
     throw error;
   }
   }
-  async function findByNameAndDelete(name)
-  {
-    let result = await Capsule.findByNameAndDelete(name);
-    if(!result)
-    {
-      return false;
-    }
-    else{
-        await capsule.remove();
-        return true;
-    }
-}
 
-const deleteCoffee = async (Name) => {
-  const coffee = await getSpecCoffee(Name);
-  if (!article)
-      return null;
 
-  await coffee.remove()
-  return coffee;
+
+
+async function deleteP(productId)  {
+  try {
+    const result = await coffeeData.findByIdAndRemove(productId);
+    if (result) {
+      return { success: true, message: 'Product deleted successfully' };
+    } else {
+      return { success: false, message: 'Product not found' };
+    }
+  } catch (err) {
+    throw err;
+  }
 };
    
 
@@ -57,5 +52,6 @@ module.exports = {
     addCapsule,
     getAllCoffee,
     getCapsule,
-   deleteCoffee
+    deleteP
+   
  };
