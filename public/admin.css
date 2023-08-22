@@ -1,0 +1,6 @@
+.table_container {
+    max-width: 80%; /* Control the width of the table */
+    margin: 0 auto; /* Center the table on the page */
+    border: 2px solid #dcdcdc; /* Thin border */
+    border-radius: 10px; /* Rounded borders */
+}
