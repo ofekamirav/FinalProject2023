@@ -28,8 +28,23 @@ async function getUsers(){
     return await User.find({})
 }
 
+async function deleteU(userId)  {
+    try {
+      const result = await User.findByIdAndRemove(userId);
+      console.log(userId)
+      if (result) {
+        return { success: true, message: 'User deleted successfully' };
+      } else {
+        return { success: false, message: 'User not found' };
+      }
+    } catch (err) {
+      throw err;
+    }
+  };
+
 module.exports = {
      login, 
      register,
-     getUsers
+     getUsers,
+     deleteU,
      }
