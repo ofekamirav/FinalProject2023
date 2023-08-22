@@ -4,3 +4,8 @@
     border: 2px solid #dcdcdc; /* Thin border */
     border-radius: 10px; /* Rounded borders */
 }
+#table-name{
+    text-align: center;
+    font-size: 25px;
+    color:blue;
+}
