@@ -19,8 +19,8 @@
     <div class="container-fluid bg-light p-4 mb-4">
         <div class="row justify-content-center">
             <!-- Search form -->
-            <form id="searchForm" class="form-inline d-flex align-items-center">
-                <input id="searchInput" class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
+            <form class="form-inline d-flex align-items-center">
+                <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-primary" type="submit">Search</button>
             </form>
         </div>
@@ -137,9 +137,6 @@
     </div>
 </div>
 
-<div id="searchResultsContainer" class="container-fluid">
-    <!-- The search results will be loaded here via AJAX -->
-</div>
     <footer id="footerRights" class="bg-light">
     All rights reserved to: Ofek Amirav, Nitzan Naveh, Aviv Portal, Hani Pardilov ®
     </footer>
@@ -153,28 +150,7 @@
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="/services/shopService.js"></script> 
 
-    <script>
-        $(document).ready(function () {
-            // Handle form submission
-            $("#searchForm").submit(function (event) {
-                event.preventDefault(); // Prevent the default form submission
-                var searchQuery = $("#searchInput").val();
 
-                // Use AJAX to load the search results page
-                $.ajax({
-                    url: `/search?q=${searchQuery}`, // Update the URL with your search endpoint
-                    method: 'GET',
-                    success: function (data) {
-                        // Load the search results HTML into the container
-                        $("#searchResultsContainer").html(data);
-                    },
-                    error: function (error) {
-                        console.log("Error:", error);
-                    }
-                });
-            });
-        });
-    </script>
 
 </body>
 </html>
