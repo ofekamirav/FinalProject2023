@@ -8,7 +8,8 @@ const addCapsule = async (req,res) =>
 const getCapsules = async (req , res) =>{
     const Capsules = await coffeeService.getAllCoffee()
     let username=req.session.username;
-    res.render('allproducts',{capsules:Capsules,username:username})
+    let permission = req.session.permission;
+    res.render('allproducts',{capsules:Capsules,username:username,permission:permission})
   }
 
   const getCapsule=async (req,res) => {
