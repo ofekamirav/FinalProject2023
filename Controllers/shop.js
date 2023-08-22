@@ -1,18 +1,12 @@
-const loginService = require("../services/cart")
+$(document).ready(function () {
+    $("form").submit(function (event) {
+        event.preventDefault(); // מניעת הפעולה הרגילה של שליחת הטופס
+        var searchQuery = $("#searchInput").val();
 
-
-
-
-document.addEventListener("DOMContentLoaded", function() {
-    var filterBtn = document.getElementById('filterBtn');
-    var filters = document.getElementById('filters');
-    
-    filterBtn.addEventListener('click', function() {
-        if (filters.style.display === "none" || filters.style.display === "") {
-            filters.style.display = "block";
-        } else {
-            filters.style.display = "none";
-        }
-       
+        $.get(`/search?q=${searchQuery}`, function (data) {
+            // טפל בנתונים שחוזרים מהשרת (לדוגמה, עדכן את DOM עם תוצאות החיפוש)
+            console.log(data); // לצורך בדיקה, ניתן להדפיס את הנתונים לקונסול
+            $("#searchResultsContainer").html(data); // הצג את תוצאות החיפוש בתוך האלמנט שיש לו id="searchResultsContainer"
+        });
     });
 });
