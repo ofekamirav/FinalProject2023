@@ -1,86 +1,85 @@
 
   <!DOCTYPE html>
   <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
-        <title>Home page</title>
-        <link rel="stylesheet" href="/header.css">
-        <title>Bootstrap Example</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    </head>
-    <body>
-            <nav class="navbar navbar-expand-sm bg-light navbar-primary">
-                <div class="container-fluid">
-                  <a class="navbar-brand" href="/">
-                    <img src="/Gallery/logo.png" alt="" style="width:50px;" class="rounded-pill"> 
-                  </a>
-                  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                    <ul class="navbar-nav">
-                       
-                      <li class="nav-item ms-auto order-0">
-                        <div class="dropdown">
-                          
-                          <button class="dropbtn"><span class="glyphicon glyphicon-user"></span></button>
-                          
-                          <div class="dropdown-content">
-                              <a class="nav-link" href="/login">Login</a>
-                                <a  class="nav-link" href="/register">Sign-Up</a>
-                          </div>
-                        </div>
-                        </li>
-        
-                      <li class="nav-item ms-auto order-10">
-                        <a class="nav-link" href="/search"><span class="glyphicon glyphicon-search"></span></a>
-                      </li> 
-                        <li class="nav-item ms-auto order-15" >
-                          <a id="Home" class="nav-link" href="/manager">Manager Page</a>
-                        </li>
-                      </li> 
-                     
-                    </ul>
-                    <form class="navbar-nav" action="/delCoocike" method="post">
-                        <button  class="logout" type="submit" href="#"><span class="glyphicon glyphicon-log-out"></span></button>
-                      </form>  
-    
-                    <ul class="navbar-nav">
-                        <li class="nav-item me-auto order-5">
-                            <a class="nav-link" href="/shop">All Products</a>
-                          </li> 
-                          <li class="nav-item me-auto order-10">
-                            <a class="nav-link" href="/myorders">My orders</a>
-                          </li>
-                          <li class="nav-item me-auto order-15">
-                            <a class="nav-link " href="/Cart"><span class="glyphicon glyphicon-shopping-cart"></span></a>
-                          </li> 
-                          <li class="nav-item me-auto order-15">
-                            <a class="nav-link" href="/WishList"><span class="glyphicon glyphicon-heart"></span></a>
-                          </li> 
-                     
-                      </ul>
-                         
-                  </div>
-                </div>
-              </nav>
-      
-            <script src="index.js"></script>
-            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-            <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-    
-    </body>
-    </html>
-   
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/header.css">
+
+  </head>
+  <body>
+    <header class="header">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <img src="Gallery/logo.png" width="50" height="50" alt="">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                <a class="navbar-brand" href="/" style="hover{cursor: pointer;}">Secret Coffee</a>
+                <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About\Contact Us   <i class="bi bi-person-rolodex" title="Contact Us"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/shop" >Store <i class="bi bi-shop-window"></i></a>
+                    </li>
+                  </ul>    
+                  <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+                      <%if(username!=null){%>
+                    <li  class=" nav-item" id="hello_user">
+                      Hello <%=username%>
+                     </li>
+                     <%}%>
+                    </ul>  
+                
+                <%if(username==null){%>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link"  href="/login" id="login">
+                          Login<i class="bi bi-door-open" title="Log In"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link"  href="/login" id="login">
+                        Register<i class="bi bi-clipboard" title="Register"></i>
+                      </a>
+                  </li>
+                    <li>
+                        <button type="button" class="btn btn-link"><span class="bi bi-cart black-color"></span></button>
+                    </li>
+                </ul>
+                <%}else{%>
+                  <ul class="navbar-nav ms-auto">
+                    <%if(permission==1){%>
+                    <li class="nav-item">
+                        <a class="nav-link"  href="/admin" id="login">
+                            Manager Page
+                        </a>
+                    </li>
+                    <%}%>
+                    <li class="nav-item">
+                      <a class="nav-link"  href="/logout" id="logout">
+                          Logout
+                      </a>
+                  </li>
+                  <li>
+                      <button type="button" class="btn btn-link"><span class="bi bi-cart black-color"></span></button>
+                  </li>
+                    <%}%>
+  
+                </ul>
+                
+            </div>
+        </nav>
+    </header>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
+  </body>
+  </html>
