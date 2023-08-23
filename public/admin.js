@@ -67,7 +67,7 @@ $(document).ready(function() {
 
 //Beginning of work on evenListeners i.e: delete update ...
 
-
+//Creating a new User
 $(document).on('submit','#add-user-form',function(e){
   e.preventDefault();
  
@@ -84,6 +84,29 @@ $(document).on('submit','#add-user-form',function(e){
   },
   error: function(err) {
     alert('An error occurred while creating the user');
+  }
+});
+});
+
+
+
+//Creating a new Capsule
+$(document).on('submit','#add-product-form',function(e){
+  e.preventDefault();
+ 
+  $.ajax({
+  method:"POST",
+  url: "admin/addProduct",
+  data:$(this).serialize(),
+  success: function(response) {
+    if (response.success) {
+      alert('Capsule Created successfully');
+    } else {
+      alert('Error creating Capsule');
+    }
+  },
+  error: function(err) {
+    alert('An error occurred while creating the Capsule');
   }
 });
 });

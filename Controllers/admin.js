@@ -45,6 +45,7 @@ const getCapsules = async (req , res) =>{
   }
 
 
+  //Creating a new User using the admin page
   async function register(req, res) {
     try {
     const { username, password,firstName,lastName,country,adress,postalcode } = req.body
@@ -54,14 +55,32 @@ const getCapsules = async (req , res) =>{
       res.json(result)
     else
     res.status(400).json(result)
-      
-      
     }
     catch (e) { 
-      res.status(500).json({ success: false, message: 'An error occurred while deleting the user' });
+      res.status(500).json({ success: false, message: 'An error occurred while creating the user' });
     }    
   }
 
+
+    //Creating a new Product using the admin panel
+    async function addProduct(req, res) {
+      try {
+      const { name, origin,type,intensity,flavor,price} = req.body
+      const result = await coffeeService.addCapsule(name, origin,type,intensity,flavor,price)
+    
+        if(result.success)
+        res.json(result)
+      else
+      res.status(400).json(result)
+      }
+      catch (e) { 
+        res.status(500).json({ success: false, message: 'An error occurred while creating the product' });
+      }    
+      }
+
+
+
+  //Deleting a user via the Admin panel
   const deleteUser= async(req,res) =>{
     try {
       const result = await usersService.deleteU(req.params._id);
@@ -75,6 +94,7 @@ const getCapsules = async (req , res) =>{
     }
   }
 
+  //Deleting a product via the Admin panel
   const deleteProduct= async(req,res) =>{
     try {
       const result = await coffeeService.deleteP(req.params._id);
@@ -98,5 +118,6 @@ module.exports={
     deleteUser,
     deleteProduct,
     register,
+    addProduct
 
 }

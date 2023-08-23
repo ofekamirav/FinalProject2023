@@ -19,14 +19,14 @@
     <div class="toggle-buttons">
       <button class="btn btn-primary" id="show-users">Users</button>
       <button class="btn btn-secondary" id="show-products">Products</button>
-
-      
     </div>
 
     
   <div class="table-Users">
     <div id="table-name">Users Table</div>
-    <div class="adduser">
+   
+
+      <!-- Pop Up User Model -->
             <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
   Register a new user
@@ -37,7 +37,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <h5 class="modal-title" id="staticBackdropLabel">Register a new user</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -70,7 +70,6 @@
             <label for="origin" class="form-label">Postal Code</label>
             <input type="text" class="form-control" id="postalcode" name="postalcode" required>
           </div>
-          <!-- Add other product fields here -->
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
@@ -81,7 +80,9 @@
   </div>
 </div>
 <!-- End of Add User Model -->
-    </div>
+  
+     <!-- End of pop up user model -->
+     
     <table id="users-table" class="display" >
         <thead> 
           <tr>
@@ -100,6 +101,59 @@
 
       <div class="table-Product">
         <div class="product-name">Products Table</div>
+                 <!-- Pop Up User Model -->
+        <div class="addproduct">
+                <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
+      Add a new capsule
+    </button>
+    
+    <!-- Add User Modal -->
+    <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">New Capsule Form</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="add-product-form">
+              <div class="mb-3">
+                <label for="name" class="form-label">Name Of Capsule</label>
+                <input type="text" class="form-control"   name="name" required>
+              </div>
+              <div class="mb-3">
+                <label for="origin" class="form-label">Origin</label>
+                <input type="text" class="form-control"   name="origin" required>
+              </div>
+              <div class="mb-3">
+                <label for="origin" class="form-label">Type</label>
+                <input type="text" class="form-control"   name="type" required>
+              </div>
+              <div class="mb-3">
+                <label for="origin" class="form-label">Intensity</label>
+                <input type="text" class="form-control"   name="intensity" required>
+              </div>
+              <div class="mb-3">
+                <label for="origin" class="form-label">Flavor</label>
+                <input type="text" class="form-control"   name="flavor" required>
+              </div>
+              <div class="mb-3">
+                <label for="origin" class="form-label">Price</label>
+                <input type="text" class="form-control"  name="price" required>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+    
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End of Add User Model -->
+        </div>
+         <!-- End of pop up user model -->
         <table id="products-table" class="display">
           <thead> 
             <tr>
