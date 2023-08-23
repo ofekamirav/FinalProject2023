@@ -27,7 +27,7 @@
         <div class="col-sm-8">
         <div class="desc">
         <div class="details">
-        <p >Price: $<%= capsule.price %></p>
+        <p ><div class ="b.price" Price:></div> $<%= capsule.price %></p>
         <p >Intensity: <%= capsule.intensity %></p>
         <p >Flavor: <%= capsule.flavor %></p>
         
@@ -40,7 +40,7 @@
         <div class="cont">
             <% if (capsule.image) { %>
               <div class="image-container">
-          <img width="400px" height="400px" class="capsule-image" src="<%= capsule.image %>" alt="<%= capsule["_id"] %> Image" />
+          <img width="450px" height="400px" class="capsule-image" src="<%= capsule.image %>" alt="<%= capsule["_id"] %> Image" />
         <% } else { %>
           <p>No image available</p>
         <% } %>

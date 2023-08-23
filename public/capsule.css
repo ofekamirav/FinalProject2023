@@ -1,11 +1,45 @@
+/*image placement */
 .cont {
     text-align: right !important;
-    text-align: right; 
+    text-align: right;
+    border: transparent;
+    margin:5px 
 }
 
 .capsule-image {
     float: right !important;
     margin-left: 10px !important;
-    float: right; 
     margin-left: 10px; 
+    border-radius: 20px;
+    place-content: center;
+    
+}
+
+.image-container{
+    width: 460px;
+  height: 410px;
+  background-color: black;
+  border: 5px solid black;
+  object-position: center;
+  border-radius: 15px;
+  float:right;
+}
+
+.details{
+    font-family: Arial, sans-serif;
+    font-size: large;
+    padding: 10px;
+    border-radius: 10px;
+    place-content: left;
+    float:left;
+    margin-left: 30px;
+    text-align: left;
+}
+
+.button-container{
+    float: right !important;
+    margin-left: 10px !important;
+    float: right; 
+    margin-left: 60px; 
+    border-radius: 30px;
 }
