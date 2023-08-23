@@ -5,10 +5,32 @@ async function login(username, password) {
     return user
 }
 
-async function register(username, password,firstName,lastName,Country,Adress,postalCode) {
+
+//Working Register
+// async function register(username, password,firstName,lastName,Country,Adress,postalCode) {
 
   
 
+//     const user = new User({
+//         _id: username,
+//         password:password,
+//         firstName:firstName,
+//         lastName:lastName,
+//         Country:Country,
+//         Adress:Adress,
+//         postalCode:postalCode,
+//         permission:0
+        
+//     });
+
+//     await user.save()        
+// }
+
+
+
+//New Register Method:
+async function register(username, password,firstName,lastName,Country,Adress,postalCode) {
+try{
     const user = new User({
         _id: username,
         password:password,
@@ -20,8 +42,15 @@ async function register(username, password,firstName,lastName,Country,Adress,pos
         permission:0
         
     });
-
-    await user.save()        
+    const newU =await user.save()
+    if(newU)
+      return{success:true,message:'Registrated Successfully'}
+    else
+    return {success:false,message:'Couldnt Register'}
+    
+  }catch(err){
+    throw err;
+  }      
 }
 
 async function getUsers(){

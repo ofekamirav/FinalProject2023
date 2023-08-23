@@ -44,6 +44,24 @@ const getCapsules = async (req , res) =>{
     }
   }
 
+
+  async function register(req, res) {
+    try {
+    const { username, password,firstName,lastName,country,adress,postalcode } = req.body
+    const result = await usersService.register(username, password,firstName,lastName,country,adress,postalcode)
+  
+      if(result.success)
+      res.json(result)
+    else
+    res.status(400).json(result)
+      
+      
+    }
+    catch (e) { 
+      res.status(500).json({ success: false, message: 'An error occurred while deleting the user' });
+    }    
+  }
+
   const deleteUser= async(req,res) =>{
     try {
       const result = await usersService.deleteU(req.params._id);
@@ -79,5 +97,6 @@ module.exports={
     handleAdminPage,
     deleteUser,
     deleteProduct,
+    register,
 
 }

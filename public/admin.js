@@ -32,7 +32,7 @@ $(document).ready(function() {
         $(row).addClass('d-none');
       }
     },
-    lengthMenu: [[1, 2, 10, 25, -1], [1, 2, 10, 15, "All"]], // Change this line
+    lengthMenu: [[-1, 5, 10, 20,], ["All", 5, 10, 20,]], 
     
   });
 
@@ -59,13 +59,35 @@ $(document).ready(function() {
       
     ],
     
-    lengthMenu: [[1, 2, 10, 25, -1], [1, 2, 10, 15, "All"]], // Change this line
+    lengthMenu: [[-1, 5, 10, 20,], ["All", 5, 10, 20,]], 
     
   });
 
 });
 
 //Beginning of work on evenListeners i.e: delete update ...
+
+
+$(document).on('submit','#add-user-form',function(e){
+  e.preventDefault();
+ 
+  $.ajax({
+  method:"POST",
+  url: "admin/adduser",
+  data:$(this).serialize(),
+  success: function(response) {
+    if (response.success) {
+      alert('User Created successfully');
+    } else {
+      alert('Error creating user');
+    }
+  },
+  error: function(err) {
+    alert('An error occurred while creating the user');
+  }
+});
+});
+
 
 
 //Delete User Function
