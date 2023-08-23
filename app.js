@@ -19,8 +19,6 @@ app.use(cookieParser());
 app.use(flash());
 
 
-
-
 //Connecting to the DB 
 mongoose.connect(process.env.DB_CONNECTION_STRING, {
     useNewUrlParser: true,
@@ -89,10 +87,11 @@ app.use('/capsule',require('./routes/coffeeR'))
 //Creating a route to the Admins page page:
 app.use('/admin',require('./routes/admin'))
 
+//Creating a route to the about page page:
+app.use('/about',require('./routes/about'))
 
-
-
-
+const searchRouter = require('./routes/search');
+app.use('/search',searchRouter);
 
 //Setting Cookies session - NEEDS TO DECIDE IF TO KEEP OR NOT 
 
@@ -113,14 +112,4 @@ app.use('/admin',require('./routes/admin'))
 //Setting the Port using the env file ( in gitignore)
 app.listen(process.env.PORT, ()=>{
     console.log('Server Running')
-})
-
-// Route for handling search
-app.get('/search', async (req, res) => {
-  const { q } = req.query;
-  // ביצוע חיפוש במסד הנתונים על פי השאילתה ושליפת הפריטים התואמים
-  const items = await Item.find({ name: { $regex: q, $options: 'i' } }); // חיפוש לא תלוי הופעה
-
-  // עדכון התוצאות בדף allproducts.ejs
-  res.render('allproducts', { capsules: items });
 });
