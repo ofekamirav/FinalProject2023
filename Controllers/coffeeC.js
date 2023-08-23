@@ -16,7 +16,7 @@ const getCapsules = async (req , res) =>{
     const capsuleName = req.query.name
     let username=req.session.username;
     const capsule = await coffeeService.getCapsule(capsuleName)
-    res.render('capsule',{capsule,username})
+    res.render('capsule',{capsule,username,permission:req.session.permission})
   }
 
   const searchCapsule = async(req,res) =>{
