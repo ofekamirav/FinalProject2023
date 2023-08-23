@@ -33,13 +33,6 @@ mongoose.connect(process.env.DB_CONNECTION_STRING, {
 
 
 
-//Setting the Session to handle the login sessions
- 
-// app.use(session({
-//     secret: 'home',    
-//     saveUninitialized: true,
-//     resave: true
-// }))
 app.use(session({
   secret: 'your-secret-key',
   resave: true,
@@ -80,18 +73,13 @@ app.use('/login',LoginRouter);
 //Creating a route for all products page  : shop page 
 app.use('/shop',require('./routes/coffeeR'));
 
-//Creating a route to a specific Capsule page:
-app.use('/capsule',require('./routes/coffeeR'))
-
-
+//Organized
 //Creating a route to the Admins page page:
 app.use('/admin',require('./routes/admin'))
 
 //Creating a route to the about page page:
 app.use('/about',require('./routes/about'))
 
-const searchRouter = require('./routes/search');
-app.use('/search',searchRouter);
 
 //Setting Cookies session - NEEDS TO DECIDE IF TO KEEP OR NOT 
 

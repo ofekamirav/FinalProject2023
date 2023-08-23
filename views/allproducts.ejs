@@ -8,7 +8,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="allproducts.css">
+
+    <link rel="stylesheet" href="Css/allproducts.css">
+
 
     <title>Secret Coffee - Shop</title>
 
@@ -23,7 +25,9 @@
                 <input class="form-control mr-2" type="text" placeholder="Search" aria-label="Search" id="search-input">
                 
                 <div id="autocomplete-dropdown" class="dropdown-content"></div>
-       
+
+        </div>
+
     
         <!-- Filters (hidden by default) -->
         <div id="filters" class="row justify-content-center">
@@ -107,7 +111,7 @@
 
 
     <div class="container-fluid">
-    <center><h1>Shop Page</h1>></center>
+     <div id="searchResultsContainer">
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
             <% capsules.forEach(function(capsule) { %>
             <div class="col mb-4">
@@ -135,12 +139,9 @@
             </div>
             <% }); %>
         </div>
-    
+    </div>
 </div>
 
-<div id="searchResultsContainer" class="container-fluid">
-    <!-- The search results will be loaded here via AJAX -->
-</div>
     <footer id="footerRights" class="bg-light">
     All rights reserved to: Ofek Amirav, Nitzan Naveh, Aviv Portal, Hani Pardilov ®
     </footer>
@@ -152,7 +153,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script> 
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-    <script src="/allproducts.js"></script>
+
+    <script src="Js/allproducts.js"></script>
+
 
 </body>
 </html>

@@ -1,4 +1,24 @@
+#autocomplete-dropdown {
+    position: absolute;
+    width: 100%; /* Match the width of the input or set a specific width */
+    background-color: #ffffff; /* Set a background color */
+    border: 1px solid #ccc; /* Add a border */
+    z-index: 1000; /* Ensure it appears above other content */
+    display: none; /* Hide by default, will be shown by jQuery */
+  }
+  
+  .dropdown-item {
+    padding: 8px; /* Add some padding */
+    text-decoration: none; /* Remove underlines */
+    display: block; /* Make links block level */
+    color: #000000; /* Set text color */
+  }
+  
+  .dropdown-item:hover {
+    background-color: #f0f0f0; /* Add a hover effect */
+  }
 
+  
 /* Reset default margin and padding */
 * {
   margin: 0;
@@ -51,9 +71,15 @@ body {
 .container-fluid.bg-light {
   border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #f8f8f8;
+  padding: 20px;
+  margin-bottom: 20px;
 }
 
+.form-control {
+  border: 2px solid #ccc;
+  border-radius: 5px;
+
+}
 
 .btn-primary {
   border: 2px solid #007bff;
