@@ -30,16 +30,7 @@ const getCapsules = async (req , res) =>{
     }
   }
 
-  const searchCapsule = async(req,res) =>{
-    try {
-      const searchValue = req.body.searchValue;
-      const products = await coffeeService.searchCapsule(searchValue)
-      res.json(products);
-    } catch (error) {
-      console.error("Failed to search products:", error);
-      res.status(500).json({ error: "Failed to search products" });
-    }
-  }
+
 
 
 module.exports={
