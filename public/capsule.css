@@ -1,0 +1,11 @@
+.cont {
+    text-align: right !important;
+    text-align: right; 
+}
+
+.capsule-image {
+    float: right !important;
+    margin-left: 10px !important;
+    float: right; 
+    margin-left: 10px; 
+}
