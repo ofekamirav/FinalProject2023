@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="/public/Shop.css">
+    <title>Search Results</title>
+</head>
+<body>
+    <%- include('./header.ejs');%>
+   <!-- טופס חיפוש -->
+ <div class="search-page" id="search">
+    <h1>Search Products</h1>
+    <input class="form-control me-2" id="search-input" type="text" placeholder="Search">
+    <div id="autocomplete-dropdown" class="dropdown-content"></div>
+  </div>
+
+
+<script>
+    $(document).ready(function() {
+      $("#search-input").on("input", function() {
+        var searchValue = $(this).val().toLowerCase();
+        var autocompleteDropdown = $("#autocomplete-dropdown");
+        autocompleteDropdown.empty();
+
+        if (searchValue.length > 0) {
+          $.ajax({
+            url: "/search/search",
+            method: "POST",
+            data: { searchValue: searchValue },
+            success: function(response) {
+              response.forEach(function(item) {
+                var dropdownItem = $("<a>", {
+                  class: "dropdown-item",
+                  href: "/capsule/" + encodeURIComponent(item["name"]),
+                  text: item["name"]
+                });
+
+                autocompleteDropdown.append(dropdownItem);
+              });
+
+              autocompleteDropdown.show();
+            },
+            error: function(error) {
+              console.error("Failed to fetch autocomplete data:", error);
+            }
+          });
+        } else {
+          autocompleteDropdown.hide();
+        }
+      });
+    });
+  </script>
+</body>
+</html>

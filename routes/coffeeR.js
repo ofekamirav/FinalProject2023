@@ -2,6 +2,7 @@ const express = require('express');
 var router = express.Router();
 const capsuleController = require('../controllers/coffeeC');
 
+
 router.route('/')
     .get(capsuleController.getCapsules)
     //.post(coffeeController.newCapsula);

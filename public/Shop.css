@@ -51,15 +51,9 @@ body {
 .container-fluid.bg-light {
   border: 1px solid #ccc;
   border-radius: 5px;
-  padding: 20px;
-  margin-bottom: 20px;
+  background-color: #f8f8f8;
 }
 
-.form-control {
-  border: 2px solid #ccc;
-  border-radius: 5px;
-
-}
 
 .btn-primary {
   border: 2px solid #007bff;

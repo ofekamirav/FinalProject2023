@@ -1,4 +1,4 @@
-const coffeeData = require('../models/coffeeM');
+const coffeeData = require('../Models/coffeeM');
 
 
 //Creating a new Capsule
