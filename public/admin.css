@@ -37,5 +37,12 @@
     min-height: 10px;
     
 }
-  
+ 
+.addcapsule{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 10px;
+    
+}
 
