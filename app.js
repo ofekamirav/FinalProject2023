@@ -63,6 +63,9 @@ app.use(session({
 
 // Setting the route for the home page after server start
 app.use("/", require("./routes/login"));
+
+
+//Setting a route for a testing page
 app.get('/test',(req,res)=>{
   res.render('test',{})
   

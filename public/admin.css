@@ -22,5 +22,20 @@
     font-size: 25px;
     color:blue;
 }
+
+.toggle-buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 10px;
+    margin-bottom: 20px;
+}
+.adduser{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 10px;
+    
+}
   
 
