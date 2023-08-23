@@ -15,6 +15,7 @@ router.use(express.static(publicPath));
 
 router.get('/', async (req, res) => {
     res.render('search',{username:req.session.username,permission:req.session.permission}); 
+
   });
   
   // POST route for searching products
