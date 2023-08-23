@@ -150,7 +150,31 @@
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="/services/shopService.js"></script> 
 
-
+    <script>
+        $(document).ready(function () {
+           // Handle form submission
+           $("#searchForm").submit(function (event) {
+               event.preventDefault(); // Prevent the default form submission
+               var searchQuery = $("#searchInput").val();
+       
+               // Use AJAX to load the search results page with the search query parameter
+               $.ajax({
+                   url: `/search?q=${searchQuery}`, // Include the search query parameter
+                   method: 'GET',
+                   success: function (data) {
+                       // Load the search results HTML into the container
+                       console.log("Success:", data); 
+                       $("#searchResultsContainer").html(data);
+                   },
+                   error: function (error) {
+                       console.log("Error:", error);
+                   }
+               });
+           });
+       });
+       
+       
+           </script>
 
 </body>
 </html>

@@ -1,4 +1,4 @@
-const coffeeData = require('../models/coffeeM');
+const coffeeData = require('../Models/coffeeM');
 
 async function addCapsule (Origin, Name, Type,Intensity, Flavor,Price ){      
 // Save  new capsule to the collection

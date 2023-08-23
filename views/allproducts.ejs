@@ -15,98 +15,8 @@
 </head>
 <body>
     <%- include('./header.ejs');%>
-    
-    <div class="container-fluid bg-light p-4 mb-4">
-        <div class="row justify-content-center">
-            <!-- Search form -->
-            <form id="searchForm" class="form-inline d-flex align-items-center">
-                <input id="searchInput" class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-primary" type="submit">Search</button>
-            </form>
-        </div>
-    
-        <!-- Filters (hidden by default) -->
-        <div id="filters" class="row justify-content-center">
-            <!-- Country Filters -->
-            <div class="col-md-4">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h5>Country:</h5>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" value="" id="country1">
-                            <label class="form-check-label" for="country1">
-                                Brazil
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" value="" id="country2">
-                            <label class="form-check-label" for="country2">
-                                Colombia
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" value="" id="country3">
-                            <label class="form-check-label" for="country3">
-                                Ethiopia
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" value="" id="country4">
-                            <label class="form-check-label" for="country4">
-                                Brazil
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    
-            <!-- Price Filter -->
-            <div class="col-md-4">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h5>Price:</h5>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <select class="form-control" id="priceFilter" style="height: fit-content; width: fit-content;">
-                                <option>Expensive to Cheap</option>
-                                <option>Cheap to Expensive</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    
-            <!-- Sweetness Level Filter -->
-            <div class="col-md-4">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h5>Sweetness Level:</h5>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <select class="form-control" id="sweetnessFilter" style="height: fit-content; width: fit-content;">
-                                <option>Most to Least</option>
-                                <option>Least to Most</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-
     <div class="container-fluid">
-     <div id="searchResultsContainer">
+    <center><h1>Shop Page</h1>></center>
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
             <% capsules.forEach(function(capsule) { %>
             <div class="col mb-4">
@@ -134,7 +44,7 @@
             </div>
             <% }); %>
         </div>
-    </div>
+    
 </div>
 
 <div id="searchResultsContainer" class="container-fluid">
@@ -152,29 +62,6 @@
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script> 
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="/services/shopService.js"></script> 
-
-    <script>
-        $(document).ready(function () {
-            // Handle form submission
-            $("#searchForm").submit(function (event) {
-                event.preventDefault(); // Prevent the default form submission
-                var searchQuery = $("#searchInput").val();
-
-                // Use AJAX to load the search results page
-                $.ajax({
-                    url: `/search?q=${searchQuery}`, // Update the URL with your search endpoint
-                    method: 'GET',
-                    success: function (data) {
-                        // Load the search results HTML into the container
-                        $("#searchResultsContainer").html(data);
-                    },
-                    error: function (error) {
-                        console.log("Error:", error);
-                    }
-                });
-            });
-        });
-    </script>
 
 </body>
 </html>

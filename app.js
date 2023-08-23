@@ -90,9 +90,8 @@ app.use('/capsule',require('./routes/coffeeR'))
 app.use('/admin',require('./routes/admin'))
 
 
-
-
-
+const searchRouter = require('./routes/search');
+app.use('/search',searchRouter);
 
 //Setting Cookies session - NEEDS TO DECIDE IF TO KEEP OR NOT 
 
@@ -108,39 +107,6 @@ app.use('/admin',require('./routes/admin'))
 //   }
 // });
 
-
-//search 
-
-function yourSearchLogic(query, capsules) {
-  const filteredCapsules = capsules.filter(capsule => {
-      return (
-          capsule['_id'].toLowerCase().includes(query.toLowerCase()) ||
-          capsule.origin.toLowerCase().includes(query.toLowerCase()) ||
-          capsule.flavor.toLowerCase().includes(query.toLowerCase())
-      );
-  });
-
-  return filteredCapsules;
-}
-
-app.get('/search', async (req, res) => {
-  const searchQuery = req.query.q; // Get the search query from the URL parameter
-
-  try {
-      // Call your function to fetch all coffee capsules
-      const capsules = await getAllCoffee();
-
-      // Call your search logic function to filter capsules
-      const filteredCapsules = yourSearchLogic(searchQuery, capsules);
-
-      // Render the searchresults.ejs template with the search results
-      res.render('searchresults', { capsules: filteredCapsules }); // Pass the filtered capsules to the template
-  } catch (error) {
-      console.error("Error fetching coffee capsules:", error);
-      // Handle the error and send an error response if necessary
-      res.status(500).send("Internal Server Error");
-  }
-});
 
 
 //Setting the Port using the env file ( in gitignore)
