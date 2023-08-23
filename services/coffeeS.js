@@ -1,19 +1,30 @@
 const coffeeData = require('../models/coffeeM');
 
-async function addCapsule (Origin, Name, Type,Intensity, Flavor,Price ){      
-// Save  new capsule to the collection
-try{
-    const Newcapsule = new Capsule({ Origin: Origin, Name: Name, Type: Type, Intensity: Intensity, Flavor: Flavor, Price: Price });
-    console.log('Item saved successfully.');
-    return await Newcapsule.save();
-   
-  
-}
-catch (error) {
-    console.error('Error occurred while adding item:', error);
-    return false;
-}
-};
+
+//Creating a new Capsule
+async function addCapsule(name, origin,type,intensity,flavor,price) {
+  try{
+      const product = new coffeeData({
+          _id: name,
+          origin:origin,
+          type:type,
+          intensity:intensity,
+          flavor:flavor,
+          price:price,
+         
+          
+      });
+      const newP =await product.save()
+      if(newP)
+        return{success:true,message:'Product Created successfully'}
+      else
+      return {success:false,message:'Couldnt Create'}
+      
+    }catch(err){
+      console.log(err);
+      throw err;
+    }      
+  }
 
 async function getAllCoffee()
 {
