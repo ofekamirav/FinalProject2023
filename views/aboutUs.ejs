@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../public/about.css">
+    <title>Secret Coffee - About Us</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            background-color: #f8f1e7; /* Light coffee cream color */
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .about-section {
+            background-color: #fff; /* White background */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4e3629; /* Dark coffee brown color */
+        }
+
+        .about-text {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #555;
+            margin-top: 20px;
+        }
+
+        /* Places We Work With Section */
+        h2 {
+            text-align: center;
+            color: #4e3629; /* Dark coffee brown color */
+            margin-top: 40px;
+        }
+
+        .place-list {
+            background-color: #fff; /* White background */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .place-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .place-list li {
+            font-size: 16px;
+            color: #4e3629; /* Dark coffee brown color */
+            margin-bottom: 10px;
+        }
+
+        /* Team Section */
+        .team-member {
+            background-color: #fff; /* White background */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .team-member img {
+            max-width: 100%;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .team-member h3 {
+            font-size: 18px;
+            color: #4e3629; /* Dark coffee brown color */
+            margin: 0;
+        }
+
+        .team-member p {
+            font-size: 14px;
+            color: #777;
+            margin: 0;
+        }
+
+        /* Map Section */
+        iframe {
+            border: 0;
+            width: 100%;
+            height: 450px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <%- include('header.ejs');%>
+    
+    <div class="container">
+        <h1>About Us</h1>
+        <div class="about-section">
+            <p>Welcome to Secret Coffee!</p>
+            <p>We are a coffee shop that sources and offers a diverse selection of high-quality coffee beans from around the world. Our mission is to bring the rich flavors of global coffee to your cup.</p>
+            <p>At Secret Coffee, we prioritize responsible sourcing and sustainability, supporting local farmers and eco-friendly practices in the coffee industry.</p>
+            <p>Whether you enjoy espresso, lattes, or iced coffee, we have the perfect coffee beans for you. Join us in exploring the world of coffee.</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <div id="map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1692.3321745114752!2d34.77259057862434!3d31.97000143595049!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1siw!2sil!4v1692797114686!5m2!1siw!2sil" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h2>Places We Work With</h2>
+                <div class="place-list">
+                    <ul>
+                        <li>Place 1 - Description</li>
+                        <li>Place 2 - Description</li>
+                        <li>Place 3 - Description</li>
+                        <!-- Add more places here -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h2>Our Team</h2>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="team-member">
+                    <img src="/w3images/team1.jpg" alt="Ofek Amirav">
+                    <h3>Ofek Amirav</h3>
+                    <p>CEO & Founder</p>
+                    <p>ofek.amirav@gmail.com</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="team-member">
+                    <img src="/w3images/team2.jpg" alt="Aviv Portal">
+                    <h3>Aviv Portal</h3>
+                    <p>Art Director</p>
+                    <p>mike@example.com</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="team-member">
+                    <img src="/public/Gallery/nitzan.jpeg" alt="Nitzan Naveh">
+                    <h3>Nitzan Naveh</h3>
+                    <p>Designer</p>
+                    <p>john@example.com</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="team-member">
+                    <img src="//team3.jpg" alt="Hani Pardilov">
+                    <h3>Hani Pardilov</h3>
+                    <p></p>
+                    <p>john@example.com</p>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script> 
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+</body>
+</html>

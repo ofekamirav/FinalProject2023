@@ -19,8 +19,6 @@ app.use(cookieParser());
 app.use(flash());
 
 
-
-
 //Connecting to the DB 
 mongoose.connect(process.env.DB_CONNECTION_STRING, {
     useNewUrlParser: true,
@@ -89,6 +87,8 @@ app.use('/capsule',require('./routes/coffeeR'))
 //Creating a route to the Admins page page:
 app.use('/admin',require('./routes/admin'))
 
+//Creating a route to the about page page:
+app.use('/about',require('./routes/about'))
 
 const searchRouter = require('./routes/search');
 app.use('/search',searchRouter);
