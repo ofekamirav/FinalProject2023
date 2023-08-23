@@ -8,33 +8,49 @@
     <title>Search Results</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Search Results</h1>
-        <div class="row">
-            <% capsules.forEach(function(capsule) { %>
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <% if (capsule.image) { %>
-                    <img class="card-img-top" src="<%= capsule.image %>" alt="<%= capsule["_id"] %> Image" />
-                    <% } else { %>
-                    <p>No image available</p>
-                    <% } %>
-                    <div class="card-body">
-                        <h2 class="card-title"><%= capsule["_id"] %></h2>
-                        <p class="card-text">Price: $<%= capsule.price %></p>
-                        <p class="card-text">Origin: <%= capsule.origin %></p>
-                        <p class="card-text" id="description"><%= capsule.flavor %></p>
-                        <div class="button-container2">
-                            <form method="POST" action="/cart/Addto">
-                                <input type="hidden" name="productId" value="<%= capsule['_id'] %>">
-                                <button class="btn btn-primary" type="submit" name="action" value="cart:<%= capsule["_id"] %>">Add to Cart</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <% }); %>
-        </div>
-    </div>
+    <%- include('./header.ejs');%>
+   <!-- טופס חיפוש -->
+ <div class="search-page" id="search">
+    <h1>Search Products</h1>
+    <input class="form-control me-2" id="search-input" type="text" placeholder="Search">
+    <div id="autocomplete-dropdown" class="dropdown-content"></div>
+  </div>
+
+
+<script>
+    $(document).ready(function() {
+      $("#search-input").on("input", function() {
+        var searchValue = $(this).val().toLowerCase();
+        var autocompleteDropdown = $("#autocomplete-dropdown");
+        autocompleteDropdown.empty();
+
+        if (searchValue.length > 0) {
+          $.ajax({
+            url: "/search/search",
+            method: "POST",
+            data: { searchValue: searchValue },
+            success: function(response) {
+              response.forEach(function(item) {
+                var dropdownItem = $("<a>", {
+                  class: "dropdown-item",
+                  href: "/capsule/" + encodeURIComponent(item["name"]),
+                  text: item["name"]
+                });
+
+                autocompleteDropdown.append(dropdownItem);
+              });
+
+              autocompleteDropdown.show();
+            },
+            error: function(error) {
+              console.error("Failed to fetch autocomplete data:", error);
+            }
+          });
+        } else {
+          autocompleteDropdown.hide();
+        }
+      });
+    });
+  </script>
 </body>
 </html>
