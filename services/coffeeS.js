@@ -43,8 +43,6 @@ async function getAllCoffee()
   }
 
 
-
-
 async function deleteP(productId)  {
   try {
     const result = await coffeeData.findByIdAndRemove(productId);
@@ -57,12 +55,19 @@ async function deleteP(productId)  {
     throw err;
   }
 };
+
+
+async function searchCapsule(name){
+  const data = await coffeeData.find({ _id: { $regex: name, $options: 'i' } }).limit(10);
+  return data;
+}
    
 
 module.exports = {
     addCapsule,
     getAllCoffee,
     getCapsule,
-    deleteP
+    deleteP,
+    searchCapsule
    
  };

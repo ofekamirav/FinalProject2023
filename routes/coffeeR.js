@@ -6,7 +6,13 @@ router.route('/')
     .get(capsuleController.getCapsules)
     //.post(coffeeController.newCapsula);
 
-router.route('/capsule').get(capsuleController.getCapsule)
+
+    router.route('/capsule').get(capsuleController.getCapsule)
+
+    router.post('/search',capsuleController.searchCapsule)
+
+
+
 
 // router.route('/:id')
     //.get(coffeeController.getCapsule)
