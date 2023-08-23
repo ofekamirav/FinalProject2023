@@ -73,6 +73,7 @@ app.use('/login',LoginRouter);
 //Creating a route for all products page  : shop page 
 app.use('/shop',require('./routes/coffeeR'));
 
+//Organized
 //Creating a route to the Admins page page:
 app.use('/admin',require('./routes/admin'))
 
