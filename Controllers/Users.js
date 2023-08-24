@@ -3,16 +3,16 @@ const loginService = require("../services/Users")
 
 //Controller to logging in
 function isLoggedIn(req, res, next) {
-  // if (req.session.username != null)
-  //   return next()
-  // else{
-  //   req.session.username=null
-  //   res.render("home",{username:req.session.username})
-  // }
-  if(res.locals.user)
-  next();
-  else
-  res.render('home');
+  if (req.session.username != null)
+    return next()
+  else{
+    req.session.username=null
+    res.render("home",{username:req.session.username})
+  }
+  // if(res.locals.user)
+  // next();
+  // else
+  // res.render('home');
 }
 
 //Controller to send to home page after logging in 
@@ -44,11 +44,12 @@ async function login(req, res) {
 
   const result = await loginService.login(username, password)
   if (result) {
-    req.session.username = result._id;
+    req.session.userId = result._id;
+    req.session.username=result.email;
     req.session.fName=result.firstName;
     req.session.permission= result.permission
     req.session.cart=result.cart
-    console.log(req.session.username +' Has Logged In');
+    console.log(req.session.userId +' Has Logged In');
     res.redirect('/')
   }
   else
@@ -56,11 +57,9 @@ async function login(req, res) {
 }
 
 async function register(req, res) {
-  const { username, password,firstName,lastName,country,adress,postalcode } = req.body
-
-
+  const { email, password,firstName,lastName,country,address,postalcode } = req.body
   try {
-    await loginService.register(username, password,firstName,lastName,country,adress,postalcode)
+    await loginService.register(email, password,firstName,lastName,country,address,postalcode)
     res.redirect('/login');
   }
   catch (e) { 
@@ -87,15 +86,8 @@ const getUsers = async (req , res) =>{
   res.render('allUsers',{users:Users})
 }
 
-exports.getCartItems = async (req, res) => {
-  try {
-    const username = req.user._id; // Assuming the username is stored in req.user
-    const cartItems = await userService.getUserCartItems(username);
-    res.json(cartItems);
-  } catch (error) {
-    res.status(500).send(error.message);
-  }
-}
+
+
 
 module.exports = {
   login,
