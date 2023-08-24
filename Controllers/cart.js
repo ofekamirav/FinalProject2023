@@ -22,9 +22,27 @@ function isLoggedIn(req, res, next) {
   }
 };
 
+    //Adding an item to the cart
+    async function addToCart(req, res) {
+      try {
+      const {itemId} = req.body
+      const userId=req.session.userId
+      const result = await cartService.addProduct(itemId,userId)
+    
+        if(result.success)
+        res.json(result)
+      else
+      res.status(400).json(result)
+      }
+      catch (e) { 
+        res.status(500).json({ success: false, message: 'An error occurred while creating the product' });
+      }    
+      }
+
 
 
 module.exports={
   isLoggedIn,
-  getCartItems
+  getCartItems,
+  addToCart
 }
