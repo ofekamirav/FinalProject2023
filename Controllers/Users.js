@@ -1,5 +1,5 @@
 
-const loginService = require("../services/login")
+const loginService = require("../services/Users")
 
 //Controller to logging in
 function isLoggedIn(req, res, next) {

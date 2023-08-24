@@ -68,7 +68,7 @@ app.get('*',function(req,res,next){
 
 
 // Setting the route for the home page after server start
-app.use("/", require("./routes/login"));
+app.use("/", require("./routes/Users"));
 
 
 //Setting a route for a testing page
@@ -81,7 +81,7 @@ app.get('/test',(req,res)=>{
 
 
 //Creating Route for login page
-const LoginRouter = require('./routes/login');
+const LoginRouter = require('./routes/Users');
 //Activate Route for log in page
 app.use('/login',LoginRouter);
 

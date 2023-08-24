@@ -12,6 +12,8 @@
 </head>
 <body>
     <%- include('./header.ejs');%>
+
+
     <h1 class="headline">My Cart</h1>
     <% if (products.length === 0) { %>
       <h4 id="empty">The Cart is Empty</h4>
@@ -24,11 +26,9 @@
         <thead>
         <tr>
           <th class="column-width">Product name</th>
-          <th class="column-width">Brand</th>
           <th class="column-width">Price</th>
           <th class="column-width">Category</th>
           <th class="column-width">Quantity</th>
-          <th class="column-width">img</th>
           <th class="column-width">Total price</th>
           <th class="column-width">Actions</th>
 
@@ -40,26 +40,37 @@
         <% const product = products.find(prod => prod['_id'] === item._id); %>
         <% if (product) { %>
           <tr>
-            <td class="column-width"><%= product['name of product'] %></td>
-            <td class="column-width"><%= product.brand %></td>
+            <td class="column-width"><%= product._id %></td>
             <td class="column-width"><%= product.price %></td>
-            <td class="column-width"><%= product.category %></td>
+            <td class="column-width"><%= product.type %></td>
             <td class="column-width">
               <form id="quantity-form" action="/Cart/Quantity" method="post">
-                <input type="hidden" name="itemName2" value="<%= product['name of product'] %>">
+                <input type="hidden" name="itemName2" value="<%= product._id %>">
                 <div class="quantity-select">
-                  <select name="quantity-<%= product['name of product'] %>">
-                    <% for (let i = 1; i <= product.quantity; i++) { %>
+                  <!-- <select name="quantity-<%= product._id %>">
+                    <% for (let i = 0; i <= product.quantity; i++) { %>
                       <option value="<%= i %>" <% if (parseInt(item.quantity) === i) { %> selected <% } %>><%= i %></option>
                     <% } %>
+                  </select> -->
+                  <!-- <select name="quantity-<%= product._id %>">
+                    <% for (let i = 1; i <= 20; i++) { %>
+                      <option value="<%= i %>" <% if (parseInt(item.quantity) === i) { %> selected <% } %>><%= i %></option>
+                    <% } %>
+                  </select> -->
+                  <select name="quantity-<%= product._id %>">
+                    <% for (let i = 1; i <= 20; i++) { %>
+                      <option value="<%= i %>" <% if (parseInt(item._doc.quantity) === i) { %> selected <% } %>><%= i %></option>
+                    
+                    <% } %>
                   </select>
+                  
+                  
                   <button type="submit" class="delete-button" name="action" value="Q">Change Quantity</button>
                 </div>
               </form>
             </td>
-            <td class="column-width"><img class="card-img-top" style="width:50px" height="50px" src="<%= product.picture %>" alt="<%= product['name of product'] %> Image" /></td>
             <td><%= product.price * item.quantity %></td>
-            <%  totalPrice +=(product.price * item.quantity); %>
+            <% totalPrice +=(product.price * item.quantity); %>
             <td>
               <form action="/Cart/delete" method="post">
                 <input type="hidden" name="itemName" value="<%= product['name of product'] %>">

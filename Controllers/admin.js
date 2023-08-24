@@ -1,5 +1,5 @@
 const coffeeService = require('../services/coffeeS');
-const usersService = require('../services/login');
+const usersService = require('../services/Users');
 
 //Controller to logging in
 function isLoggedIn(req, res, next) {
@@ -85,7 +85,7 @@ const getCapsules = async (req , res) =>{
     try {
       const result = await usersService.deleteU(req.params._id);
       if (result.success) {
-        res.json(result);
+        res.send(result);
       } else {
         res.status(400).json(result);
       }
