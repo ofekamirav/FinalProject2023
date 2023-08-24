@@ -117,20 +117,20 @@
             <div class="col mb-4">
                 <div class="card">
                     <% if (capsule.image) { %>
-                    <a href="/show1capsule/<%= capsule['_id'] %>">
+                    <a href="/shop/capsule?name=<%= capsule['Name'] %>">
                         <img class="card-img-top" src="<%= capsule.image %>" alt="<%= capsule["_id"] %> Image" />
                     </a>
                     <% } else { %>
                     <p>No image available</p>
                     <% } %>
                     <div class="card-body">
-                        <h2 class="card-title"><%= capsule["_id"] %></h2>
+                        <h2 class="card-title"><%= capsule["Name"] %></h2>
                         <p class="card-text">Price: $<%= capsule.price %></p>
                         <p class="card-text">Origin: <%= capsule.origin %></p>
                         <p class="card-text" id="description"><%= capsule.flavor %></p>
                         <div class="button-container2">
                             <form method="POST" action="/cart/Addto">
-                                <input type="hidden" name="productId" value="<%= capsule['_id'] %>">
+                                <input type="hidden" name="productId" value="<%= capsule['Name'] %>">
                                 <button class="btn btn-primary" type="submit" name="action" value="cart:<%= capsule["_id"] %>">Add to Cart</button>
                             </form>
                         </div>

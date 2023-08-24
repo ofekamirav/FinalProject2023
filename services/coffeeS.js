@@ -5,7 +5,7 @@ const coffeeData = require('../Models/coffeeM');
 async function addCapsule(name, origin,type,intensity,flavor,price) {
   try{
       const product = new coffeeData({
-          _id: name,
+          Name: name,
           origin:origin,
           type:type,
           intensity:intensity,
@@ -33,10 +33,9 @@ async function getAllCoffee()
 
  async function getCapsule(Name){
   try {
-    const data = await coffeeData.findOne({ _id: { $regex: Name, $options: 'i' } });
-    return data; // Return the document found (or null if not found)
+    const data = await coffeeData.findOne({ Name: { $regex: Name, $options: 'i' } });
+    return data;
   } catch (error) {
-    // Handle any errors that might occur during the database operation
     console.error("Error fetching capsule:", error);
     throw error;
   }
@@ -58,7 +57,7 @@ async function deleteP(productId)  {
 
 
 async function searchCapsule(name){
-  const data = await coffeeData.find({ _id: { $regex: name, $options: 'i' } }).limit(10);
+  const data = await coffeeData.find({ Name: { $regex: name, $options: 'i' } }).limit(10);
   return data;
 }
    

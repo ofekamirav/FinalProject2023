@@ -9,10 +9,10 @@ $(document).ready(function() {
       
     },
     columns: [
-      { data: '_id' },
+      { data: 'email' },
       { data: 'firstName' },
       { data: 'lastName' },
-      {data:'Country'},
+      {data:'country'},
       {data:'dateCreated'},
       {
         data: null,
@@ -44,7 +44,7 @@ $(document).ready(function() {
       
     },
     columns: [
-      { data: '_id' },
+      { data: 'Name' },
       { data: 'origin' },
       { data: 'flavor' },
       {data:'price'},

@@ -1,7 +1,7 @@
 const User = require('../models/Users')
 
 async function login(username, password) {
-    const user = await User.findOne({ _id: username, password });
+    const user = await User.findOne({ email: username, password });
     return user
 }
 
@@ -29,17 +29,17 @@ async function login(username, password) {
 
 
 //New Register Method:
-async function register(username, password,firstName,lastName,Country,Adress,postalCode) {
+async function register(email, password,firstName,lastName,Country,Address,postalCode) {
 try{
     const user = new User({
-        _id: username,
-        password:password,
-        firstName:firstName,
-        lastName:lastName,
-        Country:Country,
-        Adress:Adress,
-        postalCode:postalCode,
-        permission:0
+      email: email,
+      password:password,
+      firstName:firstName,
+      lastName:lastName,
+      country:Country,
+      address:Address,
+      postalCode:postalCode,
+      permission:0
         
     });
     const newU =await user.save()

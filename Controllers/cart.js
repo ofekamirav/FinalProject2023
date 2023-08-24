@@ -14,8 +14,8 @@ function isLoggedIn(req, res, next) {
 
   const getCartItems = async (req, res) => {
   try {
-    const username = req.session.username; // Assuming the username is stored in req.user
-    const products = await cartService.getUserCartItems(username);
+    const userId = req.session.userId; 
+    const products = await cartService.getUserCartItems(userId);
     res.render('cart',{products:products})
   } catch (error) {
     res.status(500).send(error.message);

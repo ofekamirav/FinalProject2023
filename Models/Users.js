@@ -1,30 +1,35 @@
 const mongoose = require("mongoose");
 
 const User = new mongoose.Schema({
-  _id: String,
+  email:{
+    type:String,
+    unique:true,
+    required:true
+
+  },
   password: {
     type: String,
     required: true,
   },
   firstName:{
     type:String,
-    require:true
+    required:true
   },
   lastName:{
     type:String,
-    require:true
+    required:true
   },
-  Country:{
+  country:{
     type:String,
-    require:true
+    required:true
   },
-  Address:{
+  address:{
     type:String,
-    require:true
+    required:true
   },
   postalCode:{
     type:String,
-    require:true
+    required:true
   },
   permission:{
     type:Number,
@@ -33,14 +38,13 @@ const User = new mongoose.Schema({
   cart:{
     type:[{
       itemId:{
-        //type: mongoose.Schema.Types.ObjectId,
-        type:String,
+        type: mongoose.Schema.Types.ObjectId,
         ref:'products',
-        required:true
+        requiredd:true
       },
       quantity:{
         type:Number,
-        required:true
+        requiredd:true
       }
     }],
     default:[]

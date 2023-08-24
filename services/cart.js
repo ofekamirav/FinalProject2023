@@ -6,8 +6,8 @@ const User = require('../models/Users')
 
 
 
-const getUserCartItems = async (username) => {
-  const user = await User.findById(username);
+const getUserCartItems = async (userId) => {
+  const user = await User.findById(userId);
   const cartItemIds = user.cart.map(item => item.itemId);
   const products = await coffeeData.find({ '_id': { $in: cartItemIds } });
   return products;

@@ -48,8 +48,8 @@ const getCapsules = async (req , res) =>{
   //Creating a new User using the admin page
   async function register(req, res) {
     try {
-    const { username, password,firstName,lastName,country,adress,postalcode } = req.body
-    const result = await usersService.register(username, password,firstName,lastName,country,adress,postalcode)
+    const { email, password,firstName,lastName,country,address,postalcode } = req.body
+    const result = await usersService.register(email, password,firstName,lastName,country,address,postalcode)
   
       if(result.success)
       res.json(result)

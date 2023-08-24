@@ -40,7 +40,7 @@
         <% const product = products.find(prod => prod['_id'] === item._id); %>
         <% if (product) { %>
           <tr>
-            <td class="column-width"><%= product._id %></td>
+            <td class="column-width"><%= product.Name %></td>
             <td class="column-width"><%= product.price %></td>
             <td class="column-width"><%= product.type %></td>
             <td class="column-width">

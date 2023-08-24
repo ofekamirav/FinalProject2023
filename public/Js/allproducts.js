@@ -19,8 +19,8 @@ $(document).ready(function() {
         response.forEach(function(item) {
           var dropdownItem = $("<a>", {
             class: "dropdown-item",
-            href: "/shop/capsule?name=" + encodeURIComponent(item["_id"]),
-            text: item["_id"],
+            href: "/shop/capsule?name=" + encodeURIComponent(item["Name"]),
+            text: item["Name"],
             
             
           });

@@ -2,7 +2,11 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const capsule = new mongoose.Schema({
-    _id:String,
+    Name:{
+        type:String,
+        unique:true,
+        required:true,
+    },
 
     origin:{
         type:String,
@@ -26,7 +30,7 @@ const capsule = new mongoose.Schema({
 
     price:
     {
-        type:String,
+        type:Number,
     },
     image:
     {
