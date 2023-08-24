@@ -3,23 +3,26 @@ const loginService = require("../services/login")
 
 //Controller to logging in
 function isLoggedIn(req, res, next) {
-  if (req.session.username != null)
-    return next()
-  else{
-    req.session.username=null
-    res.render("home",{username:req.session.username})
-  }
+  // if (req.session.username != null)
+  //   return next()
+  // else{
+  //   req.session.username=null
+  //   res.render("home",{username:req.session.username})
+  // }
+  if(res.locals.user)
+  next();
+  else
+  res.render('home');
 }
 
 //Controller to send to home page after logging in 
 function logedIn(req, res) {  
-  res.render("home", {username: req.session.username,permission:req.session.permission})
+  res.render('home',{})
 }
 
 
 //Controller for login - getRoute
 function loginForm(req, res) { 
-  console.log(req.flash());
   res.render("login", {messages:req.flash('success')[0]});
 }
 
@@ -41,9 +44,11 @@ async function login(req, res) {
 
   const result = await loginService.login(username, password)
   if (result) {
-    req.session.username = result.firstName
+    req.session.username = result._id;
+    req.session.fName=result.firstName;
     req.session.permission= result.permission
-    
+    req.session.cart=result.cart
+    console.log(req.session.username +' Has Logged In');
     res.redirect('/')
   }
   else
@@ -56,11 +61,7 @@ async function register(req, res) {
 
   try {
     await loginService.register(username, password,firstName,lastName,country,adress,postalcode)
-
-    req.flash("success","Account Created");
     res.redirect('/login');
-    
-    
   }
   catch (e) { 
     res.redirect('/register?error=1')
@@ -84,6 +85,16 @@ async function register(req, res) {
 const getUsers = async (req , res) =>{
   const Users = await loginService.getUsers()
   res.render('allUsers',{users:Users})
+}
+
+exports.getCartItems = async (req, res) => {
+  try {
+    const username = req.user._id; // Assuming the username is stored in req.user
+    const cartItems = await userService.getUserCartItems(username);
+    res.json(cartItems);
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
 }
 
 module.exports = {

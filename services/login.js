@@ -71,6 +71,8 @@ async function deleteU(userId)  {
     }
   };
 
+
+ 
 module.exports = {
      login, 
      register,

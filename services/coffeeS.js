@@ -33,7 +33,7 @@ async function getAllCoffee()
 
  async function getCapsule(Name){
   try {
-    const data = await coffeeData.findOne({ _id: Name });
+    const data = await coffeeData.findOne({ _id: { $regex: Name, $options: 'i' } });
     return data; // Return the document found (or null if not found)
   } catch (error) {
     // Handle any errors that might occur during the database operation

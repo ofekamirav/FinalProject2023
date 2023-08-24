@@ -37,16 +37,31 @@ app.use(session({
   secret: 'your-secret-key',
   resave: true,
   saveUninitialized: true,
-  cookie: { secure: false } // Set secure to true if using HTTPS
+  cookie: { secure: false } 
 }));
 
- 
+app.use(function(req, res, next) {
+  if (req.session.username) {
+    req.user = { 
+      username: req.session.username,
+      permission: req.session.permission,
+      fName:req.session.fName,
+      cart: req.session.cart
+    };
+  }
+  next();
+});
 
 
 
-// app.get('*',function(res,req,next){
-//   res.locals.user=req.user || null;
-// })
+app.get('*',function(req,res,next){
+  if (req.user) {
+    res.locals.user = req.user;
+  } else {
+    res.locals.user = null;
+  }
+  next();
+})
 
 
 //---------------Routings:---------------//
@@ -61,6 +76,7 @@ app.get('/test',(req,res)=>{
   res.render('test',{})
   
 })
+
 
 
 
@@ -79,6 +95,10 @@ app.use('/admin',require('./routes/admin'))
 
 //Creating a route to the about page page:
 app.use('/about',require('./routes/about'))
+
+
+//Creating the route for cart page:
+app.use('/myCart',require('./routes/cart'))
 
 
 //Setting Cookies session - NEEDS TO DECIDE IF TO KEEP OR NOT 

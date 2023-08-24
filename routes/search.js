@@ -14,7 +14,7 @@ router.use(express.static(publicPath));
 
 
 router.get('/', async (req, res) => {
-    res.render('search',{username:req.session.username,permission:req.session.permission}); 
+    res.render('search',{}); 
 
   });
   

@@ -13,6 +13,7 @@ $(document).ready(function() {
       { data: 'firstName' },
       { data: 'lastName' },
       {data:'Country'},
+      {data:'dateCreated'},
       {
         data: null,
         render: function(data, type, row) {
