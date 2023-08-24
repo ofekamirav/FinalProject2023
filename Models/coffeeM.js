@@ -33,6 +33,10 @@ const capsule = new mongoose.Schema({
         type:String,
         default:""
         
+    },
+    dateAdded:{
+        type:Date,
+        default:Date.now
     }
 
 

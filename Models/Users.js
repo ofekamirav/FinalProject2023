@@ -1,23 +1,5 @@
 const mongoose = require("mongoose");
 
-// const Schema = mongoose.Schema;
-
-// const ClientDataSchema = new  mongoose.Schema({
-//     Name: {
-//       type: String,
-//       required: true,
-//     },
-//       Email: {
-//           type: String,
-//           required: true,
-//       },
-//     Password: {
-//         type: String,
-//         required: true,
-//     },
-//       });
-
-
 const User = new mongoose.Schema({
   _id: String,
   password: {
@@ -49,8 +31,23 @@ const User = new mongoose.Schema({
     default: 0,
   },
   cart:{
-    type:Array,
-    default:[],
+    type:[{
+      itemId:{
+        //type: mongoose.Schema.Types.ObjectId,
+        type:String,
+        ref:'products',
+        required:true
+      },
+      quantity:{
+        type:Number,
+        required:true
+      }
+    }],
+    default:[]
+  },
+  dateCreated:{
+    type:Date,
+    default:Date.now
   }
 });
 

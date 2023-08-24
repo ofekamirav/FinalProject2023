@@ -29,14 +29,14 @@
                     </li>
                   </ul>    
                   <ul class="navbar-nav me-auto mt-2 mt-lg-0">
-                      <%if(username!=null){%>
+                      <%if(user){%>
                     <li  class=" nav-item" id="hello_user">
-                      Hello <%=username%>
+                      Hello <%=user.fName%>
                      </li>
                      <%}%>
                     </ul>  
                 
-                <%if(username==null){%>
+                <%if(!user){%>
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link"  href="/login" id="login">
@@ -48,13 +48,10 @@
                         Register<i class="bi bi-clipboard" title="Register"></i>
                       </a>
                   </li>
-                    <li>
-                        <button type="button" class="btn btn-link"><span class="bi bi-cart black-color"></span></button>
-                    </li>
                 </ul>
                 <%}else{%>
                   <ul class="navbar-nav ms-auto">
-                    <%if(permission==1){%>
+                    <%if(user.permission==1){%>
                     <li class="nav-item">
                         <a class="nav-link"  href="/admin" id="login">
                             Manager Page<i class="bi bi-folder"></i>
@@ -66,9 +63,14 @@
                           Logout now
                       </a>
                   </li>
-                  <li>
-                      <button type="button" class="btn btn-link"><span class="bi bi-cart black-color"></span></button>
-                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link"  href="/myCart" id="login">
+                      <i class="bi bi-cart black-color" title="Cart"></i>
+                    </a>
+                </li>
+                  <!-- <li>
+                      <button type="button" class="btn btn-link" href="/myCart"><span class="bi bi-cart black-color" style="color:black" ></span>(<%=user.cart.length%>)</button>
+                  </li> -->
                     <%}%>
   
                 </ul>

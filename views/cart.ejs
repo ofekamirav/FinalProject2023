@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <!-- <link rel="stylesheet" href="Css/header.css"> -->
+    <title>My Cart</title>
+</head>
+<body>
+    <%- include('./header.ejs');%>
+    <h1 class="headline">My Cart</h1>
+    <% if (products.length === 0) { %>
+      <h4 id="empty">The Cart is Empty</h4>
+      <h4 id="empty">If you have orders , go to My Orders page</h4>
+    <% } else { %>
+      <form  id="cart" action="/Cart" method="post">
+    <div class="table-responsive-lg">
+      <table class="table">
+
+        <thead>
+        <tr>
+          <th class="column-width">Product name</th>
+          <th class="column-width">Brand</th>
+          <th class="column-width">Price</th>
+          <th class="column-width">Category</th>
+          <th class="column-width">Quantity</th>
+          <th class="column-width">img</th>
+          <th class="column-width">Total price</th>
+          <th class="column-width">Actions</th>
+
+        </tr>
+    </thead>
+    <tbody>
+      <% let totalPrice = 0; %>
+      <% products.forEach(function(item) { %>
+        <% const product = products.find(prod => prod['_id'] === item._id); %>
+        <% if (product) { %>
+          <tr>
+            <td class="column-width"><%= product['name of product'] %></td>
+            <td class="column-width"><%= product.brand %></td>
+            <td class="column-width"><%= product.price %></td>
+            <td class="column-width"><%= product.category %></td>
+            <td class="column-width">
+              <form id="quantity-form" action="/Cart/Quantity" method="post">
+                <input type="hidden" name="itemName2" value="<%= product['name of product'] %>">
+                <div class="quantity-select">
+                  <select name="quantity-<%= product['name of product'] %>">
+                    <% for (let i = 1; i <= product.quantity; i++) { %>
+                      <option value="<%= i %>" <% if (parseInt(item.quantity) === i) { %> selected <% } %>><%= i %></option>
+                    <% } %>
+                  </select>
+                  <button type="submit" class="delete-button" name="action" value="Q">Change Quantity</button>
+                </div>
+              </form>
+            </td>
+            <td class="column-width"><img class="card-img-top" style="width:50px" height="50px" src="<%= product.picture %>" alt="<%= product['name of product'] %> Image" /></td>
+            <td><%= product.price * item.quantity %></td>
+            <%  totalPrice +=(product.price * item.quantity); %>
+            <td>
+              <form action="/Cart/delete" method="post">
+                <input type="hidden" name="itemName" value="<%= product['name of product'] %>">
+                <button type="submit" class="delete-button" name="action" value="delete">Delete</button>
+              </form>
+            </td>
+          </tr>
+        <% } %>
+      <% }); %>
+      
+        </tbody>
+    </table>
+    <p>The total price is -<%= totalPrice%> $</p>
+    <button type="submit" name="action" value="buy" class="delete-button" name="action" value="Clear">Buy</button>      
+    </div>
+  </form>
+  <%}%> 
+  <%- include('./footer.ejs');%>
+</body>
+</html>
