@@ -64,10 +64,12 @@ async function searchCapsule(name){
 
 const updateProduct = async (productId, productDetails) => {
     try {
+  
         const product = await coffeeData.findByIdAndUpdate(productId, productDetails, { new: true });
         if (!product) {
             throw new Error('Product not found');
         }
+      
         return product;
     } catch (error) {
         throw error;
