@@ -56,29 +56,22 @@ async function login(req, res) {
     res.redirect('/login?error=1')
 }
 
+
+//Creating a new User using the register page
 async function register(req, res) {
-  const { email, password,firstName,lastName,country,address,postalcode } = req.body
   try {
-    await loginService.register(email, password,firstName,lastName,country,address,postalcode)
-    res.redirect('/login');
+  const { email, password,firstName,lastName,country,address,postalcode } = req.body
+  const result = await usersService.register(email, password,firstName,lastName,country,address,postalcode)
+
+    if(result.success)
+    res.json(result)
+  else
+  res.status(400).json(result)
   }
   catch (e) { 
-    res.redirect('/register?error=1')
+    res.status(500).json({ success: false, message: 'An error occurred while creating the user' });
   }    
 }
-
-//  async function register(req, res) {
-//   const { username, password } = req.body;
-
-//   try {
-//     await loginService.register(username, password);
-//     res.json({ success: true, message: 'Successfully Created Your Account' });
-//     res.render('/login',{json:res.json})
-//   } catch (e) {
-//     res.status(400).json({ success: false, message: 'Registration failed. Please try again.' });
-//   }
-// }
-
 
 
 const getUsers = async (req , res) =>{

@@ -2,6 +2,16 @@
 .border-md {
     border-width: 2px;
 }
+.content {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Style for the footer */
+footer {
+  margin-top: auto;
+}
 
 body {
     min-height: 100vh;
