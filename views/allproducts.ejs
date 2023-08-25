@@ -27,90 +27,20 @@
                 <div id="autocomplete-dropdown" class="dropdown-content"></div>
 
     </div>
-
-        <!-- Filters-->
-        <div id="filters" class="row justify-content-center">
-            <!-- Country Filters -->
-            <div class="col-md-4">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h5>Country:</h5>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Colombia" id="Colombia">
-                            <label class="form-check-label" for="Colombia">
-                                Colombia
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Ethiopia" id="Ethiopia">
-                            <label class="form-check-label" for="Ethiopia">
-                                Ethiopia
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Brazil" id="Brazil">
-                            <label class="form-check-label" for="Brazil">
-                                Brazil
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    
-            <!-- Price Filter -->
-            <div class="col-md-4">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h5>Price:</h5>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="expensiveToCheap" id="expensiveToCheap">
-                            <label class="form-check-label" for="expensiveToCheap">
-                                Expensive to Cheap
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="cheapToExpensive" id="cheapToExpensive">
-                            <label class="form-check-label" for="cheapToExpensive">
-                                Cheap to Expensive
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    
-            <!-- Intensity Filter -->
-            <div class="col-md-4">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h5>Intensity:</h5>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="strongToSoft" id="strongToSoft">
-                            <label class="form-check-label" for="strongToSoft">
-                                Strong to Soft
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="softToStrong" id="softToStrong">
-                            <label class="form-check-label" for="softToStrong">
-                                Soft to Strong
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!-- New Filterring Method - Begin -->
+<form action="/shop" method="post" id="sortForm" name="sortForm">
+    <div class="sorting-container">
+      <label class="sorting-label" for="sorting">Sort By:</label>
+      <select id="sorting" name="sorting"
+      style="padding: 5px; border: 1px solid #ccc; border-radius: 5px;">>
+        <option value="price">Price</option>
+        <option value="origin">Origin</option>
+        <option value="intensity">Intensity</option>
+      </select>
+      <button type="submit" class="btn btn-sm btn-dark rounded-pill">Sort</button>
     </div>
-
+  </form>
+<!-- New Filterring Method - End -->
     <div class="container-fluid">
      <div id="searchResultsContainer">
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">

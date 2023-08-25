@@ -9,7 +9,7 @@ router.route('/')
 
 
     router.route('/capsule').get(capsuleController.getCapsule)
-
+    router.route('/').post(capsuleController.sortProducts)
     router.post('/search',capsuleController.searchCapsule)
 
 

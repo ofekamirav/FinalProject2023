@@ -1,4 +1,5 @@
 const coffeeService = require('../services/coffeeS');
+const coffeeData = require('../Models/coffeeM');
 
 const addCapsule = async (req,res) =>
 {
@@ -27,12 +28,33 @@ const getCapsules = async (req , res) =>{
     }
   }
 
+  const sortProducts = async(req,res) =>{
+
+    const sortMethod=req.body.sorting;
+    let capsules;
+    if(sortMethod==='price'){
+      capsules=await coffeeData.find({}).sort({ price: 1 });
+    }
+    else if(sortMethod==='origin'){
+      capsules=await coffeeData.find({}).sort({ origin: 1 });
+    }
+    else if(sortMethod==='intensity'){
+      capsules=await coffeeData.find({}).sort({ intensity: 1 });
+    }
+    else
+    return res.status(400).send('Invalid Sort Method Selected')
+  
+    res.render('allproducts',{capsules:capsules,user:req.user})
+
+  }
+
 
 
 
 module.exports={
     getCapsules,
     getCapsule,
-    searchCapsule
+    searchCapsule,
+    sortProducts,
 
 }
