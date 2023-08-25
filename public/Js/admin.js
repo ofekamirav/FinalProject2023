@@ -190,8 +190,9 @@ $(document).on('click', '.update-product', function() {
   // Get the row data
   var data = table.row($(this).closest('tr')).data();
 
-  // Store the product ID for later use (like on form submission)
-  var productId = data._id;  // Assuming your product data has an "_id" field
+  // Store the product ID for later use y
+  //var productId = data._id;  // Assuming your product data has an "_id" field
+  $('#updateProductModal').data('product-id', data._id);
 
   // Fill the input fields in the modal with data
   $('#uName').val(data.Name);
@@ -205,7 +206,7 @@ $(document).on('click', '.update-product', function() {
   $('#updateProductModal').modal('show');
 });
 
-//merge the functions ? 
+
 
 $(document).on('click', '#updateProductButton', function(e) {
   e.preventDefault();  // Prevent the default form submission behavior
@@ -217,7 +218,7 @@ $(document).on('click', '#updateProductButton', function(e) {
   var updatedPrice = $('#uPrice').val();
   var updatedType= $('#uType').val();
   var updatedIntensity=$('#iIntensity').val();
-  var productId = table.row($(this).closest('tr')).data()._id;  // Assuming your product data has an "_id" field
+  var productId = $('#updateProductModal').data('product-id');
 
   // Make an AJAX call to update the product on the server
   $.ajax({
@@ -245,7 +246,7 @@ $(document).on('click', '#updateProductButton', function(e) {
       }
     },
     error: function(err) {
-      alert('An error occurred while updating the product');
+      alert('An error occurred while updating the products');
     }
   });
 });
