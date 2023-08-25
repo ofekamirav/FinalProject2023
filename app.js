@@ -115,6 +115,7 @@ app.use('/myCart',require('./routes/cart'))
 //   }
 // });
 
+app.use('/public', express.static('public'));
 
 
 //Setting the Port using the env file ( in gitignore)

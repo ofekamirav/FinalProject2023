@@ -9,7 +9,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="../public/about.css">
     <title>Secret Coffee - About Us</title>
     <style>
         body {
@@ -27,6 +26,7 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             padding: 30px;
             border-radius: 10px;
+            color:black;
         }
 
         h1 {
@@ -95,11 +95,12 @@
         }
 
         /* Map Section */
-        iframe {
+        #mapContainer {
             border: 0;
             width: 100%;
-            height: 450px;
+            height: 350px;
             border-radius: 10px;
+            height: 50vh;
         }
     </style>
 </head>
@@ -116,19 +117,23 @@
         </div>
         
         <div class="row">
+            <h2>Places We Work With</h2>
             <div class="col-md-6">
-                <div id="map">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1692.3321745114752!2d34.77259057862434!3d31.97000143595049!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1siw!2sil!4v1692797114686!5m2!1siw!2sil" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
+                <div id="mapContainer"></div>
             </div>
             <div class="col-md-6">
-                <h2>Places We Work With</h2>
                 <div class="place-list">
                     <ul>
-                        <li>Place 1 - Description</li>
-                        <li>Place 2 - Description</li>
-                        <li>Place 3 - Description</li>
-                        <!-- Add more places here -->
+                        <li>Supreme Roastworks – Oslo, Norway</li>
+                        <li>HanSo Café – Madrid, Spain</li>
+                        <li>Bob Coffee Lab – Bucharest, Romania</li>
+                        <li>Ben gurion coffee – Tel Aviv, Israel</li>
+                        <li>Cafe ve Yam – Shefayim, Israel</li>
+                        <li>Nof Yam Cafe – Herzliya, Israel</li>
+                        <li>Jacobs Farm Cheese Inc – Kfar Haroeh, Israel</li>
+                        <li>Jack's Café – Cusco, Peru</li>
+                        <li>Pergamino Cafe – Medellín, Colombia</li>
+                        
                     </ul>
                 </div>
             </div>
@@ -138,33 +143,33 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="team-member">
-                    <img src="/w3images/team1.jpg" alt="Ofek Amirav">
+                    <img src="../public/Gallery/ofek.jpg" alt="Ofek Amirav">
                     <h3>Ofek Amirav</h3>
-                    <p>CEO & Founder</p>
+                    <p>CEO</p>
                     <p>ofek.amirav@gmail.com</p>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="team-member">
-                    <img src="/w3images/team2.jpg" alt="Aviv Portal">
+                    <img src="../public/Gallery/aviv.jpg" alt="Aviv Portal">
                     <h3>Aviv Portal</h3>
-                    <p>Art Director</p>
+                    <p>CEO</p>
                     <p>mike@example.com</p>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="team-member">
-                    <img src="/public/Gallery/nitzan.jpeg" alt="Nitzan Naveh">
+                    <img src="../public/Gallery/nitzan.jpeg" alt="Nitzan Naveh">
                     <h3>Nitzan Naveh</h3>
-                    <p>Designer</p>
-                    <p>john@example.com</p>
+                    <p>CFO</p>
+                    <p>nitzanav80@gmail.com</p>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="team-member">
                     <img src="//team3.jpg" alt="Hani Pardilov">
                     <h3>Hani Pardilov</h3>
-                    <p></p>
+                    <p>CMO</p>
                     <p>john@example.com</p>
                 </div>
             </div>
@@ -181,5 +186,39 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script> 
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1wttadFDuP0RB5MwZ_EMOoXrqXpmBalc&callback=initMap" async defer></script>
+    <script>
+        function initMap() {
+  var map;
+  var locations = [
+    { lat: 59.928074, lng: 10.759258, title: "Supreme Roastworks" },
+    { lat: -24.363, lng: 130.044, title: "HanSo Café" },
+    { lat: 44.465636022151216, lng: 26.085553218818863, title: "Bob Coffee Lab" },
+    { lat: 32.085915748602645, lng: 34.77233841454925, title: "Ben gurion coffee" },
+    { lat: 32.216709479010255, lng: 34.8211371635945, title: "Cafe ve Yam" },
+    { lat: 32.18998252182868, lng: 34.810071013411445, title: "Nof Yam Cafe" },
+    { lat: 32.39163994003476, lng: 34.91193845616498, title: "Jacobs Farm Cheese Inc" },
+    { lat: -13.515999789608632, lng: -71.97521998016877, title: "Jack's Café" },
+    { lat: 6.21556706510365, lng: -75.57285018446767, title: "Pergamino Cafe" }
+    
+  ];
+
+  map = new google.maps.Map(document.getElementById("mapContainer"), {
+    zoom: 4,
+    center: { lat: 31.0461 , lng: 34.8516  }
+  });
+
+  // Loop through the locations array and add markers to the map
+  locations.forEach(function(location) {
+    var marker = new google.maps.Marker({
+      position: { lat: location.lat, lng: location.lng },
+      map: map,
+      title: location.title // You can set a title for each marker
+    });
+  });
+}
+
+    </script>
+    
 </body>
 </html>
