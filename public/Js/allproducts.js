@@ -43,7 +43,6 @@ $(document).ready(function() {
 });
 
 
-
 //Add Product to cart Function
 $(document).on('submit','#addToCart',function(e){
   e.preventDefault();
@@ -67,3 +66,31 @@ $(document).on('submit','#addToCart',function(e){
   }
 });
 });
+
+//filters
+$("input[type='checkbox']").change(function () {
+  
+  const selectedValue = $(this).val();
+
+  if ($(this).is(":checked")) {
+      
+    getFilteredProducts(selectedValue);
+  } 
+});
+
+
+function getFilteredProducts(selectedValue){
+
+  $.ajax({
+      type: "POST",
+      url: "/shop", 
+      data: { filters: selectedFilters }, 
+      success: function (data) {
+          
+          $("#searchResultsContainer").html(data);
+      },
+      error: function (error) {
+          console.error("Failed to fetch filtered products:", error);
+      }
+  });
+}
