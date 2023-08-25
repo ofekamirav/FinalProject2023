@@ -15,6 +15,34 @@
 <body>
     <%- include('./header.ejs');%>
 
+    <div class="modal fade" id="updateUserModal" tabindex="-1" aria-labelledby="updateUserModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="updateUserModalLabel">Update User</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="updateForm">
+              <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="Eemail" required>
+              </div>
+              <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="Ename" required>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" onclick="updateUserData()">Update</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div class="toggle-buttons">
       <button class="btn btn-primary" id="show-users">Users</button>
@@ -44,7 +72,7 @@
         <form id="add-user-form" action="/register" method="post">
           <div class="mb-3">
             <label for="name" class="form-label">Email</label>
-            <input type="text" class="form-control" id="username" name="username" required>
+            <input type="text" class="form-control" id="username" name="email" required>
           </div>
           <div class="mb-3">
             <label for="origin" class="form-label">Password</label>
@@ -64,7 +92,7 @@
           </div>
           <div class="mb-3">
             <label for="origin" class="form-label">Adress</label>
-            <input type="text" class="form-control" id="adress" name="adress" required>
+            <input type="text" class="form-control" id="adress" name="address" required>
           </div>
           <div class="mb-3">
             <label for="origin" class="form-label">Postal Code</label>
@@ -109,7 +137,8 @@
       Add a new capsule
     </button>
     
-    <!-- Add User Modal -->
+    
+    <!-- Add Product Modal -->
     <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">

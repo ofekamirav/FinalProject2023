@@ -18,10 +18,11 @@ $(document).ready(function() {
         data: null,
         render: function(data, type, row) {
           return '<button class="btn btn-danger delete-user" data-id="' + row._id + '">Delete</button>' +
-          '<button class="btn btn-primary update-user" style="margin-left: 10px;" data-id="' + row._id + '">Update</button>';
+          '<button class="btn btn-primary update-user"  style="margin-left: 10px;" data-id="' + row._id + '">Update</button>';
+
         }
       }
-      
+      // data-bs-toggle="modal" data-bs-target="#updateUserModal"
       
       
     ],
@@ -36,6 +37,8 @@ $(document).ready(function() {
     lengthMenu: [[-1, 5, 10, 20,], ["All", 5, 10, 20,]], 
     
   });
+
+  
 
   $('#products-table').DataTable({
     ajax: {
@@ -52,7 +55,7 @@ $(document).ready(function() {
         data: null,
         render: function(data, type, row) {
           return '<button class="btn btn-danger delete-product" data-id="' + row._id + '">Delete</button>' +
-          '<button class="btn btn-primary update-product" style="margin-left: 10px;" data-id="' + row._id + '">Update</button>';
+          '<button class="btn btn-primary update-product"  style="margin-left: 10px;" data-id="' + row._id + '">Update</button>';
         }
       }
       
@@ -163,5 +166,17 @@ $(document).on('click', '.delete-product', function() {
 });
 
 
+function showUpdateModal(user) {
+  // Set input values in the modal based on the user object
+  $('#Eemail').val(user.email);
+  $('#Ename').val(user.firstName); // Adjust accordingly
+
+  // Show the modal
+  $('#updateUserModal').modal('show');
+}
 
 
+//Update User Function
+$(document).on('click', '.update-user', function() {
+  $('#updateUserModal').modal('show');
+});

@@ -16,7 +16,7 @@ function isLoggedIn(req, res, next) {
   try {
     const userId = req.session.userId; 
     const products = await cartService.getUserCartItems(userId);
-    res.render('cart',{products:products})
+    res.render('cart',{products:products,cart:req.session.cart})
   } catch (error) {
     res.status(500).send(error.message);
   }
@@ -25,17 +25,16 @@ function isLoggedIn(req, res, next) {
     //Adding an item to the cart
     async function addToCart(req, res) {
       try {
-      const {itemId} = req.body
+      const itemId = req.body.productId
       const userId=req.session.userId
-      const result = await cartService.addProduct(itemId,userId)
+
+      await cartService.addProduct(userId,itemId)
     
-        if(result.success)
-        res.json(result)
-      else
-      res.status(400).json(result)
+     res.json({success:true,message:"Product Added to cart successfully"});
+    
       }
       catch (e) { 
-        res.status(500).json({ success: false, message: 'An error occurred while creating the product' });
+        res.status(500).json({ success: false, message: 'An error occurred while trying to add to cart' });
       }    
       }
 

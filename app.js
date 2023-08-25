@@ -98,7 +98,7 @@ app.use('/about',require('./routes/about'))
 
 
 //Creating the route for cart page:
-app.use('/myCart',require('./routes/cart'))
+app.use('/cart',require('./routes/cart'))
 
 
 //Setting Cookies session - NEEDS TO DECIDE IF TO KEEP OR NOT 
