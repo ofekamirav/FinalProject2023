@@ -49,7 +49,7 @@ async function login(req, res) {
     req.session.fName=result.firstName;
     req.session.permission= result.permission
     req.session.cart=result.cart
-    console.log(req.session.userId +' Has Logged In');
+    console.log(req.session.username +' Has Logged In');
     res.redirect('/')
   }
   else

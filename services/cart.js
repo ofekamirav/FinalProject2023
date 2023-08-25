@@ -6,31 +6,58 @@ const User = require('../models/Users')
 
 
 
+// const getUserCartItems = async (userId) => {
+//   const user = await User.findById(userId);
+//   const cartItemIds = user.cart.map(item => item.itemId);
+//   const products = await coffeeData.find({ '_id': { $in: cartItemIds } });
+
+//   return products;
+// };
+
 const getUserCartItems = async (userId) => {
   const user = await User.findById(userId);
   const cartItemIds = user.cart.map(item => item.itemId);
   const products = await coffeeData.find({ '_id': { $in: cartItemIds } });
-  return products;
+  
+  // Map products with their quantity from the cart
+  const productsWithQuantity = products.map(product => {
+    const item = user.cart.find(i => i.itemId.toString() === product._id.toString());
+    return {
+      ...product._doc, 
+      quantity: item ? item.quantity : 0
+    };
+  });
+
+  return productsWithQuantity;
 };
 
+
 //Adding a new product
-async function addProduct(itemId) {
+async function addProduct(userId,itemId) {
   try{
-      const product = new coffeeData({
-          Name: name,
-          origin:origin,
-          type:type,
-          intensity:intensity,
-          flavor:flavor,
-          price:price,
-         
-          
-      });
-      const newP =await product.save()
-      if(newP)
-        return{success:true,message:'Product Created successfully'}
-      else
-      return {success:false,message:'Couldnt Create'}
+    
+    const user = await User.findById(userId);
+      
+   
+    var existed =0;
+    for(let i=0;i<user.cart.length;i++)
+    {
+      if(user.cart[i].itemId.toString()===itemId.toString())
+      {
+      user.cart[i].quantity+=1;
+      existed=1;
+      await user.save()
+      }
+    }
+
+    if(existed==0)
+    {
+      await User.findByIdAndUpdate(userId,{
+        $push:{cart:{itemId:itemId,quantity:1}}
+      })
+    }
+
+
       
     }catch(err){
       console.log(err);
