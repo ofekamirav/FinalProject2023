@@ -205,7 +205,7 @@ $(document).on('click', '.update-product', function() {
   $('#updateProductModal').modal('show');
 });
 
-
+//merge the functions ? 
 
 $(document).on('click', '#updateProductButton', function(e) {
   e.preventDefault();  // Prevent the default form submission behavior
