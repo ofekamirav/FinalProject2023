@@ -80,6 +80,7 @@ module.exports = {
     getAllCoffee,
     getCapsule,
     deleteP,
-    searchCapsule
+    searchCapsule,
+    updateProduct,
    
  };
