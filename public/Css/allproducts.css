@@ -75,6 +75,12 @@ body {
   margin-bottom: 20px;
 }
 
+#cart_button{
+  background-color: #c7b69e;
+  color:black;
+  border-color: black;
+}
+
 .form-control {
   border: 2px solid #ccc;
   border-radius: 5px;

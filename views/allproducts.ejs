@@ -131,7 +131,7 @@
                         <div class="button-container2">
                             <form method="POST" action="/cart/Addto" id="addToCart">
                                 <input type="hidden" name="productId" value="<%= capsule['Name'] %>">
-                                <button class="btn btn-primary" type="submit" name="action" value="cart:<%= capsule["_id"] %>">Add to Cart</button>
+                                <button id="cart_button" class="btn btn-primary" type="submit" name="action" value="cart:<%= capsule["_id"] %>">Add to Cart</button>
                             </form>
                         </div>
                     </div>
