@@ -58,10 +58,10 @@
       </div>
     </div>
 
-    <div class="toggle-buttons">
+    <!--<div class="toggle-buttons">
       <button class="btn btn-primary" id="show-users">Users</button>
       <button class="btn btn-secondary" id="show-products">Products</button>
-    </div>
+    </div>-->
 
     
   <div class="table-Users">
@@ -176,7 +176,7 @@
               </div>
               <div class="mb-3">
                 <label for="origin" class="form-label">Intensity</label>
-                <input type="text" class="form-control"   name="intensity" required>
+                <input type="text" class="form-control" name="intensity" pattern="\d+">
               </div>
               <div class="mb-3">
                 <label for="origin" class="form-label">Flavor</label>
@@ -185,6 +185,7 @@
               <div class="mb-3">
                 <label for="origin" class="form-label">Price</label>
                 <input type="text" class="form-control"  name="price" required>
+                <small class="text-muted">Enter a valid price (e.g., 10 or 10.99)</small>
               </div>
               <button type="submit" class="btn btn-primary">Submit</button>
             </form>

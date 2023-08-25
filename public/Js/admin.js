@@ -69,12 +69,70 @@ $(document).ready(function() {
 
 });
 
-//Beginning of work on evenListeners i.e: delete update ...
+
+
+// Define isValidEmail function for email validation
+function isValidEmail(email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
 
 //Creating a new User
 $(document).on('submit','#add-user-form',function(e){
   e.preventDefault();
  
+// Client-side validation logic for registration form
+const email = $("#email").val();
+const password = $("#password").val();
+const firstName = $("#firstName").val();
+const lastName = $("#lastName").val();
+const country = $("#country").val();
+const address = $("#address").val();
+const postalcode = $("#postalcode").val();
+
+if (email.trim() === "") {
+  alert("Please enter your email address.");
+  return;
+}
+
+if (!isValidEmail(email)) {
+  alert("Please enter a valid email address.");
+  return;
+}
+
+if (password.trim() === "" || password.length < 6) {
+  alert("Please enter a valid password with at least 6 characters.");
+  return;
+}
+// Validation for first name
+if (firstName.trim() === "") {
+    alert("Please enter your first name.");
+    return;
+}
+
+// Validation for last name
+if (lastName.trim() === "") {
+    alert("Please enter your last name.");
+    return;
+}
+
+// Validation for country
+if (country.trim() === "") {
+    alert("Please enter your country.");
+    return;
+}
+
+// Validation for address
+if (address.trim() === "") {
+    alert("Please enter your address.");
+    return;
+}
+
+// Validation for postal code (only numbers)
+if (!/^\d+$/.test(postalcode)) {
+    alert("Postal code should contain only numbers.");
+    return;
+}
   $.ajax({
   method:"POST",
   url: "admin/adduser",
@@ -95,25 +153,66 @@ $(document).on('submit','#add-user-form',function(e){
 
 
 //Creating a new Capsule
-$(document).on('submit','#add-product-form',function(e){
+$(document).on('submit', '#add-product-form', function (e) {
   e.preventDefault();
- 
-  $.ajax({
-  method:"POST",
-  url: "admin/addProduct",
-  data:$(this).serialize(),
-  success: function(response) {
-    if (response.success) {
-      alert('Capsule Created successfully');
-    } else {
-      alert('Error creating Capsule');
-    }
-  },
-  error: function(err) {
-    alert('An error occurred while creating the Capsule');
+
+  // Validation check
+  if (!validateForm()) {
+      // Validation failed, do not proceed with the AJAX request
+      return;
   }
+
+  $.ajax({
+      method: "POST",
+      url: "admin/addProduct",
+      data: $(this).serialize(),
+      success: function (response) {
+          if (response.success) {
+              alert('Capsule Created successfully');
+          } else {
+              alert('Error creating Capsule');
+          }
+      },
+      error: function (err) {
+          alert('An error occurred while creating the Capsule');
+      }
+  });
 });
-});
+
+// Validation function
+function validateForm() {
+  let isValid = true;
+
+  // Iterate through each input field in the form
+  $('#add-product-form').find('input').each(function () {
+      const input = $(this);
+      const value = input.val();
+
+      // Check if the input is empty
+      if (value.trim() === '') {
+          isValid = false;
+          // Add error styling (you can customize this part)
+          input.addClass('is-invalid');
+      } else {
+          // Remove error styling
+          input.removeClass('is-invalid');
+      }
+
+      // Check if the price field contains only numbers with optional decimal point
+      if (input.attr('name') === 'price' && !/^\d+(\.\d{2})?$/.test(value)) {
+          isValid = false;
+          input.addClass('is-invalid');
+      }
+
+      // Check if the intensity field contains only numbers
+      if (input.attr('name') === 'intensity' && !/^\d+$/.test(value)) {
+          isValid = false;
+          input.addClass('is-invalid');
+      }
+  });
+
+  return isValid;
+}
 
 
 
