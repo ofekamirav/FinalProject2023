@@ -1,72 +1,80 @@
-// $(document).ready(async function () {
-//   $("#registration-form").submit( async function (event) {
-//     // Prevent the default form submission behavior
-//     event.preventDefault();
+$(document).on('submit','#registration-form',function(e){
+    e.preventDefault();
+    
+    // Client-side validation logic for registration form
+    const email = $("#email").val();
+    const password = $("#password").val();
+    const firstName = $("#firstName").val();
+    const lastName = $("#lastName").val();
+    const country = $("#country").val();
+    const address = $("#address").val();
+    const postalcode = $("#postalcode").val();
 
-//     // const formData = new FormData(this);
-//     // const username = $('#username').val();
-//     // const password = $('#password').val();
-//     let postdata={
-//       username:$('#username').val(),
-//       password:$('#password').val()
-//     }
+    if (email.trim() === "") {
+      alert("Please enter your email address.");
+      return;
+    }
+    
 
-//     var resp = {
-//       "url":`http://localhost:80/register`,
-//       "method": 'POST',
-//       "data": { "postdata": postdata }, // Convert the item object to JSON
-//       // "contentType": "application/json",
-//   }
-//   // loadAllItems();
-//   await $.ajax(resp).done(function(response){
-//     if(response.message == 'success')
-//     {
-//       Swal.fire({
-//         title: 'Error',
-//         text:"Fill all data",
-//         icon: 'error',
-//         confirmButtonText: 'OK'
-//         })
-//     }
-//   });
-// });
-// })
-//     // $.ajax({
-//     //   url: "/register",
-//     //   type: "POST",
-//     //   "data": {"data":postdata},
-//     //   processData: false,
-//     //   contentType: false,
-//     //   success: function (response) {
-//     //     console.log('successfuly got to AJAX')
-//     //     if (response.success) {
-//     //       Swal.fire({
-//     //         icon: "success",
-//     //         title: response.message,
-//     //         confirmButtonText: "OK",
-//     //       }).then((result) => {
-//     //         if (result.isConfirmed) {
-//     //           window.location.href = "/login";
-//     //         }
-//     //       });
-//     //     } else {
-//     //       Swal.fire({
-//     //         icon: "error",
-//     //         title: "Registration Failed",
-//     //         text: "Registration failed. Please try again.",
-//     //         confirmButtonText: "OK",
-//     //       });
-//     //     }
-//     //   },
-      
-//     //   error: function () {
-//     //     // Show the error message with Swal
-//     //     Swal.fire({
-//     //       icon: "error",
-//     //       title: "Error",
-//     //       text: "An error occurred. Please try again later.",
-//     //       confirmButtonText: "OK",
-//     //     });
-//     //   },
-//     // });
+    if (!isValidEmail(email)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
 
+    if (password.trim() === "" || password.length < 6) {
+      alert("Please enter a valid password with at least 6 characters.");
+      return;
+    }
+    // Validation for first name
+    if (firstName.trim() === "") {
+        alert("Please enter your first name.");
+        return;
+    }
+
+    // Validation for last name
+    if (lastName.trim() === "") {
+        alert("Please enter your last name.");
+        return;
+    }
+
+    // Validation for country
+    if (country.trim() === "") {
+        alert("Please enter your country.");
+        return;
+    }
+
+    // Validation for address
+    if (address.trim() === "") {
+        alert("Please enter your address.");
+        return;
+    }
+
+    // Validation for postal code (only numbers)
+    if (!/^\d+$/.test(postalcode)) {
+        alert("Postal code should contain only numbers.");
+        return;
+    }
+    // Continue with form submission if validations pass
+    $.ajax({
+      method: "POST",
+      url: "/register",
+      data: $(this).serialize(),
+      success: function (response) {
+        if (response.success) {
+          alert('User Created successfully');
+        } else {
+          alert('Error creating user');
+        }
+      },
+      error: function (err) {
+        alert('An error occurred while creating the user');
+      }
+    });
+});
+
+// Define isValidEmail function for email validation
+function isValidEmail(email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+  

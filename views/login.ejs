@@ -14,49 +14,8 @@
     <title>Secret Coffee</title>
 </head>
 <body>
-     <!-- Navbar -->
-     <header class="header">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <img src="Gallery/logo.png" width="50" height="50" alt="">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                <a class="navbar-brand" href="/" style="hover{cursor: pointer;}">Secret Coffee</a>
-                <ul class="navbar-nav me-auto mt-2 mt-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/shop" >Store<i class="bi bi-shop-window"></i></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact us</a>
-                    </li>
-                            
-                </ul>
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link"  href="/login" id="login">
-                          Login<i class="bi bi-door-open" title="Log In"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link"  href="/register" id="login">
-                        Register<i class="bi bi-clipboard" title="Register"></i>
-                      </a>
-                  </li>
-                    <li>
-                        <button type="button" class="btn btn-link"><span class="bi bi-cart black-color"></span></button>
-                    </li>
-                </ul>            
-            </div>
-        </nav>
-    </header>
-  <!-- Navbar -->
-
- 
-    
+    <%- include('./header.ejs');%>
+        
     <div class="banner">
         <div class="container p-5">
             <div class="card mx-3 mt-n2 shadow-lg" style="border-radius:0px; border:none">
@@ -65,7 +24,7 @@
                     <form id="login" action="/login" method="post">
                         <div class="row">
                             <div class="col">
-                                <div class="form mb-3">
+                                <div class="form-floating mb-3">
                                     <input type="text" class="form-control" name="username" placeholder="Enter Username">
                                     <label for="EmailInput">Username</label>
                                 </div>
@@ -89,14 +48,17 @@
             </div>
         </div>
     </div>
-
-    
-
-        <!-- Optional JavaScript -->
+    <footer style-="margin-top:auto;">
+    <%- include('./footer.ejs');%>
+</footer>
+    <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://www.bing.com/api/maps/mapcontrol?callback=loadMapScenario&key=AoNW-VGef1vSDuJEZC2bYlvV5vMZgUAa9kKxDeVC1nj8ZrEo1Ut3pEXEHPAU7x39" async defer></script>
-   
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script> 
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="../public/Js/login.js"></script>
 
 </body>
 
