@@ -9,7 +9,7 @@
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-     <link rel="stylesheet" href="/capsule.css">
+     <link rel="stylesheet" href="../public/capsule.css">
 
 
 </head>
@@ -22,42 +22,41 @@
 <form action="/show1capsule/Addto" method="post">
   
       
-        <h2 class="capsule-name" id="head"><%= capsule["Name"] %></h2>
-        <div class="row" id="capsule">
-        <div class="col-sm-8">
-        <div class="desc">
-        <div class="details">
-        <p ><div class ="b.price" Price:></div> $<%= capsule.price %></p>
-        <p >Intensity: <%= capsule.intensity %></p>
-        <p >Flavor: <%= capsule.flavor %></p>
-        
-        <p class="capsule-description"><%= capsule.origin %></p>
+
+        <!-- Updated HTML Structure -->
+<div class="container product">
+  <div class="row">
+      <div class="col-md-6">
+          <img src="<%= capsule.image %>" alt="<%= capsule["_id"] %> Image" class="img-fluid">
       </div>
-        </div>
-        </div>
-       
+      <div class="col-md-6">
+          <h2><%=capsule.Name%></h2>
+          <br>
+          <p><strong>Intensity:</strong> <%= capsule.intensity %></p>
+          <p><strong>Flavor:</strong> <%= capsule.flavor %></p>
+          <p><strong>Price:</strong> $<%= capsule.price %></p>
+          <p><strong>Capsule origin:</strong> <%= capsule.origin %></p>
+          <button id="button_cart" class="btn btn-primary" type="submit" name="action" value="cart:<%= capsule["_id"] %>">Add to Cart</button>
+      </div>
+  </div>
+</div>
+
+
       <div class="col-sm-8">
         <div class="cont">
             <% if (capsule.image) { %>
               <div class="image-container">
-          <img width="450px" height="400px" class="capsule-image" src="<%= capsule.image %>" alt="<%= capsule["_id"] %> Image" />
         <% } else { %>
           <p>No image available</p>
         <% } %>
         
       </div></div></div></div>
-        <div class="row">
-        <div class="col-sm-8" id="capsule">
-          <div class="button-container">
-            <button class="btn btn-primary" type="submit" name="action" value="cart:<%= capsule["_id"] %>">Add to Cart List</button>
-        </div></div></div>
-       
-        
-      
+           
+             
    
   </form>
 
-     <!-- פוטר -->
+  <%- include('./footer.ejs');%>
 
    <!-- <script src="index.js"></script> -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
