@@ -82,57 +82,57 @@ $(document).on('submit','#add-user-form',function(e){
   e.preventDefault();
  
 // Client-side validation logic for registration form
-const email = $("#email").val();
-const password = $("#password").val();
-const firstName = $("#firstName").val();
-const lastName = $("#lastName").val();
-const country = $("#country").val();
-const address = $("#address").val();
-const postalcode = $("#postalcode").val();
+// const email = $("#email").val();
+// const password = $("#password").val();
+// const firstName = $("#firstName").val();
+// const lastName = $("#lastName").val();
+// const country = $("#country").val();
+// const address = $("#address").val();
+// const postalcode = $("#postalcode").val();
 
-if (email.trim() === "") {
-  alert("Please enter your email address.");
-  return;
-}
+// if (email.trim() === "") {
+//   alert("Please enter your email address.");
+//   return;
+// }
 
-if (!isValidEmail(email)) {
-  alert("Please enter a valid email address.");
-  return;
-}
+// if (!isValidEmail(email)) {
+//   alert("Please enter a valid email address.");
+//   return;
+// }
 
-if (password.trim() === "" || password.length < 6) {
-  alert("Please enter a valid password with at least 6 characters.");
-  return;
-}
-// Validation for first name
-if (firstName.trim() === "") {
-    alert("Please enter your first name.");
-    return;
-}
+// if (password.trim() === "" || password.length < 6) {
+//   alert("Please enter a valid password with at least 6 characters.");
+//   return;
+// }
 
-// Validation for last name
-if (lastName.trim() === "") {
-    alert("Please enter your last name.");
-    return;
-}
+// if (firstName.trim() === "") {
+//     alert("Please enter your first name.");
+//     return;
+// }
 
-// Validation for country
-if (country.trim() === "") {
-    alert("Please enter your country.");
-    return;
-}
 
-// Validation for address
-if (address.trim() === "") {
-    alert("Please enter your address.");
-    return;
-}
+// if (lastName.trim() === "") {
+//     alert("Please enter your last name.");
+//     return;
+// }
 
-// Validation for postal code (only numbers)
-if (!/^\d+$/.test(postalcode)) {
-    alert("Postal code should contain only numbers.");
-    return;
-}
+
+// if (country.trim() === "") {
+//     alert("Please enter your country.");
+//     return;
+// }
+
+
+// if (address.trim() === "") {
+//     alert("Please enter your address.");
+//     return;
+// }
+
+
+// if (!/^\d+$/.test(postalcode)) {
+//     alert("Postal code should contain only numbers.");
+//     return;
+// }
   $.ajax({
   method:"POST",
   url: "admin/adduser",
@@ -140,6 +140,7 @@ if (!/^\d+$/.test(postalcode)) {
   success: function(response) {
     if (response.success) {
       alert('User Created successfully');
+      $('#users-table').DataTable().ajax.reload();
     } else {
       alert('Error creating user');
     }
@@ -169,6 +170,7 @@ $(document).on('submit', '#add-product-form', function (e) {
       success: function (response) {
           if (response.success) {
               alert('Capsule Created successfully');
+              $('#products-table').DataTable().ajax.reload();
           } else {
               alert('Error creating Capsule');
           }
@@ -266,89 +268,54 @@ $(document).on('click', '.delete-product', function() {
 
 
 
+// Variable to store the product ID of the product being updated.
+let currentProductId = '';
 
-//Updating Product 
+// Event listener for the 'Update' button in each row.
+$('#products-table').on('click', '.update-product', function() {
+    // Get the product ID from the clicked button's data-id attribute.
+    currentProductId = $(this).data('id');
 
-//Update User Function
-// $(document).on('click', '.update-product', function() {
-//   var table = $('#products-table').DataTable();
-//   var data = table.row($(this).closest('tr')).data();
-//   $('#uName').val(data.Name);
-//   $('#uOrigin').val(data.origin);
-//   $('#uFlavor').val(data.flavor);
-//   $('#uIntensity').val(data.intensity);
-//   $('#uType').val(data.type);
-//   $('#uPrice').val(data.price);
-//   $('#updateProductModal').modal('show');
-// });
+    // Optionally: Populate modal input fields with data from the DataTable's row. 
+    // This requires accessing data from the DataTables API.
+    // Assuming you have the corresponding row data. Here's just an example:
+    let rowData = $('#products-table').DataTable().row($(this).parents('tr')).data();
+    $('#Name').val(rowData.Name);
+    $('#origin').val(rowData.origin);
+    $('#type').val(rowData.type); // This assumes 'type' is a property in your rowData. Adjust accordingly.
+    $('#intensity').val(rowData.intensity); // Similarly, adjust if needed.
+    $('#flavor').val(rowData.flavor);
+    $('#price').val(rowData.price);
 
-$(document).on('click', '.update-product', function() {
-  // Define the table variable
-  var table = $('#products-table').DataTable();
-
-  // Get the row data
-  var data = table.row($(this).closest('tr')).data();
-
-  // Store the product ID for later use y
-  //var productId = data._id;  // Assuming your product data has an "_id" field
-  $('#updateProductModal').data('product-id', data._id);
-
-  // Fill the input fields in the modal with data
-  $('#uName').val(data.Name);
-  $('#uOrigin').val(data.origin);
-  $('#uFlavor').val(data.flavor);
-  $('#uIntensity').val(data.intensity);
-  $('#uType').val(data.type);
-  $('#uPrice').val(data.price);
-
-  // Show the modal
-  $('#updateProductModal').modal('show');
+    // Show the modal.
+    $('#updateProductModal').modal('show');
 });
 
+// Your update product function.
+$(document).on('submit', '#update-product-form', function(e) {
+    e.preventDefault();
 
+    // Add validation or any other requirements here, similar to the function for adding products.
 
-$(document).on('click', '#updateProductButton', function(e) {
-  e.preventDefault();  // Prevent the default form submission behavior
-
-  // Capture the updated data
-  var updatedName = $('#uName').val();
-  var updatedOrigin = $('#uOrigin').val();
-  var updatedFlavor = $('#uFlavor').val();
-  var updatedPrice = $('#uPrice').val();
-  var updatedType= $('#uType').val();
-  var updatedIntensity=$('#iIntensity').val();
-  var productId = $('#updateProductModal').data('product-id');
-
-  // Make an AJAX call to update the product on the server
-  $.ajax({
-    url: 'admin/updateProduct/' + productId,
-    method: 'PUT',
-    data: {
-      Name: updatedName,
-      origin: updatedOrigin,
-      flavor: updatedFlavor,
-      price: updatedPrice,
-      type:updatedType,
-      intensity:updatedIntensity
-    },
-    success: function(response) {
-      if (response.success) {
-        alert('Product updated successfully');
-
-        // Reload the DataTable to reflect the changes
-        $('#products-table').DataTable().ajax.reload();
-
-        // Hide the modal after successful update
-        $('#updateProductModal').modal('hide');
-      } else {
-        alert('Error updating product');
-      }
-    },
-    error: function(err) {
-      alert('An error occurred while updating the products');
-    }
-  });
+    $.ajax({
+        method: "PUT",
+        url: "admin/updateProduct/" + currentProductId,
+        data: $(this).serialize(),
+        success: function(response) {
+            if (response.success) {
+                alert('Product updated successfully');
+                // Optionally: Refresh the DataTable to reflect the changes.
+                $('#products-table').DataTable().ajax.reload();
+                // Close the modal.
+                $('#updateProductModal').modal('hide');
+            } else {
+                alert('Error updating product');
+            }
+        },
+        error: function(err) {
+            alert('An error occurred while updating the product');
+        }
+    });
 });
 
-//End of updating product
 
