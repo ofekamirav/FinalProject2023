@@ -166,28 +166,89 @@ $(document).on('click', '.delete-product', function() {
 });
 
 
-function showUpdateModal(user) {
-  // Set input values in the modal based on the user object
-  $('#Eemail').val(user.email);
-  $('#Ename').val(user.firstName); // Adjust accordingly
 
-  // Show the modal
-  $('#updateUserModal').modal('show');
-}
 
+//Updating Product 
 
 //Update User Function
+// $(document).on('click', '.update-product', function() {
+//   var table = $('#products-table').DataTable();
+//   var data = table.row($(this).closest('tr')).data();
+//   $('#uName').val(data.Name);
+//   $('#uOrigin').val(data.origin);
+//   $('#uFlavor').val(data.flavor);
+//   $('#uIntensity').val(data.intensity);
+//   $('#uType').val(data.type);
+//   $('#uPrice').val(data.price);
+//   $('#updateProductModal').modal('show');
+// });
+
 $(document).on('click', '.update-product', function() {
+  // Define the table variable
   var table = $('#products-table').DataTable();
+
+  // Get the row data
   var data = table.row($(this).closest('tr')).data();
+
+  // Store the product ID for later use (like on form submission)
+  var productId = data._id;  // Assuming your product data has an "_id" field
+
+  // Fill the input fields in the modal with data
   $('#uName').val(data.Name);
   $('#uOrigin').val(data.origin);
   $('#uFlavor').val(data.flavor);
+  $('#uIntensity').val(data.intensity);
+  $('#uType').val(data.type);
   $('#uPrice').val(data.price);
 
-
-
-
-  
+  // Show the modal
   $('#updateProductModal').modal('show');
 });
+
+
+
+$(document).on('click', '#updateProductButton', function(e) {
+  e.preventDefault();  // Prevent the default form submission behavior
+
+  // Capture the updated data
+  var updatedName = $('#uName').val();
+  var updatedOrigin = $('#uOrigin').val();
+  var updatedFlavor = $('#uFlavor').val();
+  var updatedPrice = $('#uPrice').val();
+  var updatedType= $('#uType').val();
+  var updatedIntensity=$('#iIntensity').val();
+  var productId = table.row($(this).closest('tr')).data()._id;  // Assuming your product data has an "_id" field
+
+  // Make an AJAX call to update the product on the server
+  $.ajax({
+    url: 'admin/updateProduct/' + productId,
+    method: 'PUT',
+    data: {
+      Name: updatedName,
+      origin: updatedOrigin,
+      flavor: updatedFlavor,
+      price: updatedPrice,
+      type:updatedType,
+      intensity:updatedIntensity
+    },
+    success: function(response) {
+      if (response.success) {
+        alert('Product updated successfully');
+
+        // Reload the DataTable to reflect the changes
+        $('#products-table').DataTable().ajax.reload();
+
+        // Hide the modal after successful update
+        $('#updateProductModal').modal('hide');
+      } else {
+        alert('Error updating product');
+      }
+    },
+    error: function(err) {
+      alert('An error occurred while updating the product');
+    }
+  });
+});
+
+//End of updating product
+

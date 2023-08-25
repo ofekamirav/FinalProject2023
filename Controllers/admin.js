@@ -104,6 +104,29 @@ const getCapsules = async (req , res) =>{
     }
   }
 
+  
+  //Updating Product Data:
+
+const updateProduct = async (req, res) => {
+    const productId = req.params.productId;
+    const productDetails = req.body;
+
+    try {
+        const updatedProduct = await coffeeService.updateProduct(productId, productDetails);
+        res.status(200).json({
+            success: true,
+            data: updatedProduct
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
+    }
+};
+
+
+
 
 module.exports={
     getCapsules,
@@ -113,6 +136,8 @@ module.exports={
     deleteUser,
     deleteProduct,
     register,
-    addProduct
+    addProduct,
+    updateProduct
+
 
 }
