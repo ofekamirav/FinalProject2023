@@ -177,6 +177,17 @@ function showUpdateModal(user) {
 
 
 //Update User Function
-$(document).on('click', '.update-user', function() {
-  $('#updateUserModal').modal('show');
+$(document).on('click', '.update-product', function() {
+  var table = $('#products-table').DataTable();
+  var data = table.row($(this).closest('tr')).data();
+  $('#uName').val(data.Name);
+  $('#uOrigin').val(data.origin);
+  $('#uFlavor').val(data.flavor);
+  $('#uPrice').val(data.price);
+
+
+
+
+  
+  $('#updateProductModal').modal('show');
 });
