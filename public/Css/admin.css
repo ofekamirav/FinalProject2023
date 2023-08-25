@@ -1,48 +1,52 @@
-.table-Users {
-    max-width: 80%; /* Control the width of the table */
-    margin: 0 auto; /* Center the table on the page */
-    border: 2px solid #dcdcdc; /* Thin border */
-    border-radius: 10px; /* Rounded borders */
-}
-#table-name{
-    text-align: center;
-    font-size: 25px;
-    color:blue;
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0; /* Background color for the entire page */
 }
 
-.table-Product {
-    max-width: 80%; /* Control the width of the table */
-    margin: 0 auto; /* Center the table on the page */
-    margin-top: 50px;
-    border: 2px solid #dcdcdc; /* Thin border */
-    border-radius: 5px; /* Rounded borders */
-}
-.product-name{
-    text-align: center;
-    font-size: 25px;
-    color:blue;
+/* Table styles */
+.table-Users, .table-Product {
+    max-width: 80%;
+    margin: 0 auto;
+    border-radius: 10px;
+    background-color: #ffffff; /* Background color for tables */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle lift */
 }
 
-.toggle-buttons{
+#table-name, .product-name {
+    text-align: center;
+    font-size: 25px;
+    color: #333; /* Text color for table headers */
+    background-color: #c7b69e; /* Header background color */
+    padding: 10px;  
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+table.dataTable {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table.dataTable td, table.dataTable th {
+    border: 1px solid #ddd; /* Table cell borders */
+    padding: 8px;
+    text-align: left;
+}
+
+table.dataTable th {
+    background-color: #f2f2f2; /* Background color for table headers */
+}
+
+table.dataTable tr:nth-child(even) {
+    background-color: #f2f2f2; /* Background color for even rows */
+}
+
+/* Centered container styles */
+.toggle-buttons, .adduser, .addcapsule {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 10px;
     margin-bottom: 20px;
 }
-.adduser{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 10px;
-    
-}
- 
-.addcapsule{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 10px;
-    
-}
-

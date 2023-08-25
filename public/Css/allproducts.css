@@ -66,6 +66,9 @@ body {
   padding: 20px 0;
 }
 
+.sorting-container{
+  text-align: center;
+}
 /* Custom CSS for search bar and filters */
 .container-fluid.bg-light {
   border: 1px solid #ccc;
@@ -73,7 +76,11 @@ body {
   padding: 20px;
   margin-bottom: 20px;
 }
-
+#submitSort{
+  background-color: #c7b69e;
+  color:black;
+  border-color: #c7b69e;
+}
 #cart_button{
   background-color: #c7b69e;
   color:black;
