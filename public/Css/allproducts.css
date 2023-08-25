@@ -29,7 +29,6 @@
 /* Body background */
 body {
   font-family: Arial, sans-serif;
-  background-color: #f8f8f8;
 }
 
 /* Product cards */
@@ -78,26 +77,12 @@ body {
 #cart_button{
   background-color: #c7b69e;
   color:black;
-  border-color: black;
+  border-color: #c7b69e;
 }
 
 .form-control {
   border: 2px solid #ccc;
   border-radius: 5px;
-
-}
-
-.btn-primary {
-  border: 2px solid #007bff;
-  border-radius: 5px;
-  background-color: #007bff;
-  color: #fff;
-
-}
-
-.btn-primary:hover {
-  background-color: #0056b3;
-  border-color: #0056b3;
 }
 
 .btn-secondary {
@@ -107,6 +92,7 @@ body {
 /* Add some margin to the filters section */
 #filters {
   margin-top: 20px;
+  margin-left: 50px;
 }
 
 /* Style the search input placeholder text */

@@ -19,17 +19,16 @@
 
     <%- include('./header.ejs');%>  
     
-    <div class="container-fluid bg-light p-4 mb-4">
+    <div class="container-fluid p-4 mb-4">
        
             <!-- Search Input -->
                 <input class="form-control mr-2" type="text" placeholder="Search" aria-label="Search" id="search-input">
                 
                 <div id="autocomplete-dropdown" class="dropdown-content"></div>
 
-        </div>
+    </div>
 
-    
-        <!-- Filters (hidden by default) -->
+        <!-- Filters-->
         <div id="filters" class="row justify-content-center">
             <!-- Country Filters -->
             <div class="col-md-4">
@@ -38,33 +37,25 @@
                         <h5>Country:</h5>
                     </div>
                     <div class="col-md-4">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" value="" id="country1">
-                            <label class="form-check-label" for="country1">
-                                Mexico
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" value="" id="country2">
-                            <label class="form-check-label" for="country2">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Colombia" id="Colombia">
+                            <label class="form-check-label" for="Colombia">
                                 Colombia
                             </label>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" value="" id="country3">
-                            <label class="form-check-label" for="country3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Ethiopia" id="Ethiopia">
+                            <label class="form-check-label" for="Ethiopia">
                                 Ethiopia
                             </label>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" value="" id="country4">
-                            <label class="form-check-label" for="country4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Brazil" id="Brazil">
+                            <label class="form-check-label" for="Brazil">
                                 Brazil
                             </label>
                         </div>
@@ -79,36 +70,46 @@
                         <h5>Price:</h5>
                     </div>
                     <div class="col-md-12">
-                        <div class="form-group">
-                            <select class="form-control" id="priceFilter" style="height: fit-content; width: fit-content;">
-                                <option>Expensive to Cheap</option>
-                                <option>Cheap to Expensive</option>
-                            </select>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="expensiveToCheap" id="expensiveToCheap">
+                            <label class="form-check-label" for="expensiveToCheap">
+                                Expensive to Cheap
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="cheapToExpensive" id="cheapToExpensive">
+                            <label class="form-check-label" for="cheapToExpensive">
+                                Cheap to Expensive
+                            </label>
                         </div>
                     </div>
                 </div>
             </div>
     
-            <!-- Sweetness Level Filter -->
+            <!-- Intensity Filter -->
             <div class="col-md-4">
                 <div class="row">
                     <div class="col-md-12">
-                        <h5>Sweetness Level:</h5>
+                        <h5>Intensity:</h5>
                     </div>
                     <div class="col-md-12">
-                        <div class="form-group">
-                            <select class="form-control" id="sweetnessFilter" style="height: fit-content; width: fit-content;">
-                                <option>Most to Least</option>
-                                <option>Least to Most</option>
-                            </select>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="strongToSoft" id="strongToSoft">
+                            <label class="form-check-label" for="strongToSoft">
+                                Strong to Soft
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="softToStrong" id="softToStrong">
+                            <label class="form-check-label" for="softToStrong">
+                                Soft to Strong
+                            </label>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
-
 
     <div class="container-fluid">
      <div id="searchResultsContainer">
@@ -126,6 +127,7 @@
                     <div class="card-body">
                         <h2 class="card-title"><%= capsule["Name"] %></h2>
                         <p class="card-text">Price: $<%= capsule.price %></p>
+                        <p class="card-text">Intensity: <%= capsule.intensity %></p>
                         <p class="card-text">Origin: <%= capsule.origin %></p>
                         <p class="card-text" id="description"><%= capsule.flavor %></p>
                         <div class="button-container2">
@@ -144,15 +146,23 @@
 
 <%- include('./footer.ejs');%>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.0.js"></script> 
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script> 
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script>
+    // השבתת צ'ק בוקסים בכל הקטגוריות
+    $("input[type='checkbox']").change(function () {
+        if ($(this).is(":checked")) {
+            $("input[type='checkbox']").not(this).prop("checked", false);
+        }
+    });
+</script>
 
-    <script src="Js/allproducts.js"></script>
+<script src="Js/allproducts.js"></script>
 
 
 </body>
