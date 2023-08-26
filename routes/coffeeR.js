@@ -3,11 +3,7 @@ var router = express.Router();
 const capsuleController = require('../controllers/coffeeC');
 
 
-router.route('/')
-    .get(capsuleController.getCapsules)
-    //.post(coffeeController.newCapsula);
-
-
+    router.route('/').get(capsuleController.getCapsules)
     router.route('/capsule').get(capsuleController.getCapsule)
     router.route('/').post(capsuleController.sortProducts)
     router.post('/search',capsuleController.searchCapsule)
@@ -15,10 +11,7 @@ router.route('/')
 
 
 
-// router.route('/:id')
-    //.get(coffeeController.getCapsule)
-   // .patch(coffeeController.updatePrice)
-   // .delete(coffeeController.deletedCapsule);
+
    
 
 

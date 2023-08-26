@@ -43,6 +43,7 @@ app.use(session({
 app.use(function(req, res, next) {
   if (req.session.username) {
     req.user = { 
+      _id:req.session.userId,
       username: req.session.username,
       permission: req.session.permission,
       fName:req.session.fName,
@@ -78,8 +79,6 @@ app.get('/test',(req,res)=>{
 })
 
 
-
-
 //Creating Route for login page
 const LoginRouter = require('./routes/Users');
 //Activate Route for log in page
@@ -99,6 +98,14 @@ app.use('/about',require('./routes/about'))
 
 //Creating the route for cart page:
 app.use('/cart',require('./routes/cart'))
+
+
+//Creating the route for order functions:
+app.use('/order',require('./routes/order'))
+
+
+//creating a route for myUser page:
+app.use('/myUser',require('./routes/myUser'))
 
 
 //Setting Cookies session - NEEDS TO DECIDE IF TO KEEP OR NOT 
