@@ -10,10 +10,10 @@
     <!-- <link rel="stylesheet" href="Css/header.css"> -->
     <title>My Cart</title>
 </head>
-<body>
+<body style="display: flex; flex-direction: column; min-height: 100vh;">
     <%- include('./header.ejs');%>
 
-
+    <div class="content-wrapper" style="flex-grow: 1;">
     <h1 class="headline">My Cart</h1>
     <% if (products.length === 0) { %>
       <h4 id="empty">The Cart is Empty</h4>
@@ -77,6 +77,7 @@
     </div>
   </form>
   <%}%> 
+</div>
   <%- include('./footer.ejs');%>
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
