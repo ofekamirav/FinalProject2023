@@ -24,9 +24,16 @@ const createOrder = async (user, items) => {
 };
 
 
+const getUserOrders = async (userId) => {
+
+    return await Order.find({user:userId});
+}
+
+
 
 
 module.exports={
     createOrder,
+    getUserOrders,
 
   }

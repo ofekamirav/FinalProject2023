@@ -29,7 +29,7 @@ const getUserOrders = async (req, res) => {
         res.render('myUser', { orders });
     } catch (error) {
         console.error("Error fetching user's orders:", error);
-        res.status(500).render('errorPage', { message: 'Failed to fetch orders.' }); // assuming you have an error page to render
+        res.status(500).render('myUser', { message: 'Failed to fetch orders.' }); // assuming you have an error page to render
     }
 }
 
