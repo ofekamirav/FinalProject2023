@@ -81,10 +81,34 @@ async function addProduct(userId,itemId) {
   }
   }
 
+  const updateCartItemQuantity = async (userId, itemId, newQuantity) => {
+    try {
+      const user = await User.findOne({ _id: userId });
+  
+      if (!user) {
+        throw new Error('User not found.');
+      }
+  
+      const cartItem = user.cart.find(item => item.itemId.toString() === itemId);
+  
+      if (!cartItem) {
+        throw new Error('Item not found in cart.');
+      }
+  
+      cartItem.quantity = newQuantity;
+      await user.save();
+  
+      return { success: true };
+    } catch (error) {
+      return { success: false, message: error.message };
+    }
+  };
+
 module.exports = {
     getUserCartItems,
     addProduct,
     deleteFromCart,
+    updateCartItemQuantity
   
    
  };

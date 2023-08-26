@@ -7,9 +7,8 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <script src="https://cdn.socket.io/socket.io-3.0.1.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="Css/Homepage.css">
     <title>Secret Coffee</title>
@@ -17,9 +16,7 @@
   <body>
     <%- include('./header.ejs');%>
 
-    <div class="UsersOnline">
-      <span  id="UsersCounnt">There is 0 Users online</span>
-    </div>
+
       <div id="content-container">
 
         <!-- Carousell-->
@@ -68,25 +65,23 @@
 
         <!-- Three columns of text below the carousel -->
         <div class="row">
-          <div class="col-lg-4">
+          <div class="col-lg-4 col-md-6 col-sm-12">
             <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="/Gallery/brazil_flag.png" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/></img>
             <h2>Brazil</h2>
             <p>Indulge in the rich, smooth flavors of Brazilian coffee beans. With their mild acidity and notes of chocolate and caramel, Brazilian coffee beans are the perfect choice for those who appreciate a classic, full-bodied brew.
                Explore our selection of Brazilian coffee and experience the essence of Brazil in every cup</p>
-            <!-- <p><a class="btn btn-light" href="allproudcts/filters/country1" >Shop From Brazil now! &raquo;</a></p> -->
           </div>
-          <div class="col-lg-4">
+          <div class="col-lg-4 col-md-6 col-sm-12">
             <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="/Gallery/ethiopia_flag.png" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/></img>    
             <h2>Ethiopia</h2>
             <p>Take a sensory journey with our Ethiopian coffee beans. From the birthplace of coffee, these beans promise an exotic adventure. Whether you prefer the fruity notes of Yirgacheffe or the spicy tones of Sidamo, our Ethiopian coffee selection brings the rich coffee culture of Ethiopia to your cup.</p>
-            <!-- <p><a class="btn btn-light" href="allproudcts/filters/country3">Shop From Ethiopia now! &raquo;</a></p> -->
+            
           </div>
-          <div class="col-lg-4">
+          <div class="col-lg-4 col-md-6 col-sm-12">
             <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="/Gallery/colombia_flag.png" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/></img>    
             <h2>Colombia</h2>
             <p>Experience the excellence of Colombian coffee. Our Colombian coffee beans offer a harmonious blend of citrusy brightness, medium body, and delightful hints of caramel, and nuts.
                By choosing our Colombian coffee you also support sustainable and ethical coffee farming practices in Colombia.</p>
-            <!-- <p><a class="btn btn-light" href="allproudcts/filters/country2">Shop From Colombia now! &raquo;</a></p> -->
           </div>>
         </div>
     
@@ -96,7 +91,7 @@
         <hr class="featurette-divider">
     
         <div class="row featurette">
-          <div class="col-md-7">
+          <div class="col-md-7 order-md-2">
             <h2 class="featurette-heading">BE your own barista. <span class="text-muted"> Every day, any time.</span></h2>
             <p class="lead"> Becoming your own barista is a journey of empowerment, allowing you to craft your coffee just the way you like it.
                It's about seizing control over your daily caffeine fix, tailoring it to your unique preferences.
@@ -105,7 +100,7 @@
 
             </p>
           </div>
-          <div class="col-md-5">
+          <div class="col-md-5 order-md-1">
             <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="200" src="/Gallery/barista.png" aria-label="Placeholder: 500x500" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/></img>    
           </div>
         </div>
@@ -133,8 +128,8 @@
             <p class="lead">Master the art of coffee-making with our video guide. <br><h4>Click to watch!</h4></p>
           </div>
           <div class="col-md-5">
-            <div class="video-container">
-              <iframe width="650" height="400" src="https://www.youtube.com/embed/gbcirvLA23A?si=jFlBreejrI4Cxz-q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <div class="embed-responsive embed-responsive-16by9">
+              <iframe width="100%" height="auto" src="https://www.youtube.com/embed/gbcirvLA23A?si=jFlBreejrI4Cxz-q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
           </div>
           </div>
         </div>
@@ -142,8 +137,15 @@
         <hr class="featurette-divider">
     
         <!-- /END THE FEATURETTES -->
+      </div>
 
 
+      </div>
+
+      <div class="UsersOnline">
+        <span  id="UsersCounnt">There is 0 Users online</span>
+      </div>
+  
       <%- include('./footer.ejs');%>
 
 
@@ -151,6 +153,5 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="Js/home.js"></script>
-    <!-- <script src="Homepage.js"></script> -->
   </body>
 </html>

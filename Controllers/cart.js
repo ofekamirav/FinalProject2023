@@ -55,10 +55,25 @@ function isLoggedIn(req, res, next) {
       }
 
 
+      const updateQuantity = async (req, res) => {
+        const userId = req.session.userId;  // Assuming you store userId in session
+        const { itemName2: itemId, quantity } = req.body;
+      
+        const result = await cartService.updateCartItemQuantity(userId, itemId, quantity);
+      
+        if (result.success) {
+          res.json({ success: true });
+        } else {
+          res.status(400).json({ success: false, message: result.message });
+        }
+      };
+
+
 
 module.exports={
   isLoggedIn,
   getCartItems,
   addToCart,
-  deleteFromCart
+  deleteFromCart,
+  updateQuantity
 }

@@ -59,4 +59,4 @@ $(document).on('click', '#buy-button', function(e) {
   });
 });
 
-  
+
