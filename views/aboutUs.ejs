@@ -187,7 +187,9 @@
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script> 
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=<%=apiKey%>&callback=initMap" async defer></script>
+    
     <script>
+        //google maps withall our partnerships
         function initMap() {
   var map;
   var locations = [
@@ -208,12 +210,12 @@
     center: { lat: 31.0461 , lng: 34.8516  }
   });
 
-  // Loop through the locations array and add markers to the map
+  
   locations.forEach(function(location) {
     var marker = new google.maps.Marker({
       position: { lat: location.lat, lng: location.lng },
       map: map,
-      title: location.title // You can set a title for each marker
+      title: location.title 
     });
   });
 }

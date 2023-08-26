@@ -20,9 +20,7 @@
                     <p><strong>Order Date:</strong> <%= order.orderDate %></p>
                     <p><strong>Total Amount:</strong> <%= order.totalAmount %></p>
                     <ul>
-                        <!-- <% order.items.forEach(item => { %>
-                            <li>Item ID: <%= item.itemId %> | Quantity: <%= item.quantity %></li>
-                        <% }) %> -->
+                        
                         <% order.items.forEach(item => { %>
                             <li><%= item.itemId.Name %> | Quantity: <%= item.quantity %></li>
                         <% }) %>

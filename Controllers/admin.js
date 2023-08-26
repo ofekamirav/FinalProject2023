@@ -22,33 +22,20 @@ const getCapsules = async (req , res) =>{
   const getUsers = async (req , res) =>{
     const Users = await usersService.getUsers();
     let username=req.session.username;
-    //res.render('admin',{users:Users,username:username})
+   
     res.json(Users);
   }
 
   
-  // const handleAdminPage = async (req, res) => {
-  //   if (req.headers.accept && req.headers.accept.includes('application/json')) {
-  //     // If request expects JSON, return user data
-  //     const Users = await usersService.getUsers();
-  //     const Products=await coffeeService.getAllCoffee();
-  //     res.json({users:Users,products:Products});
-  //   } else {
-  //     // Otherwise, render the EJS template
-  //     let username=req.session.username;
-  //     let permission = req.session.permission
-  //     res.render('admin',{username:username,permission:permission});
-  //   }
-  // }
 
   //New Handling with orders:
   const handleAdminPage = async (req, res) => {
     try {
       if (req.headers.accept && req.headers.accept.includes('application/json')) {
-        // If request expects JSON, return user data, product data, and order data
+        
         const Users = await usersService.getUsers();
         const Products = await coffeeService.getAllCoffee();
-        const Orders = await ordersService.getAllOrders();  // assuming you have an ordersService
+        const Orders = await ordersService.getAllOrders();  
   
         res.json({ users: Users, products: Products, orders: Orders });
       } else {

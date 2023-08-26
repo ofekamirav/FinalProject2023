@@ -4,7 +4,7 @@
 $(document).ready(function() {
   $('#users-table').DataTable({
     ajax: {
-      url: '/admin', // Same URL as the page rendering
+      url: '/admin', 
       dataSrc: "users"
       
     },
@@ -22,13 +22,13 @@ $(document).ready(function() {
 
         }
       }
-      // data-bs-toggle="modal" data-bs-target="#updateUserModal"
+     
       
       
     ],
 
     createdRow: function(row, data, dataIndex) {
-      // Check the permission value in your data
+      
       if (data.permission === 1) {
         // Hide the row if permission value is 1
         $(row).addClass('d-none');
@@ -42,7 +42,7 @@ $(document).ready(function() {
 
   $('#products-table').DataTable({
     ajax: {
-      url: '/admin', // Same URL as the page rendering
+      url: '/admin', 
       dataSrc: "products"
       
     },
@@ -73,16 +73,15 @@ $(document).ready(function() {
 $('#orders-table').DataTable({
   ajax: {
     url: '/admin', 
-    dataSrc: "orders"  // Adjust this to point to where orders are in the returned JSON
+    dataSrc: "orders"  
   },
   columns: [
-    { data: 'username' }, // This will display ObjectId of the user
-    // Assuming each order can have multiple items, 
-    // this will join the itemIds into a comma-separated string for display
+    { data: 'username' }, 
+   
     { 
       data: 'items', 
       render: function(data, type, row) {
-        // return data.map(item => item.itemId).join(', ');
+        
         return data.map(item => `${item.itemId.Name} (Qty: ${item.quantity})`).join('<br> ');
 
       } 
@@ -90,7 +89,7 @@ $('#orders-table').DataTable({
     { data: 'totalAmount' },
     { data: 'orderDate' },
     
-    // Add more columns if needed
+   
   ],
   lengthMenu: [[-1, 5, 10, 20,], ["All", 5, 10, 20,]]
 });
@@ -250,16 +249,16 @@ function validateForm() {
 
 //Delete User Function
 $(document).on('click', '.delete-user', function() {
-  var userId = $(this).data('id'); // Getting the user ID from the data attribute
-  var row = $(this).closest('tr'); // Getting the row containing the button
+  var userId = $(this).data('id'); 
+  var row = $(this).closest('tr'); 
 
   $.ajax({
     
-    url: 'admin/deleteUser/' + userId, // Assuming you have a route setup to handle the deletion
+    url: 'admin/deleteUser/' + userId, 
     method: 'DELETE',
     success: function(response) {
       if (response.success) {
-        $('#users-table').DataTable().row(row).remove().draw(); // Removing the row from the table
+        $('#users-table').DataTable().row(row).remove().draw(); 
         alert('User deleted successfully');
       } else {
         alert('Error deleting user');
@@ -280,7 +279,7 @@ $(document).on('click', '.delete-product', function() {
 
   $.ajax({
     
-    url: 'admin/deleteProduct/' + productId, // Assuming you have a route setup to handle the deletion
+    url: 'admin/deleteProduct/' + productId, 
     method: 'DELETE',
     success: function(response) {
       if (response.success) {
@@ -306,14 +305,12 @@ $('#products-table').on('click', '.update-product', function() {
     // Get the product ID from the clicked button's data-id attribute.
     currentProductId = $(this).data('id');
 
-    // Optionally: Populate modal input fields with data from the DataTable's row. 
-    // This requires accessing data from the DataTables API.
-    // Assuming you have the corresponding row data. Here's just an example:
+  
     let rowData = $('#products-table').DataTable().row($(this).parents('tr')).data();
     $('#Name').val(rowData.Name);
     $('#origin').val(rowData.origin);
-    $('#type').val(rowData.type); // This assumes 'type' is a property in your rowData. Adjust accordingly.
-    $('#intensity').val(rowData.intensity); // Similarly, adjust if needed.
+    $('#type').val(rowData.type); 
+    $('#intensity').val(rowData.intensity); 
     $('#flavor').val(rowData.flavor);
     $('#price').val(rowData.price);
 
@@ -325,7 +322,7 @@ $('#products-table').on('click', '.update-product', function() {
 $(document).on('submit', '#update-product-form', function(e) {
     e.preventDefault();
 
-    // Add validation or any other requirements here, similar to the function for adding products.
+  
 
     $.ajax({
         method: "PUT",
