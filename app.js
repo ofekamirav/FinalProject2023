@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const flash = require('express-flash')
 const session = require('express-session');
+var Onlines = 0;
 require("dotenv").config();
 
 //Defining Middleware functions:
@@ -125,7 +126,31 @@ app.use('/myUser',require('./routes/myUser'))
 app.use('/public', express.static('public'));
 
 
+
+
 //Setting the Port using the env file ( in gitignore)
-app.listen(process.env.PORT, ()=>{
+ const server =app.listen(process.env.PORT, ()=>{
     console.log('Server Running')
 });
+
+
+
+// socket usage
+const io = require('socket.io')(server, {
+  cors: { origin: "*" }
+});
+io.on('connection', async function(socket){
+
+  Onlines++;
+  socket.on('login', function(data){
+    // saving userId to object with socket ID
+  });
+  io.emit('usercnt',Onlines);
+  socket.on('disconnect', function(){
+    Onlines--;
+    io.emit('usercnt',Onlines);
+
+  });
+});
+
+

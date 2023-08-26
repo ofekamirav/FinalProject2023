@@ -3,7 +3,7 @@ const orderService = require('../services/order');
 
 const createOrder= async (req,res)=>{
     try {
-        console.log(req.body.items)
+        
         const user = req.user;  // Assuming you have user in the request (from session or token)
 
         if (!user) {

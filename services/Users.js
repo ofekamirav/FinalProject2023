@@ -60,7 +60,7 @@ async function getUsers(){
 async function deleteU(userId)  {
     try {
       const result = await User.findByIdAndRemove(userId);
-      console.log(userId)
+      
       if (result) {
         return { success: true, message: 'User deleted successfully' };
       } else {

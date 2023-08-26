@@ -16,7 +16,8 @@
     <%- include('header.ejs');%>
 
 <!-- המוצר -->
-<form action="/show1capsule/Addto" method="post">
+<form id="addToCart" method="post">
+
   
         <!-- Updated HTML Structure -->
 <div class="container product">
@@ -30,8 +31,10 @@
           <p><strong>Intensity:</strong> <%= capsule.intensity %></p>
           <p><strong>Flavor:</strong> <%= capsule.flavor %></p>
           <p><strong>Price:</strong> $<%= capsule.price %></p>
+
           <p><strong>Coffee origin:</strong> <%= capsule.origin %></p>
-          <button id="button_cart" class="btn btn-primary" type="submit" name="action" value="cart:<%= capsule["_id"] %>">Add to Cart</button>
+          <button id="button_cart" class="btn btn-primary" type="submit" id="addToCart" name="action" value="cart:<%= capsule["_id"] %>">Add to Cart</button>
+
       </div>
   </div>
 </div>
@@ -58,6 +61,7 @@
    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
    <script src="https://code.jquery.com/jquery-3.7.0.js"></script> 
-   <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script> 
+   <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+   <script src="../public/Js/capsule.js"></script>
   </body>
 </html>
