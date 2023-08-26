@@ -12,7 +12,22 @@
 <body>
     <%- include('./header.ejs');%>
     
-
+    <div class="container mt-5">
+        <h2>My Orders</h2>
+        <ul class="list-group">
+            <% orders.forEach(order => { %>
+                <li class="list-group-item">
+                    <p><strong>Order Date:</strong> <%= order.orderDate %></p>
+                    <p><strong>Total Amount:</strong> <%= order.totalAmount %></p>
+                    <ul>
+                        <% order.items.forEach(item => { %>
+                            <li>Item ID: <%= item.itemId %> | Quantity: <%= item.quantity %></li>
+                        <% }) %>
+                    </ul>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
 
 
     <%- include('./footer.ejs');%>

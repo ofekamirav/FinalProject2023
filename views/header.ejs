@@ -29,6 +29,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/shop" >Store <i class="bi bi-shop-window"></i></a>
                     </li>
+                    <%if(user){%>
+                      <li class="nav-item">
+                        <a class="nav-link" href="/myUser" >My User <i class="bi bi-file-earmark-person-fill"></i></a>
+                    </li>
+                      <%}%>
                   </ul>    
                   <ul class="navbar-nav me-auto mt-2 mt-lg-0">
                       <%if(user){%>
@@ -69,7 +74,7 @@
                     <a class="nav-link"  href="/cart" id="login">
                       <i class="bi bi-cart black-color" title="Cart"></i>
                     </a>
-                </li>
+                 </li>
 
                     <%}%>
   
