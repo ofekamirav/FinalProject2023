@@ -11,6 +11,18 @@
      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
      <link rel="stylesheet" href="../public/capsule.css">
 </head>
+<style>
+ 
+  body {
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      min-height: 100vh;
+  }
+
+  .content {
+      grid-row: 2;
+  }
+</style>
 <body>
 
     <%- include('header.ejs');%>
