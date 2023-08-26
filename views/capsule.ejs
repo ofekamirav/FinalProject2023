@@ -31,8 +31,10 @@
           <p><strong>Intensity:</strong> <%= capsule.intensity %></p>
           <p><strong>Flavor:</strong> <%= capsule.flavor %></p>
           <p><strong>Price:</strong> $<%= capsule.price %></p>
-          <p><strong>Capsule origin:</strong> <%= capsule.origin %></p>
+
+          <p><strong>Coffee origin:</strong> <%= capsule.origin %></p>
           <button id="button_cart" class="btn btn-primary" type="submit" id="addToCart" name="action" value="cart:<%= capsule["_id"] %>">Add to Cart</button>
+
       </div>
   </div>
 </div>
