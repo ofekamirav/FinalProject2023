@@ -39,9 +39,26 @@ function isLoggedIn(req, res, next) {
       }
 
 
+      async function deleteFromCart(req,res){
+        try{
+          const itemId=req.params.productId;
+          const userId=req.session.userId;
+
+          await cartService.deleteFromCart(userId,itemId);
+
+          res.json({success:true,message:"Product Removed"});
+        }
+        catch(e)
+        {
+          res.status(500).json({success:false,message:'Failed removing product from the cart'})
+        }
+      }
+
+
 
 module.exports={
   isLoggedIn,
   getCartItems,
-  addToCart
+  addToCart,
+  deleteFromCart
 }

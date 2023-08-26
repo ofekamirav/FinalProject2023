@@ -37,8 +37,7 @@ async function addProduct(userId,itemId) {
   try{
     
     const user = await User.findById(userId);
-      
-   
+  
     var existed =0;
     for(let i=0;i<user.cart.length;i++)
     {
@@ -49,26 +48,43 @@ async function addProduct(userId,itemId) {
       await user.save()
       }
     }
-
     if(existed==0)
     {
       await User.findByIdAndUpdate(userId,{
         $push:{cart:{itemId:itemId,quantity:1}}
       })
     }
-
-
-      
     }catch(err){
       console.log(err);
       throw err;
     }      
   }
 
+  async function deleteFromCart(userId,itemId)
+  {
+    try {
+      const result = await User.findByIdAndUpdate(
+          userId,
+          { $pull: { cart: { itemId: itemId } } },
+          { new: true }  // returns the modified document
+      );
+
+      if (!result) {
+          return { success: false, message: 'User not found' };
+      }
+
+      return { success: true, message: 'Product removed from cart' };
+
+  } catch (e) {
+      console.error(e);
+      return { success: false, message: 'Error occurred while removing product' };
+  }
+  }
 
 module.exports = {
     getUserCartItems,
-    addProduct
+    addProduct,
+    deleteFromCart,
   
    
  };
