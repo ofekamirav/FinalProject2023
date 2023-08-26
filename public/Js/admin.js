@@ -17,8 +17,8 @@ $(document).ready(function() {
       {
         data: null,
         render: function(data, type, row) {
-          return '<button class="btn btn-danger delete-user" data-id="' + row._id + '">Delete</button>' +
-          '<button class="btn btn-primary update-user"  style="margin-left: 10px;" data-id="' + row._id + '">Update</button>';
+          return '<button class="btn btn-danger delete-user" data-id="' + row._id + '">Delete</button>';
+          
 
         }
       }
@@ -68,6 +68,36 @@ $(document).ready(function() {
   });
 
 });
+
+
+$('#orders-table').DataTable({
+  ajax: {
+    url: '/admin', 
+    dataSrc: "orders"  // Adjust this to point to where orders are in the returned JSON
+  },
+  columns: [
+    { data: 'username' }, // This will display ObjectId of the user
+    // Assuming each order can have multiple items, 
+    // this will join the itemIds into a comma-separated string for display
+    { 
+      data: 'items', 
+      render: function(data, type, row) {
+        // return data.map(item => item.itemId).join(', ');
+        return data.map(item => `${item.itemId.Name} (Qty: ${item.quantity})`).join('<br> ');
+
+      } 
+    },
+    { data: 'totalAmount' },
+    { data: 'orderDate' },
+    
+    // Add more columns if needed
+  ],
+  lengthMenu: [[-1, 5, 10, 20,], ["All", 5, 10, 20,]]
+});
+
+
+
+
 
 
 

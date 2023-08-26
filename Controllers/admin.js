@@ -1,5 +1,6 @@
 const coffeeService = require('../services/coffeeS');
 const usersService = require('../services/Users');
+const ordersService=require('../services/order')
 
 //Controller to logging in
 function isLoggedIn(req, res, next) {
@@ -26,17 +27,38 @@ const getCapsules = async (req , res) =>{
   }
 
   
+  // const handleAdminPage = async (req, res) => {
+  //   if (req.headers.accept && req.headers.accept.includes('application/json')) {
+  //     // If request expects JSON, return user data
+  //     const Users = await usersService.getUsers();
+  //     const Products=await coffeeService.getAllCoffee();
+  //     res.json({users:Users,products:Products});
+  //   } else {
+  //     // Otherwise, render the EJS template
+  //     let username=req.session.username;
+  //     let permission = req.session.permission
+  //     res.render('admin',{username:username,permission:permission});
+  //   }
+  // }
+
+  //New Handling with orders:
   const handleAdminPage = async (req, res) => {
-    if (req.headers.accept && req.headers.accept.includes('application/json')) {
-      // If request expects JSON, return user data
-      const Users = await usersService.getUsers();
-      const Products=await coffeeService.getAllCoffee();
-      res.json({users:Users,products:Products});
-    } else {
-      // Otherwise, render the EJS template
-      let username=req.session.username;
-      let permission = req.session.permission
-      res.render('admin',{username:username,permission:permission});
+    try {
+      if (req.headers.accept && req.headers.accept.includes('application/json')) {
+        // If request expects JSON, return user data, product data, and order data
+        const Users = await usersService.getUsers();
+        const Products = await coffeeService.getAllCoffee();
+        const Orders = await ordersService.getAllOrders();  // assuming you have an ordersService
+  
+        res.json({ users: Users, products: Products, orders: Orders });
+      } else {
+        // Otherwise, render the EJS template
+        let username = req.session.username;
+        let permission = req.session.permission
+        res.render('admin', { username: username, permission: permission });
+      }
+    } catch (error) {
+      res.status(500).json({ success: false, message: 'Server error', error: error.message });
     }
   }
 
@@ -137,7 +159,7 @@ const coffeeData = require('../Models/coffeeM');
           },
         },
       ]);
-      console.log(data);
+     
       res.json(data);
     } catch (err) {
       console.error(err);

@@ -1,5 +1,6 @@
 const coffeeData = require('../Models/coffeeM');
 const Order = require('../Models/order');
+const User = require('../models/Users')
 
 const createOrder = async (user, items) => {
     // Calculate totalAmount
@@ -16,7 +17,11 @@ const createOrder = async (user, items) => {
         totalAmount: totalAmount,
         username: user.username 
     });
-    console.log(order);
+   
+
+    const cartUser= await User.findById(user._id)
+    cartUser.cart=[];
+   await cartUser.save();
 
     await order.save();
 
@@ -26,8 +31,21 @@ const createOrder = async (user, items) => {
 
 const getUserOrders = async (userId) => {
 
-    return await Order.find({user:userId});
+    // return await Order.find({user:userId});
+    return await Order.find({ user: userId }).populate('items.itemId');
+
 }
+
+const getAllOrders = async () => {
+    try {
+    
+      const orders = await Order.find({}).populate('items.itemId');
+      
+      return orders;
+    } catch (error) {
+      throw error;
+    }
+  }
 
 
 
@@ -35,5 +53,6 @@ const getUserOrders = async (userId) => {
 module.exports={
     createOrder,
     getUserOrders,
+    getAllOrders,
 
   }
