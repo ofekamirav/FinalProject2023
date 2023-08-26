@@ -9,10 +9,6 @@ function isLoggedIn(req, res, next) {
     req.session.username=null
     res.render("home",{username:req.session.username})
   }
-  // if(res.locals.user)
-  // next();
-  // else
-  // res.render('home');
 }
 
 //Controller to send to home page after logging in 
