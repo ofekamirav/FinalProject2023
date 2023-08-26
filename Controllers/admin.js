@@ -125,7 +125,25 @@ const updateProduct = async (req, res) => {
     }
 };
 
-
+//Test 
+const coffeeData = require('../Models/coffeeM');
+  const getData= async (req, res) => {
+    try {
+      const data = await coffeeData.aggregate([
+        {
+          $group: {
+            _id: '$origin',
+            count: { $sum: 1 },
+          },
+        },
+      ]);
+      console.log(data);
+      res.json(data);
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+}; 
 
 
 module.exports={
@@ -137,7 +155,8 @@ module.exports={
     deleteProduct,
     register,
     addProduct,
-    updateProduct
+    updateProduct,
+    getData
 
 
 }
