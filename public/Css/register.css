@@ -5,11 +5,14 @@
 
 body {
     min-height: 100vh;
-    background-image: url("../Gallery/signup.jpg");
-    background-size: cover;
+    /* background-image: url("../Gallery/signup.jpg"); */
+    /* background-size: cover;  */
+    /* background-color: rgba(0, 0, 0, 0.9);  */
+    background-color: #d1b791;
+
 }
 .form-control{
-    background:#F2F2F2;
+    background-color:#F2F2F2;
     border-radius:0px;
     background: transparent;
     border: none;
@@ -37,6 +40,6 @@ body {
 }
 
 .container{
-    background-origin: padding-box;
-    margin: auto;
+background-origin: padding-box;
+margin: auto;
 }
