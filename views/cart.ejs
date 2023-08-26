@@ -61,9 +61,9 @@
             <td><%= product.price * item.quantity %></td>
             <% totalPrice +=(product.price * item.quantity); %>
             <td>
-              <form action="/Cart/delete" method="post">
-                <input type="hidden" name="itemName" value="<%= product['name of product'] %>">
-                <button type="submit" class="delete-button" name="action" value="delete">Delete</button>
+              <form action="/cart/deleteProduct" method="post">
+                <input type="hidden" name="productId" value="<%= product._id %>">
+                <button type="button" class="delete-product" data-id="<%= product._id %>">Delete</button>
               </form>
             </td>
           </tr>
